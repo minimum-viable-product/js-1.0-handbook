@@ -1,0 +1,356 @@
+<html>
+<body>
+<h1>Using windows and frames</h1>
+<p>JavaScript lets you create and open windows for presenting HTML text, form objects, and frames. The window object is the top-level object in the JavaScript client hierarchy. Form elements and all JavaScript code exists in documents that are loaded into windows. By understanding how windows work, you can control and manipulate these windows.
+
+<ul>
+<li><a href="#winOpenClose">Opening and closing windows</a>
+<li><a href="#winFrames">Using frames</a>
+<li><a href="#winRefer">Referring to windows and frames</a>
+<li><a href="#winNavigate">Navigating among windows</a>
+</ul>
+
+
+<!------------------------------------------------------------------------------------------------>
+<hr>
+<a name="winOpenClose"><h2>Opening and closing windows</h2></a>
+<p>A window is created automatically when a user launches Navigator, and a user can open a window by choosing New Web Browser from the Navigator's File menu. A user can close a window by choosing either Close or Exit from the Navigator's File menu. You can also open and close windows programmatically.
+
+<a name="winOpen"><h3>Opening a window</h3></a>
+<p>You can create a window with the open method. The following statement creates a window called <i>msgWindow</i> that displays the contents of the file <tt>sesame.html</tt>:
+<xmp>
+msgWindow=window.open("sesame.html")
+</xmp>
+
+<p>The following statement creates a window called <i>homeWindow</i> that displays the Netscape home page:
+<xmp>
+homeWindow=window.open("http://www.netscape.com")
+</xmp>
+
+<p>Windows can have two names. The following statement creates a window with two names. The first name, "msgWindow", is used when referring to the window's properties, methods, and containership; the second name, "displayWindow", is used when referring to the window as the target of a form submit or hypertext link.
+
+<xmp>
+msgWindow=window.open("sesame.html","displayWindow")
+</xmp>
+
+<p>When you create a window, a window name is not required. But if you want to refer to a window from another window, the window must have a name. For more information on using window names, see <a href="#winRefer">Referring to windows and frames</a>.
+
+<p>When you open a window, you can specify attributes such as the window's height and width and whether the window contains a toolbar, location field, or scrollbars. The following statement creates a window without a toolbar but with scrollbars:
+<xmp>
+msgWindow=window.open
+   ("sesame.html","displayWindow","toolbar=no,scrollbars=yes")
+</xmp>
+
+<p>For details on these window attributes, see the <a href="ref_m-q.html#open_window_method">open</a> method.
+
+<a name="winClose"><h3>Closing a window</h3></a>
+<p>You can close a window programmatically with the close method. You cannot close a frame without closing the entire parent window.
+
+<p>All of the following statements close the current window:
+<xmp>
+window.close()
+self.close()
+// Do not use the following statement in an event handler
+close()
+</xmp>
+
+<p>The following statement closes a window called <i>msgWindow</i>:
+<xmp>
+msgWindow.close()
+</xmp>
+
+
+<!------------------------------------------------------------------------------------------------>
+<hr>
+<a name="winFrames"><h2>Using frames</h2></a>
+<p>A frame is a special type of window that can display multiple, independently scrollable frames on a single screen, each with its own distinct URL. Frames can point to different URLs and be targeted by other URLs, all within the same window. A series of frames makes up a page.
+
+<p>The following diagram shows a window containing three frames:
+<xmp>
+       This frame is                 This frame is
+       named listFrame               named contentFrame
+             |                              |
+             |                              |
+-------------v------------------------------v----------
+| Music Club    |  Toshiko Akiyoshi                   |
+| Artists       |     Interlude                       |
+|               |                                     |
+| Jazz          |  The Beatles                        |
+| - T. Akiyoshi |     Please Please Me                |
+| - J. Coltrane |                                     |
+| - M. Davis    |  Betty Carter                       |
+| - D. Gordon   |     Ray Charles and Betty Carter    |
+|               |                                     |
+| Soul          |  Jimmy Cliff                        |
+| - B. Carter   |     The Harder They Come            |
+| - R. Charles  |                                     |
+| ...           |  ...                                |
+-------------------------------------------------------
+|  Alphabetical   By category   Musician Descriptions |
+----------------^--------------------------------------
+                |
+                |
+         This frame is named
+         navigateFrame
+</xmp>
+
+
+<h3>Creating a frame</h3>
+<p>You create a frame by using the &LTFRAMESET;&GT; tag in an HTML document. The &LTFRAMESET;&GT; tag is used in an HTML document whose sole purpose is to define the layout of frames that make up a page.
+
+<p><b>Example 1.</b> The following statement creates the frameset shown in the previous diagram.
+<xmp>
+<frameset rows="90%,10%">
+   <frameset cols="30%,70%">
+      <frame src="/web/19970617232510fw_/http://home.netscape.com:80/eng/mozilla/2.0/handbook/javascript/category.html" name="listFrame">
+      <frame src="/web/19970617232510fw_/http://home.netscape.com:80/eng/mozilla/2.0/handbook/javascript/titles.html" name="contentFrame">
+   </frameset>
+   <frame src="/web/19970617232510fw_/http://home.netscape.com:80/eng/mozilla/2.0/handbook/javascript/navigate.html" name="navigateFrame">
+</frameset>
+</xmp>
+
+<p>The following diagram shows the hierarchy of the frames. All three frames have the same parent, even though two of the frames are defined within a separate frameset. This is because a frame's parent is its parent window, and a frame, not a frameset, defines a window.
+<xmp>
+top
+ |
+ +--listFrame (category.html)
+ |
+ +--contentFrame (titles.html)
+ |
+ +--navigateFrame (navigate.html)
+</xmp>
+
+<p>You can refer to the previous frames using the <i>frames</i> array as follows. (For information on the <i>frames</i> array, see the <a href="ref_f-g.html#frame_object">frame</a> object.)
+<ul>
+<li><i>listFrame</i> is top.frames[0]
+<li><i>contentFrame</i> is top.frames[1]
+<li><i>navigateFrame</i> is top.frames[2]
+</ul>
+
+<p><b>Example 2.</b> Alternatively, you could create a window like the previous one but in which the top two frames have a separate parent from <i>navigateFrame</i>. The top-level frameset would be defined as follows:
+
+<xmp>
+<frameset rows="90%,10%">
+   <frame src="/web/19970617232510fw_/http://home.netscape.com:80/eng/mozilla/2.0/handbook/javascript/muskel3.html" name="upperFrame">
+   <frame src="/web/19970617232510fw_/http://home.netscape.com:80/eng/mozilla/2.0/handbook/javascript/navigate.html" name="navigateFrame">
+</frameset>
+</xmp>
+
+<p>The file <tt>muskel3.html</tt> contains the skeleton for the upper frames and defines the following frameset:
+<xmp>
+<frameset cols="30%,70%">
+   <frame src="/web/19970617232510fw_/http://home.netscape.com:80/eng/mozilla/2.0/handbook/javascript/category.html" name="listFrame">
+   <frame src="/web/19970617232510fw_/http://home.netscape.com:80/eng/mozilla/2.0/handbook/javascript/titles.html" name="contentFrame">
+</frameset>
+</xmp>
+
+<p>The following diagram shows the hierarchy of the frames. <i>upperFrame</i> and <i>navigateFrame</i> share a parent: the top window. <i>listFrame</i> and <i>contentFrame</i> share a parent: <i>upperFrame</i>.
+<xmp>
+top
+ |
+ |                   +--listFrame
+ |                   |  (category.html)
+ +---upperFrame------|
+ |   (muskel3.html)  |
+ |                   +--contentFrame
+ |                      (titles.html)
+ |
+ +---navigateFrame
+     (navigate.html)
+</xmp>
+
+<p>You can refer to the previous frames using the <i>frames</i> array as follows. (For information on the <i>frames</i> array, see the <a href="ref_f-g.html#frame_object">frame</a> object.)
+<ul>
+<li><i>upperFrame</i> is top.frames[0]
+<li><i>navigateFrame</i> is top.frames[1]
+<li><i>listFrame</i> is upperFrame.frames[0] or top.frames[0].frames[0]
+<li><i>contentFrame</i> is upperFrame.frames[1] or top.frames[0].frames[1]
+</ul>
+
+
+<h3>Updating frames</h3>
+<p>You can update the contents of a frame by using the location property to set the URL, as long as you specify the frame hierarchy.
+
+<p>For example, suppose you are using the frameset described in Example 2 in the previous section. If you want users to be able to close the frame containing the alphabetic or categorical list of artists (in the frame <i>listframe</i>) and view only the music titles sorted by musician (currently in the frame <i>contentFrame</i>), you could add the following button to <i>navigateFrame</i>.
+
+<p>If you want users to be able to close the frame containing the alphabetic or categorical list of artists (in the frame <i>listframe</i>) and view only the music titles sorted by musician (currently in the frame <i>contentFrame</i>), you could add the following button to <i>navigateFrame</i>.
+<xmp>
+<input type="button" value="Titles Only" onclick="top.frames[0].location='artists.html'">
+</xmp>
+
+<p>When a user clicks this button, the file <tt>artists.html</tt> is loaded into the frame <i>upperFrame</i>; the frames <i>listFrame</i> and <i>contentFrame</i> close and no longer exist.
+
+<h3>Referring to and navigating among frames</h3>
+<p>Because a frame is a type of window, you refer to frames and navigate among frames the same as you do with a window. See <a href="#winRefer">Referring to windows and frames</a> and <a href="#winNavigate">Navigating among windows</a>.
+
+
+<h3>Frame example</h3>
+<p>If the frameset in the previous section is designed to present the available titles for a music club, the frames and their HTML files could have the following content:
+<ul>
+<li><tt>category.html</tt>, in the frame <i>listFrame</i>, contains a list of musicians sorted by category.
+<li><tt>titles.html</tt>, in the frame <i>contentFrame</i>, contains an alphabetical list of each musician and the titles available for that musician.
+<li><tt>navigate.html</tt>, in the frame <i>navigateFrame</i>, contains hypertext links that let the user choose how the musicians are displayed in <i>listFrame</i>: in an alphabetical list or a categorical list. This file also defines a hypertext link that lets the user display a description of each musician.
+<li>An additional file, <tt>alphabet.html</tt>, contains a list of musicians sorted alphabetically. This file is displayed in <i>listFrame</i> when the user clicks the link for an alphabetical list.
+</ul>
+
+<p>The file <tt>category.html</tt> (the categorical list) contains code similar to the following:
+<xmp>
+<b>Music Club Artists</b>
+<p><b>Jazz</b>
+<li><a href="titles.html#0001" target="contentFrame">Toshiko Akiyoshi</a>
+<li><a href="titles.html#0006" target="contentFrame">John Coltrane</a>
+<li><a href="titles.html#0007" target="contentFrame">Miles Davis</a>
+<li><a href="titles.html#0010" target="contentFrame">Dexter Gordon</a>
+
+<p><b>Soul</b>
+<li><a href="titles.html#0003" target="contentFrame">Betty Carter</a>
+<li><a href="titles.html#0004" target="contentFrame">Ray Charles</a>
+...
+</xmp>
+
+<p>The file <tt>alphabet.html</tt> (the alphabetical list) contains code similar to the following:
+<xmp>
+<b>Music Club Artists</b>
+<li><a href="titles.html#0001" target="contentFrame">Toshiko Akiyoshi</a>
+<li><a href="titles.html#0002" target="contentFrame">The Beatles</a>
+<li><a href="titles.html#0003" target="contentFrame">Betty Carter</a>
+<li><a href="titles.html#0004" target="contentFrame">Ray Charles</a>
+...
+</xmp>
+
+<p>The file <tt>navigate.html</tt> (the navigational links at the bottom of the screen) contains code similar to the following. Notice that the target for <tt>artists.html</tt> is "_parent". When the user clicks this link, the entire window is overwritten, because the top window is the parent of <i>navigateFrame</i>.
+<xmp>
+<a href="alphabet.html" target="listFrame"><b>Alphabetical</b></a>
+&nbsp;&nbsp;&nbsp;
+<a href="category.html" target="listFrame"><b>By category</b></a>
+&nbsp;&nbsp;&nbsp;
+<a href="artists.html" target="_parent">
+   <b>Musician Descriptions</b></a>
+</xmp>
+
+<p>The file <tt>titles.html</tt> (the main file, displayed in the frame on the right) contains code similar to the following:
+<xmp>
+<!----------------------------------------------------------------->
+<a name="0001"><h3>Toshiko Akiyoshi</h3></a>
+<p>Interlude
+<!----------------------------------------------------------------->
+<a name="0002"><h3>The Beatles</h3></a>
+<p>Please Please Me
+<!----------------------------------------------------------------->
+<a name="0003"><h3>Betty Carter</h3></a>
+<p>Ray Charles and Betty Carter
+...
+</xmp>
+
+<p>For details on the syntax for creating a frame, see the <a href="ref_f-g.html#frame_object">frame</a> object.
+
+
+<!------------------------------------------------------------------------------------------------>
+<hr>
+<a name="winRefer"><h2>Referring to windows and frames</h2></a>
+<p>The name you use to refer to a window depends on whether you are referring to a window's properties, methods, and event handlers or are referring to the window as the target of a form submit or hypertext link.
+
+<p>Since the window object is the top-level object in the JavaScript client hierarchy, the window is essential for specifying the containership of objects in any window.
+
+
+<h3>Referring to a window's properties, methods, and event handlers</h3>
+<p>You can refer to the properties, methods, and event handlers of the current window or another window (if the other window is named) in any of the following ways:
+
+<ul>
+<li><i>self or window.</i> self and window are synonyms for the current window, and you can optionally use them to refer to the current window. For example, you can close the current window by calling either <tt>window.close()</tt> or <tt>self.close()</tt>.
+
+<li><i>top or parent.</i> top and parent are also synonyms that can be used in place of the window name. top refers to the top-most Navigator window, and parent refers to a window containing a frameset. For example, the statement <tt>parent.frame2.document.bgColor="teal"</tt> changes the background color of the frame named <i>frame2</i> to teal; <i>frame2</i> is a frame in the current frameset.
+
+<li><i>The name of a window variable.</i> The window variable is the variable that is specified when a window is opened. For example, <tt>msgWindow.close()</tt> closes a window called <i>msgWindow</i>. However, when you open or close a window within an event handler, you must specify <tt>window.open()</tt> or <tt>window.close()</tt> instead of simply using <tt>open()</tt> or <tt>close()</tt>. Due to the scoping of static objects in JavaScript, a call to <tt>close()</tt> without specifying an object name is equivalent to <tt>document.close()</tt>.
+
+<li><i>Omit the window name.</i> Because the existence of the current window is assumed, you do not have to reference the name of the window when you call its methods and assign its properties. For example, <tt>close()</tt> closes the current window.
+</ul>
+
+<p>For more information on these methods of referring to windows, see the <a href="ref_t-z.html#window_object">window</a> object.
+
+<p><b>Example 1: refer to the current window.</b> The following statement refers to a form named <i>musicForm</i> in the current window. The statement displays an alert if a checkbox is checked.
+<xmp>
+if (self.document.musicForm.checkbox1.checked) {
+      alert('The checkbox on the musicForm is checked!')}
+</xmp>
+
+<p><b>Example 2: refer to another window.</b> The following statements refer to a form named <i>musicForm</i> in a window named <i>checkboxWin</i>. The statements determine if a checkbox is checked, check the checkbox, determine if the second option of a select object is selected, and select the second option of the select object. Even though object values are changed in <i>checkboxWin</i>, the current window remains active: checking the checkbox and selecting the selection option do not give focus to the window.
+<xmp>
+// Determine if a checkbox is checked
+if (checkboxWin.document.musicForm.checkbox2.checked) {
+      alert('The checkbox on the musicForm in checkboxWin is checked!')}
+
+// Check the checkbox
+checkboxWin.document.musicForm.checkbox2.checked=true
+
+// Determine if an option in a select object is selected
+if (checkboxWin.document.musicForm.musicTypes.options[1].selected)
+   {alert('Option 1 is selected!')}
+
+// Select an option in a select object
+checkboxWin.document.musicForm.musicTypes.selectedIndex=1
+</xmp>
+
+<p><b>Example 3: refer to a frame in another window.</b> The following statement refers to a frame named <i>frame2</i> that is in a window named <i>window2</i>. The statement changes the background color of <i>frame2</i> to violet. The frame name, <i>frame2</i>, must be specified in the &LTFRAMESET;&GT; tag that creates the frameset.
+<xmp>
+window2.frame2.document.bgColor="violet"
+</xmp>
+
+
+<h3>Referring to a window in a form submit or hypertext link</h3>
+<p>Use a window's name (not the window variable) when referring to a window as the target of a form submit or hypertext link (the TARGET attribute of a &LTFORM;&GT; or &LTA;&GT; tag). The window you specify is the window that the link is loaded into or, for a form, the window that server responses are displayed in.
+
+<p><b>Example 1: second window.</b> The following example creates a hypertext link to a second window. The example has a button that opens a window named <i>window2</i>, then a link that loads the file <tt>doc2.html</tt> into the newly opened window, then a button that closes the window.
+<xmp>
+<p>
+<input type="button" value="Open window2" onclick="msgWindow=window.open('','window2','resizable=no,width=200,height=200')">
+<p>
+<a href="doc2.html" target="window2"> Load a file into window2</a>
+<p>
+<input type="button" value="Close window2" onclick="msgWindow.close()">
+</xmp>
+
+<p><b>Example 2: anchor in a second window.</b> The following example creates a hypertext link to an anchor in a second window. The link displays the anchor named <i>numbers</i> in the file <tt>doc2.html</tt> in the window <i>window2</i>. If <i>window2</i> does not exist, it is created.
+<xmp>
+<a href="doc2.html#numbers" target="window2">Numbers</a>
+</xmp>
+
+<p><b>Example 3: frame name.</b> The following example creates a hypertext link to an anchor in a frame. The link displays the anchor named <i>abs_method</i> in the file <tt>sesame.html</tt> in the frame named "contentFrame". The frame must be within the current frameset and the frame name must be defined in the NAME attribute of a &LTFRAME;&GT; tag.
+<xmp>
+<a href="sesame.html#abs_method" target="contentFrame">abs</a>
+</xmp>
+
+<p><b>Example 4: literal frame name.</b> The following example creates a hypertext link to a file. The link displays the file named <tt>artists.html</tt> in the parent window of the current frameset. This link object appears in a frame within a frameset, and when the user clicks the link, all frames in the frameset disappear and the content of <tt>artists.html</tt> is loaded into the parent window.
+<xmp>
+<a href="artists.html" target="_parent">
+   <b>Musician Descriptions</b></a>
+</xmp>
+
+
+<!------------------------------------------------------------------------------------------------>
+<hr>
+<a name="winNavigate"><h2>Navigating among windows</h2></a>
+<p>Many Navigator windows can be open at the same time. The user can move among these windows by clicking them to give them focus. You can give focus to a window programmatically by giving focus to an object in the window or by specifying the window as the target of a hypertext link. Although you can change an object's values in a second window, that does not make the second window active: the current window remains active.
+
+<p>The active window is the window that has focus. When a window has focus, it is brought to the front and changes in some visual way. For example, the window's title bar might change to a different color. The visual cue varies depending on the platform you are using.
+
+<p><b>Example 1: give focus to an object in another window.</b> The following statement gives focus to a text object named <i>city</i> in a window named <i>checkboxWin</i>. Because the text object is gaining focus, <i>checkboxWin</i> also gains focus and becomes the active window. The example also shows the statement that creates <i>checkboxWin</i>.
+<xmp>
+checkboxWin=window.open("doc2.html")
+...
+checkboxWin.document.musicForm.city.focus()
+</xmp>
+
+<p><b>Example 2: give focus to another window using a hypertext link.</b> The following statement specifies <i>window2</i> as the target of a hypertext link. When the user clicks the link, focus switches to <i>window2</i>. If <i>window2</i> does not exist, it is created.
+<xmp>
+<a href="doc2.html" target="window2"> Load a file into window2</a>
+</xmp>
+
+
+<!--
+     FILE ARCHIVED ON 23:25:10 Jun 17, 1997 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 18:06:19 Nov 08, 2018.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

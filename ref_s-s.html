@@ -1,0 +1,1185 @@
+<html>
+<body>
+
+<a name="search_property"><h2>search property</h2></a>
+<p>
+A string beginning with a question mark that specifies any query information in the URL.
+
+<h3>Syntax</h3>
+<pre>
+1. links[<i>index</i>].search
+2. location.search
+</pre>
+<p><i>index</i> is an integer representing a link object.
+
+<h3>Property of</h3>
+<p><a href="ref_h-l.html#link_object">link</a>, <a href="ref_h-l.html#location_object">location</a>
+
+<h3>Description</h3>
+<p>The search property specifies a portion of the URL.
+
+<p>You can set the search property at any time, although it is safer to set the href property to change a location. If the search that you specify cannot be found in the current location, you will get an error.
+
+<p>See Section 3.3 of <a href="https://web.archive.org/web/19970617232717/http://www.cis.ohio-state.edu/htbin/rfc/rfc1738.html" target="_top">RFC 1738</a> for complete information about the search.
+
+
+<h3>Examples</h3>
+<p>In the following example, the <tt>window.open</tt> statement creates a window called <i>newWindow</i> and loads the specified URL into it. The <tt>document.write</tt> statements display all the properties of <tt>newWindow.location</tt> in a window called <i>msgWindow</i>.
+<pre>
+newWindow=window.open
+   ("http://guide-p.infoseek.com/WW/NS/Titles?qt=RFC+1738+&col;=WW")
+
+msgWindow.document.write("newWindow.location.href = " +
+   newWindow.location.href + "&ltP;&gt;")
+msgWindow.document.write("newWindow.location.protocol = " +
+   newWindow.location.protocol + "&ltP;&gt;")
+msgWindow.document.write("newWindow.location.host = " +
+   newWindow.location.host + "&ltP;&gt;")
+msgWindow.document.write("newWindow.location.hostName = " +
+   newWindow.location.hostName + "&ltP;&gt;")
+msgWindow.document.write("newWindow.location.port = " +
+   newWindow.location.port + "&ltP;&gt;")
+msgWindow.document.write("newWindow.location.pathname = " +
+   newWindow.location.pathname + "&ltP;&gt;")
+msgWindow.document.write("newWindow.location.search = " +
+   newWindow.location.search + "&ltP;&gt;")
+msgWindow.document.write("newWindow.location.hash = " +
+   newWindow.location.hash + "&ltP;&gt;")
+msgWindow.document.close()
+</pre>
+
+<p>The previous example displays the following output:
+<pre>
+newWindow.location.href =
+   http://guide-p.infoseek.com/WW/NS/Titles?qt=RFC+1738+&col;=WW
+newWindow.location.protocol = http:
+newWindow.location.host = guide-p.infoseek.com
+newWindow.location.hostName = guide-p.infoseek.com
+newWindow.location.port =
+newWindow.location.pathname = /WW/NS/Titles
+newWindow.location.search = ?qt=RFC+1738+&col;=WW
+newWindow.location.hash =
+</pre>
+
+<h3>See also</h3>
+<li><a href="ref_h-l.html#hash_property">hash</a>, <a href="ref_h-l.html#host_property">host</a>, <a href="ref_h-l.html#hostname_property">hostname</a>, <a href="ref_h-l.html#href_property">href</a>, <a href="ref_m-q.html#pathname_property">pathname</a>, <a href="ref_m-q.html#port_property">port</a>, <a href="ref_m-q.html#protocol_property">protocol</a> properties
+<!------------------------------------------------------------------------------------------------->
+<hr>
+<a name="select_method"><h2>select method</h2></a>
+<p>
+Selects the input area of the specified password, text, or textarea object.
+
+<h3>Syntax</h3>
+<pre>
+1. <i>passwordName</i>.select()
+2. <i>textName</i>.select()
+3. <i>textareaName</i>.select()
+</pre>
+<p><i>passwordName</i> is either the value of the NAME attribute of a password object or an element in the <i>elements</i> array.
+<br><i>textName</i> is either the value of the NAME attribute of a text object or an element in the <i>elements</i> array.
+<br><i>textareaName</i> is either the value of the NAME attribute of a textarea object or an element in the <i>elements</i> array.
+
+<h3>Method of</h3>
+<p><a href="ref_m-q.html#password_object">password</a>, <a href="ref_t-z.html#text_object">text</a>, <a href="ref_t-z.html#textarea_object">textarea</a>
+
+<h3>Description</h3>
+<p>Use the select method to highlight the input area of a form element. You can use the select method with the focus method to highlight a field and position the cursor for a user response.
+
+<h3>Examples</h3>
+<p>In the following example, the <i>checkPassword</i> function confirms that a user has entered a valid password. If the password is not valid, the select method highlights the password field and the focus method returns focus to it so the user can re-enter the password.
+<pre>
+function checkPassword(userPass) {
+   if (badPassword) {
+      alert("Please enter your password again.")
+      userPass.focus()
+      userPass.select()
+   }
+}</pre>
+This example assumes that the password is defined as:
+<pre>&ltINPUT; TYPE="password" NAME="userPass"&gt;</pre>
+
+<h3>See also</h3>
+<li><a href="ref_a-c.html#blur_method">blur</a>, <a href="ref_f-g.html#focus_method">focus</a> methods
+<!------------------------------------------------------------------------------------------------>
+<hr>
+<a name="select_object"><h2>select object (<i>options</i> array)</h2></a>
+<p>A selection list or scrolling list on an HTML form. A selection list lets the user choose one item from a list. A scrolling list lets the user choose one or more items from a list.
+
+
+<h3>Syntax</h3>
+<p>To define a select object, use standard HTML syntax with the addition of the onBlur, onChange, and onFocus event handlers:
+<pre>
+&LTSELECT;
+   NAME="<i>selectName</i>"
+   [SIZE="<i>integer</i>"]
+   [MULTIPLE]
+   [onBlur="<i>handlerText</i>"]
+   [onChange="<i>handlerText</i>"]
+   [onFocus="<i>handlerText</i>"]&GT;
+   &LTOPTION; VALUE="<i>optionValue</i>" [SELECTED]&GT; <i>textToDisplay</i> [ ... &LTOPTION;&GT; <i>textToDisplay</i>]
+&LT;/SELECT&GT;
+</pre>
+<i>NAME="selectName"</i> specifies the name of the select object. You can access this value using the name property.
+<br><i>SIZE="integer"</i> specifies the number of options visible when the form is displayed.
+<br><i>MULTIPLE</i> specifies that the select object is a scrolling list (not a selection list).
+<br><i>OPTION</i> specifies a selection element in the list. You can access the options using the options array.
+<br><i>VALUE="optionValue"</i> specifies a value that is returned to the server when the option is selected and the form is submitted. You can access this value using the value property.
+<br><i>SELECTED</i> specifies that the option is selected by default. You can access this value using the defaultSelected property.
+<br><i>textToDisplay</i> specifies the text to display in the list. You can access this value using the text property.
+
+<p>To use a select object's properties and methods:
+<pre>
+1. <i>selectName</i>.<i>propertyName</i>
+2. <i>selectName</i>.<i>methodName</i>(<i>parameters</i>)
+3. <i>formName</i>.elements[<i>index</i>].<i>propertyName</i>
+4. <i>formName</i>.elements[<i>index</i>].<i>methodName</i>(<i>parameters</i>)
+</pre>
+<i>selectName</i> is the value of the NAME attribute of a select object.
+<br><i>formName</i> is either the value of the NAME attribute of a form object or an element in the <i>forms</i> array.
+<br><i>index</i> is an integer representing a select object on a form.
+<br><i>propertyName</i> is one of the properties listed below.
+<br><i>methodName</i> is one of the methods listed below.
+
+<p>To use an option's properties:
+<pre>
+1. <i>selectName</i>.options[<i>index1</i>].<i>propertyName</i>
+2. <i>formName</i>.elements[<i>index2</i>].options[<i>index1</i>].<i>propertyName</i>
+</pre>
+<i>selectName</i> is the value of the NAME attribute of a select object.
+<br><i>index1</i> is an integer representing an option in a select object.
+<br><i>formName</i> is either the value of the NAME attribute of a form object or an element in the <i>forms</i> array.
+<br><i>index2</i> is an integer representing a select object on a form.
+<br><i>propertyName</i> is one of the properties listed below.
+
+
+<h3>Property of</h3>
+<li>The select object is a property of <a href="ref_f-g.html#form_object">form</a>
+<li>The options array is a property of <a href="ref_s-s.html#select_object">select</a>
+
+
+<h3>Description</h3>
+<p>A select object on a form looks as follows. The object on the left is a selection list that lets the user choose one item; the object on the right is a scrolling list that lets the user choose one or more items:
+<form>
+<select name="music_type_single">
+   <option selected> R&B;
+   <option> Jazz
+   <option> Blues
+   <option> New Age
+</select>
+<select name="music_type_multi" multiple>
+   <option selected> R&B;
+   <option> Jazz
+   <option> Blues
+   <option> New Age
+</select>
+</form>
+<p>A select object is a form element and must be defined within a &LTFORM;&GT; tag.
+
+
+<h4>The <i>options</i> array</h4>
+<p>You can reference the options of a select object in your code by using the <i>options</i> array. This array contains an entry for each option in a select object (&LTOPTION;&GT; tag) in source order. For example, if a select object named <i>musicStyle</i> contains three options, these options are reflected as <tt>musicStyle.options[0]</tt>, <tt>musicStyle.options[1]</tt>, and <tt>musicStyle.options[2]</tt>.
+
+<p>To use the <i>options</i> array:
+<pre>
+1. <i>selectName</i>.options
+2. <i>selectName</i>.options[<i>index</i>]
+3. <i>selectName</i>.options.length
+</pre>
+<p><i>selectName</i> is either the value of the NAME attribute of a select object or an element in the <i>elements</i> array.
+<br><i>index</i> is an integer representing an option in a select object.
+
+<p>To obtain the number of options in a select object, use the length property of either the options array or the select object:
+<pre>
+1. <i>selectName</i>.length
+2. <i>selectName</i>.options.length
+</pre>
+
+<p>The select object has properties that you can access only through the options array. These properties are listed below.
+
+<p>Even though each element in the <i>options</i> array represents a select option, the value of options[<i>index</i>] is always null. The value returned by <i>selectName</i>.options represents the full HTML statement for the <i>selectName</i> object.
+
+<p>Elements in the <i>options</i> array are read-only. For example, the statement <tt><i>selectName</i>.options[0]="guitar"</tt> has no effect.
+
+
+<h3>Properties</h3>
+<p>The select object has the following properties:
+<li><a href="ref_h-l.html#length_property">length</a> reflects the number of options in a select object
+<li><a href="ref_m-q.html#name_property">name</a> reflects the NAME attribute
+<li><a href="ref_s-s.html#select_object">options</a> reflects the &LTOPTION;&GT; tags
+<li><a href="ref_s-s.html#selectedIndex_property">selectedIndex</a> reflects the index of the selected option (or the first selected option, if multiple options are selected)
+
+<p>The <i>options</i> array has the following properties:
+<li><a href="ref_d-e.html#defaultSelected_property">defaultSelected</a> reflects the SELECTED attribute
+<li><a href="ref_h-l.html#index_property">index</a> reflects the index of an option
+<li><a href="ref_h-l.html#length_property">length</a> reflects the number of options in a select object
+<li><a href="ref_m-q.html#name_property">name</a> reflects the NAME attribute
+<li><a href="ref_s-s.html#selected_property">selected</a> lets you programatically select an option
+<li><a href="ref_s-s.html#selectedIndex_property">selectedIndex</a> reflects the index of the selected option
+<li><a href="ref_t-z.html#text_property">text</a> reflects the <i>textToDisplay</i> that follows an &LTOPTION;&GT; tag
+<li><a href="ref_t-z.html#value_property">value</a> reflects the VALUE attribute
+
+
+<h3>Methods</h3>
+<li><a href="ref_a-c.html#blur_method">blur</a>
+<li><a href="ref_f-g.html#focus_method">focus</a>
+
+
+<h3>Event handlers</h3>
+<li><a href="ref_m-q.html#onBlur_event">onBlur</a>
+<li><a href="ref_m-q.html#onChange_event">onChange</a>
+<li><a href="ref_m-q.html#onFocus_event">onFocus</a>
+
+
+<h3>Examples</h3>
+<p><b>Example 1.</b> The following example displays a selection list and a scrolling list.
+<xmp>
+Choose the music type for your free CD:
+<select name="music_type_single">
+   <option selected> R&B;
+   <option> Jazz
+   <option> Blues
+   <option> New Age
+</select>
+<p>Choose the music types for your free CDs:
+<br><select name="music_type_multi" multiple>
+   <option selected> R&B;
+   <option> Jazz
+   <option> Blues
+   <option> New Age
+</select>
+</xmp>
+
+<p><b>Example 2.</b> The following example displays two selection lists that let the user choose a month and day. These selection lists are initialized to the current date. The user can change the month and day by using the selection lists or by choosing preset dates from radio buttons. Text fields on the form display the values of the select object's properties and indicate the date chosen and whether it is Cinco de Mayo.
+<xmp>
+<html>
+<head>
+<title>Select object example</title>
+</head>
+<body>
+<script>
+var today = new Date()
+//---------------
+function updatePropertyDisplay(monthObj,dayObj) {
+   // Get date strings
+   var monthInteger, dayInteger, monthString, dayString
+   monthInteger=monthObj.selectedIndex
+   dayInteger=dayObj.selectedIndex
+   monthString=monthObj.options[monthInteger].text
+   dayString=dayObj.options[dayInteger].text
+   // Display property values
+   document.selectForm.textFullDate.value=monthString + " " + dayString
+   document.selectForm.textMonthLength.value=monthObj.length
+   document.selectForm.textDayLength.value=dayObj.length
+   document.selectForm.textMonthName.value=monthObj.name
+   document.selectForm.textDayName.value=dayObj.name
+   document.selectForm.textMonthIndex.value=monthObj.selectedIndex
+   document.selectForm.textDayIndex.value=dayObj.selectedIndex
+   // Is it Cinco de Mayo?
+   if (monthObj.options[4].selected && dayObj.options[4].selected)
+      document.selectForm.textCinco.value="Yes!"
+   else
+      document.selectForm.textCinco.value="No"
+}
+</script>
+<!--------------->
+<form name="selectForm">
+<p><b>Choose a month and day:</b>
+Month: <select name="monthSelection" onchange="updatePropertyDisplay(this,document.selectForm.daySelection)">
+   <option> January <option> February <option> March
+   <option> April <option> May <option> June
+   <option> July <option> August <option> September
+   <option> October <option> November <option> December
+</select>
+Day: <select name="daySelection" onchange="updatePropertyDisplay(document.selectForm.monthSelection,this)">
+   <option> 1 <option> 2 <option> 3 <option> 4 <option> 5
+   <option> 6 <option> 7 <option> 8 <option> 9 <option> 10
+   <option> 11 <option> 12 <option> 13 <option> 14 <option> 15
+   <option> 16 <option> 17 <option> 18 <option> 19 <option> 20
+   <option> 21 <option> 22 <option> 23 <option> 24 <option> 25
+   <option> 26 <option> 27 <option> 28 <option> 29 <option> 30
+   <option> 31
+</select>
+<p><b>Set the date to: </b>
+<input type="radio" name="dateChoice" onclick="
+      monthSelection.selectedIndex=0;
+      daySelection.selectedIndex=0;
+      updatePropertyDisplay(document.selectForm.monthSelection,document.selectForm.daySelection)">
+   New Year's Day
+<input type="radio" name="dateChoice" onclick="
+      monthSelection.selectedIndex=4;
+      daySelection.selectedIndex=4;
+      updatePropertyDisplay(document.selectForm.monthSelection,document.selectForm.daySelection)">
+   Cinco de Mayo
+<input type="radio" name="dateChoice" onclick="
+      monthSelection.selectedIndex=5;
+      daySelection.selectedIndex=20;
+      updatePropertyDisplay(document.selectForm.monthSelection,document.selectForm.daySelection)">
+   Summer Solstice
+<p><b>Property values:</b>
+<br>Date chosen: <input type="text" name="textFullDate" value="" size="20&quot;">
+<br>monthSelection.length<input type="text" name="textMonthLength" value="" size="20&quot;">
+<br>daySelection.length<input type="text" name="textDayLength" value="" size="20&quot;">
+<br>monthSelection.name<input type="text" name="textMonthName" value="" size="20&quot;">
+<br>daySelection.name<input type="text" name="textDayName" value="" size="20&quot;">
+<br>monthSelection.selectedIndex<input type="text" name="textMonthIndex" value="" size="20&quot;">
+<br>daySelection.selectedIndex<input type="text" name="textDayIndex" value="" size="20&quot;">
+<br>Is it Cinco de Mayo? <input type="text" name="textCinco" value="" size="20&quot;">
+<script>
+document.selectForm.monthSelection.selectedIndex=today.getMonth()
+document.selectForm.daySelection.selectedIndex=today.getDate()-1
+updatePropertyDisplay(document.selectForm.monthSelection,document.selectForm.daySelection)
+</script>
+</form>
+</body>
+</html>
+</xmp>
+
+<p>See also the examples for the <a href="ref_d-e.html#defaultSelected_property">defaultSelected</a> property.
+
+
+<h3>See also</h3>
+<li><a href="ref_f-g.html#form_object">form</a> and <a href="ref_r-r.html#radio_object">radio</a> objects
+
+<!------------------------------------------------------------------------------------------------->
+<hr>
+<a name="selected_property"><h2>selected property</h2></a>
+<p>
+A Boolean value specifying the current selection state of an option in a select object.
+
+<h3>Syntax</h3>
+<pre><i>selectName</i>.options[<i>index</i>].selected</pre>
+<p><i>selectName</i> is either the value of the NAME attribute of a select object or an element in the <i>elements</i> array.
+<br><i>index</i> is an integer representing an option in a select object.
+
+<h3>Property of</h3>
+<p><a href="ref_s-s.html#select_object">options</a> array
+
+<h3>Description</h3>
+<p>If an option in a select object is selected, the value of its selected property is true; otherwise, it is false.
+
+<p>You can set the selected property at any time. The display of the select object updates immediately when you set the selected property.
+
+<p>In general, the selected property is more useful than the selectedIndex property for select objects that are created with the MULTIPLE attribute. With the selected property, you can evaluate every option in the <i>options</i> array to determine multiple selections, and you can select individual options without clearing the selection of other options.
+
+<h3>Examples</h3>
+<p>See the examples for the <a href="ref_d-e.html#defaultSelected_property">defaultSelected</a> property.
+
+<h3>See also</h3>
+<li><a href="ref_d-e.html#defaultSelected_property">defaultSelected</a>, <a href="ref_h-l.html#index_property">index</a>, <a href="ref_s-s.html#selectedIndex_property">selectedIndex</a> properties
+<!------------------------------------------------------------------------------------------------->
+<hr>
+<a name="selectedIndex_property"><h2>selectedIndex property</h2></a>
+<p>
+An integer specifying the index of the selected option in a select object.
+
+<h3>Syntax</h3>
+<pre>
+1. <i>selectName</i>.selectedIndex
+2. <i>selectName</i>.options.selectedIndex
+</pre>
+<p><i>selectName</i> is either the value of the NAME attribute of a select object or an element in the <i>elements</i> array.
+
+<h3>Property of</h3>
+<li><a href="ref_s-s.html#select_object">select</a>
+<li><a href="ref_s-s.html#select_object">options</a> array
+
+<h3>Description</h3>
+<p>Options in a select object are indexed in the order in which they are defined, starting with an index of 0. You can set the selectedIndex property at any time. The display of the select object updates immediately when you set the selectedIndex property. Both forms of the syntax specify the same value.
+
+<p>In general, the selectedIndex property is more useful for select objects that are created without the MULTIPLE attribute. If you evaluate selectedIndex when multiple options are selected, the selectedIndex property specifies the index of the first option only. Setting selectedIndex clears any other options that are selected in the select object.
+
+<p>The selected property of the select object's <i>options</i> array is more useful for select objects that are created with the MULTIPLE attribute. With the selected property, you can evaluate every option in the <i>options</i> array to determine multiple selections, and you can select individual options without clearing the selection of other options.
+
+<h3>Examples</h3>
+<p>In the following example, the <i>getSelectedIndex()</i> function returns the selected index in the <i>musicType</i> select object:
+<pre>
+function getSelectedIndex() {
+   return document.musicForm.musicType.selectedIndex
+}
+</pre>
+The previous example assumes that the select object is similar to the following:
+<pre>
+&ltSELECT; NAME="musicType"&gt;
+   &ltOPTION; SELECTED&gt; R&B;
+   &ltOPTION;&gt; Jazz
+   &ltOPTION;&gt; Blues
+   &ltOPTION;&gt; New Age
+&lt;/SELECT&gt;
+</pre>
+
+<h3>See also</h3>
+<li><a href="ref_d-e.html#defaultSelected_property">defaultSelected</a>, <a href="ref_h-l.html#index_property">index</a>, <a href="ref_s-s.html#selected_property">selected</a> properties
+<!------------------------------------------------------------------------------------------------->
+<hr>
+<a name="self_property"><h2>self property</h2></a>
+<p>
+The self property is a synonym for the current window or frame.
+
+<h3>Syntax</h3>
+<pre>
+1. self.<i>propertyName</i>
+2. self.<i>methodName</i>
+</pre>
+<p><i>propertyName</i> is the defaultStatus, status, length, or name property when self refers to a window object.
+<br><i>propertyName</i> is the length or name property when self refers to a frame object.
+<br><i>methodName</i> is any method associated with the window object.
+
+<h3>Property of</h3>
+<p><a href="ref_f-g.html#frame_object">frame</a>, <a href="ref_t-z.html#window_object">window</a>
+
+<h3>Description</h3>
+<p>The self property refers to the current window or frame.
+
+<p>Use the self property to disambiguate a window property from a form or form element of the same name. You can also use the self property to make your code more readable.
+
+<p>The self property is read-only. The value of the self property is
+<pre>     &ltobject; <i>nameAttribute</i>&gt;</pre>
+where <i>nameAttribute</i> is the NAME attribute if self refers to a frame, or an internal reference if self refers to a window.
+
+<h3>Examples</h3>
+<p>In the following example, <tt>self.status</tt> is used to set the status property of the current window. This usage disambiguates the status property of the current window from a form or form element called "status" within the current window.
+<xmp><a href="" onclick="this.href=pickRandomURL()" onmouseover="self.status='Pick a random URL' ; return true">
+Go!</a></xmp>
+
+<h3>See also</h3>
+<li><a href="ref_t-z.html#window_property">window</a> property
+<!------------------------------------------------------------------------------------------------->
+<hr>
+<a name="setDate_method"><h2>setDate method</h2></a>
+<p>
+Sets the day of the month for a specified date.
+
+
+<h3>Syntax</h3>
+<pre><i>dateObjectName</i>.setDate(<i>dayValue</i>)</pre>
+<p><i>dateObjectName</i> is either the name of a date object or a property of an existing object.
+<br><i>dayValue</i> is an integer from 1 to 31 or a property of an existing object, representing the day of the month.
+
+<h3>Method of</h3>
+<p><a href="ref_d-e.html#Date_object">Date</a>
+
+<h3>Examples</h3>
+<p>
+The second statement below changes the day for <i>theBigDay</i> to the 24th of July from its original value.
+<pre>
+theBigDay = new Date("July 27, 1962 23:30:00")
+theBigDay.setDate(24)
+</pre>
+
+
+<h3>See also</h3>
+<li><a href="ref_f-g.html#getDate_method">getDate</a> method
+<!------------------------------------------------------------------------------------------------>
+<hr>
+<a name="setHours_method"><h2>setHours method</h2></a>
+<p>
+Sets the hours for a specified date.
+
+<h3>Syntax</h3>
+<pre><i>dateObjectName</i>.setHours(<i>hoursValue</i>)</pre>
+<p><i>dateObjectName</i> is either the name of a date object or a property of an existing object.
+<br><i>hoursValue</i> is an integer between 0 and 23 or a property of an existing object, representing the hour.
+
+<h3>Method of</h3>
+<p><a href="ref_d-e.html#Date_object">Date</a>
+
+<h3>Examples</h3>
+<pre>
+theBigDay.setHours(7)
+</pre>
+
+<h3>See also</h3>
+<li><a href="ref_f-g.html#getHours_method">getHours</a> method
+<!------------------------------------------------------------------------------------------------>
+<hr>
+<a name="setMinutes_method"><h2>setMinutes method</h2></a>
+<p>
+Sets the minutes for a specified date.
+
+<h3>Syntax</h3>
+<pre><i>dateObjectName</i>.setMinutes(<i>minutesValue</i>)</pre>
+<p><i>dateObjectName</i> is either the name of a date object or a property of an existing object.
+<br><i>minutesValue</i> is an integer between 0 and 59 or a property of an existing object, representing the minutes.
+
+<h3>Method of</h3>
+<p><a href="ref_d-e.html#Date_object">Date</a>
+
+<h3>Examples</h3>
+<pre>
+theBigDay.setMinutes(45)
+</pre>
+
+<h3>See also</h3>
+<li><a href="ref_f-g.html#getMinutes_method">getMinutes</a> method
+<!------------------------------------------------------------------------------------------------>
+<hr>
+<a name="setMonth_method"><h2>setMonth method</h2></a>
+<p>
+Sets the month for a specified date.
+
+<h3>Syntax</h3>
+<pre><i>dateObjectName</i>.setMonth(<i>monthValue</i>)</pre>
+<p><i>dateObjectName</i> is either the name of a date object or a property of an existing object.
+<br><i>monthValue</i> is an integer between 0 and 11 (representing the months January through December), or a property of an existing object.
+
+<h3>Method of</h3>
+<p><a href="ref_d-e.html#Date_object">Date</a>
+
+<h3>Examples</h3>
+<pre>
+theBigDay.setMonth(6)
+</pre>
+
+<h3>See also</h3>
+<li><a href="ref_f-g.html#getMonth_method">getMonth</a> method
+<!------------------------------------------------------------------------------------------------>
+<hr>
+<a name="setSeconds_method"><h2>setSeconds method</h2></a>
+<p>
+Sets the seconds for a specified date.
+
+<h3>Syntax</h3>
+<pre><i>dateObjectName</i>.setSeconds(<i>secondsValue</i>)</pre>
+<p><i>dateObjectName</i> is either the name of a date object or a property of an existing object.
+<br><i>secondsValue</i> is an integer between 0 and 59 or a property of an existing object.
+
+<h3>Method of</h3>
+<p><a href="ref_d-e.html#Date_object">Date</a>
+
+<h3>Examples</h3>
+<pre>
+theBigDay.setSeconds(30)
+</pre>
+
+<h3>See also</h3>
+<li><a href="ref_f-g.html#getSeconds_method">getSeconds</a> method
+<!---------------------------------------------------------------------------->
+<hr>
+<a name="setTime_method"><h2>setTime method</h2></a>
+<p>
+Sets the value of a date object.
+
+<h3>Syntax</h3>
+<p><pre><i>dateObjectName</i>.setTime(<i>timevalue</i>) </pre>
+<p><i>dateObjectName</i> is either the name of a date object or a property of an existing object.
+<br><i>timevalue</i> is an integer or a property of an existing object, representing the number of milliseconds since the epoch (1 January 1970 00:00:00).
+
+<h3>Method of</h3>
+<p><a href="ref_d-e.html#Date_object">Date</a>
+
+<h3>Description</h3>
+<p>
+Use the setTime method to help assign a date and time to another date object.
+
+<h3>Examples</h3>
+<pre>
+theBigDay = new Date("July 1, 1999")
+sameAsBigDay = new Date()
+sameAsBigDay.setTime(theBigDay.getTime())
+</pre>
+
+<h3>See also</h3>
+<li><a href="ref_f-g.html#getTime_method">getTime</a> method
+<!------------------------------------------------------------------------------------------------>
+<hr>
+<a name="setTimeout_method"><h2>setTimeout method</h2></a>
+<p>Evaluates an expression after a specified number of milliseconds have elapsed.
+
+<h3>Syntax</h3>
+<pre><i>timeoutID</i>=setTimeout(<i>expression</i>, <i>msec</i>)</pre>
+<p><i>timeoutID</i> is an identifier that is used only to cancel the evaluation with the clearTimeout method.
+<br><i>expression</i> is a string expression or a property of an existing object.
+<br><i>msec</i> is a numeric value, numeric string, or a property of an existing object in millisecond units.
+
+<h3>Method of</h3>
+<p><a href="ref_f-g.html#frame_object">frame</a>, <a href="ref_t-z.html#window_object">window</a>
+
+<h3>Description</h3>
+<p>The setTimeout method evaluates an expression after a specified amount of time. It does not evaluate the expression repeatedly. For example, if a setTimeout method specifies 5 seconds, the expression is evaluated after 5 seconds, not every 5 seconds.
+
+
+<h3>Examples</h3>
+<p><b>Example 1.</b> The following example displays an alert message 5 seconds (5,000 milliseconds) after the user clicks a button. If the user clicks the second button before the alert message is displayed, the timeout is canceled and the alert does not display.
+
+<xmp>
+<script language="JavaScript">
+function displayAlert() {
+   alert("5 seconds have elapsed since the button was clicked.")
+}
+</script>
+<body>
+<form>
+Click the button on the left for a reminder in 5 seconds;
+click the button on the right to cancel the reminder before
+it is displayed.
+<p>
+<input type="button" value="5-second reminder" name="remind_button" onclick="timerID=setTimeout('displayAlert()',5000)">
+<input type="button" value="Clear the 5-second reminder" name="remind_disable_button" onclick="clearTimeout(timerID)">
+</form>
+</body>
+</xmp>
+
+<p><b>Example 2.</b> The following example displays the current time in a text object. The showtime() function, which is called recursively, uses the setTimeout method update the time every second.
+<xmp>
+<head>
+<script language="JavaScript">
+<!--
+var timerID = null
+var timerRunning = false
+function stopclock(){
+    if(timerRunning)
+        clearTimeout(timerID)
+    timerRunning = false
+}
+function startclock(){
+     // Make sure the clock is stopped
+    stopclock()
+    showtime()
+}
+function showtime(){
+    var now = new Date()
+    var hours = now.getHours()
+    var minutes = now.getMinutes()
+    var seconds = now.getSeconds()
+    var timeValue = "" + ((hours > 12) ? hours - 12 : hours)
+    timeValue  += ((minutes < 10) ? ":0" : ":") + minutes
+    timeValue  += ((seconds < 10) ? ":0" : ":") + seconds
+    timeValue  += (hours >= 12) ? " P.M." : " A.M."
+    document.clock.face.value = timeValue
+    timerID = setTimeout("showtime()",1000)
+    timerRunning = true
+}
+//-->
+</script>
+</head>
+
+<body onload="startclock()">
+<form name="clock" onsubmit="0">
+    <input type="text" name="face" size="12" value="">
+</form>
+</body>
+</xmp>
+
+
+<h3>See also</h3>
+<li><a href="ref_a-c.html#clearTimeout_method">clearTimeout</a> method
+<!------------------------------------------------------------------------------------------------>
+<hr>
+<a name="setYear_method"><h2>setYear method</h2></a>
+<p>
+Sets the year for a specified date.
+
+<h3>Syntax</h3>
+<pre><i>dateObjectName</i>.setYear(<i>yearValue</i>)</pre>
+<p><i>dateObjectName</i> is either the name of a date object or a property of an existing object.
+<br><i>yearValue</i> is an integer greater than 1900 or a property of an existing object.
+
+<h3>Method of</h3>
+<p><a href="ref_d-e.html#Date_object">Date</a>
+
+<h3>Examples</h3>
+<pre>
+theBigDay.setYear(96)
+</pre>
+
+<h3>See also</h3>
+<li><a href="ref_f-g.html#getYear_method">getYear</a> method
+<!------------------------------------------------------------------------------------------------>
+<hr>
+<a name="sin_method"><h2>sin method</h2></a>
+<p>
+Returns the sine of a number.
+
+<h3>Syntax</h3>
+<pre>Math.sin(<i>number</i>)</pre>
+<p><i>number</i> is a numeric expression or a property of an existing object, representing the size of an angle in radians.
+
+<h3>Method of</h3>
+<p><a href="ref_m-q.html#Math_object">Math</a>
+
+<h3>Description</h3>
+<p>The sin method returns a numeric value between -1 and 1, which represents the sine of the angle.
+
+<h3>Examples</h3>
+<pre>
+//Displays the value 1
+document.write("The sine of pi/2 radians is " +
+   Math.sin(Math.PI/2))
+
+//Displays the value 1.224606353822377e-016
+document.write("&ltP;&gtThe; sine of pi radians is " +
+   Math.sin(Math.PI))
+
+//Displays the value 0
+document.write("&ltP;&gtThe; sine of 0 radians is " +
+   Math.sin(0))
+</pre>
+
+<h3>See also</h3>
+<li><a href="ref_a-c.html#acos_method">acos</a>, <a href="ref_a-c.html#asin_method">asin</a>, <a href="ref_a-c.html#atan_method">atan</a>, <a href="ref_a-c.html#cos_method">cos</a>, <a href="ref_t-z.html#tan_method">tan</a> methods
+<!------------------------------------------------------------------------------------------------>
+<hr>
+<a name="small_method"><h2>small method</h2></a>
+<p>
+Causes a string to be displayed in a small font as if it were in a &ltSMALL;&gt; tag.
+
+<h3>Syntax</h3>
+<pre><i>stringName</i>.small()</pre>
+<p><i>stringName</i> is any string or a property of an existing object.
+
+<h3>Method of</h3>
+<p><a href="ref_s-s.html#string_object">string</a>
+
+<h3>Description</h3>
+<p>Use the small method with the write or writeln methods to format and display a string in a document.
+
+<h3>Examples</h3>
+The following example uses string methods to change the size of a string:
+<pre>
+var worldString="Hello, world"
+
+document.write(worldString.small())
+document.write("&ltP;&gt;" + worldString.big())
+document.write("&ltP;&gt;" + worldString.fontsize(7))
+</pre>
+
+<p>The previous example produces the same output as the following HTML:
+<pre>
+<tt>&ltSMALL;&gtHello;, world&lt;/SMALL&gt;</tt>
+<tt>&ltP;&gt;&ltBIG;&gtHello;, world&lt;/BIG&gt;</tt>
+<tt>&ltP;&gt;&ltFONTSIZE;=7&gtHello;, world&lt;/FONTSIZE&gt;</tt>
+</pre>
+
+<h3>See also</h3>
+<li><a href="ref_a-c.html#big_method">big</a>, <a href="ref_f-g.html#fontsize_method">fontsize</a> methods
+<!------------------------------------------------------------------------------------------------>
+<hr>
+<a name="sqrt_method"><h2>sqrt method</h2></a>
+<p>
+Returns the square root of a number.
+
+<h3>Syntax</h3>
+<pre>Math.sqrt(<i>number</i>)</pre>
+<i>number</i> is any non-negative numeric expression or a property of an existing object.
+
+<h3>Method of</h3>
+<p><a href="ref_m-q.html#Math_object">Math</a>
+
+<h3>Description</h3>
+<p>If the value of <i>number</i> is outside the suggested range, the return value is always 0.
+
+<h3>Examples</h3>
+<pre>
+//Displays the value 3
+document.write("The square root of 9 is " + Math.sqrt(9))
+
+//Displays the value 1.414213562373095
+document.write("&ltP;&gtThe; square root of 2 is " + Math.sqrt(2))
+
+//Displays the value 0 because the argument is out of range
+document.write("&ltP;&gtThe; square root of -1 is " + Math.sqrt(-1))
+</pre>
+
+<!------------------------------------------------------------------------------------------------>
+<hr>
+<a name="SQRT1_2_property"><h2>SQRT1_2 property</h2></a>
+<p>
+The square root of one-half; equivalently, one over the square root of two, approximately 0.707.
+
+<h3>Syntax</h3>
+<pre>Math.SQRT1_2</pre>
+
+<h3>Property of</h3>
+<p><a href="ref_m-q.html#Math_object">Math</a>
+
+<h3>Description</h3>
+<p>Because SQRT1_2 is a constant, it is a read-only property of Math.
+
+<h3>Examples</h3>
+<p>The following example displays 1 over the square root of 2:
+<pre>document.write("1 over the square root of 2 is " + Math.SQRT1_2)</pre>
+
+<h3>See also</h3>
+<li><a href="ref_d-e.html#E_property">E</a>, <a href="ref_h-l.html#LN2_property">LN2</a>, <a href="ref_h-l.html#LN10_property">LN10</a>, <a href="ref_h-l.html#LOG2E_property">LOG2E</a>, <a href="ref_h-l.html#LOG10E_property">LOG10E</a>, <a href="ref_m-q.html#PI_property">PI</a>, <a href="ref_s-s.html#SQRT2_property">SQRT2</a> properties
+<!------------------------------------------------------------------------------------------------->
+<hr>
+<a name="SQRT2_property"><h2>SQRT2 property</h2></a>
+<p>
+The square root of two, approximately 1.414.
+
+<h3>Syntax</h3>
+<pre>Math.SQRT2</pre>
+
+<h3>Property of</h3>
+<p><a href="ref_m-q.html#Math_object">Math</a>
+
+<h3>Description</h3>
+<p>Because SQRT2 is a constant, it is a read-only property of Math.
+
+<h3>Examples</h3>
+<p>The following example displays the square root of 2:
+<pre>document.write("The square root of 2 is " + Math.SQRT2)</pre>
+
+<h3>See also</h3>
+<li><a href="ref_d-e.html#E_property">E</a>, <a href="ref_h-l.html#LN2_property">LN2</a>, <a href="ref_h-l.html#LN10_property">LN10</a>, <a href="ref_h-l.html#LOG2E_property">LOG2E</a>, <a href="ref_h-l.html#LOG10E_property">LOG10E</a>, <a href="ref_m-q.html#PI_property">PI</a>, <a href="ref_s-s.html#SQRT1_2_property">SQRT1_2</a> properties
+<!------------------------------------------------------------------------------------------------->
+<hr>
+<a name="status_property"><h2>status property</h2></a>
+<p>
+Specifies a priority or transient message in the status bar at the bottom of the window, such as the message that appears when a mouseOver event occurs over an anchor.
+
+<h3>Syntax</h3>
+<pre><i>windowReference</i>.status</pre>
+<p><i>windowReference</i> is a valid way of referring to a window, as described in the <a href="ref_t-z.html#window_object">window</a> object.
+
+<h3>Property of</h3>
+<p><a href="ref_t-z.html#window_object">window</a>
+
+<h3>Description</h3>
+<p>Do not confuse the status property with the defaultStatus property. The defaultStatus property reflects the default message displayed in the status bar.
+
+<p>You can set the status property at any time. You must return true if you want to set the status property in the onMouseOver event handler.
+
+<h3>Examples</h3>
+<p>
+Suppose you have created a JavaScript function called pickRandomURL() that lets you select a URL at random. You can use the onClick event handler of an anchor to specify a value for the HREF attribute of the anchor dynamically, and the onMouseOver event handler to specify a custom message for the window in the status property:
+<xmp><a href="" onclick="this.href=pickRandomURL()" onmouseover="self.status='Pick a random URL'; return true">
+Go!</a></xmp>
+<p>In the above example, the status property of the window is assigned to the window's self property, as <tt>self.status</tt>. As this example shows, you must return true to set the status property in the onMouseOver event handler.
+
+<h3>See also</h3>
+<li><a href="ref_d-e.html#defaultStatus_property">defaultStatus</a> property
+<!------------------------------------------------------------------------------------------------->
+<hr>
+<a name="strike_method"><h2>strike method</h2></a>
+<p>
+Causes a string to be displayed as struck out text as if it were in a &ltSTRIKE;&gt; tag.
+
+<h3>Syntax</h3>
+<pre><i>stringName</i>.strike()</pre>
+<p><i>stringName</i> is any string or a property of an existing object.
+
+<h3>Method of</h3>
+<p><a href="ref_s-s.html#string_object">string</a>
+
+<h3>Description</h3>
+<p>Use the strike method with the write or writeln methods to format and display a string in a document.
+
+<h3>Examples</h3>
+The following example uses string methods to change the formatting of a string:
+<pre>
+var worldString="Hello, world"
+
+document.write(worldString.blink())
+document.write("&ltP;&gt;" + worldString.bold())
+document.write("&ltP;&gt;" + worldString.italics())
+document.write("&ltP;&gt;" + worldString.strike())
+</pre>
+
+<p>The previous example produces the same output as the following HTML:
+<pre>
+<tt>&ltBLINK;&gtHello;, world&lt;/BLINK&gt;</tt>
+<tt>&ltP;&gt;&ltB;&gtHello;, world&lt;/B&gt;</tt>
+<tt>&ltP;&gt;&ltI;&gtHello;, world&lt;/I&gt;</tt>
+<tt>&ltP;&gt;&ltSTRIKE;&gtHello;, world&lt;/STRIKE&gt;</tt>
+</pre>
+
+<h3>See also</h3>
+<li><a href="ref_a-c.html#blink_method">blink</a>, <a href="ref_a-c.html#bold_method">bold</a>, <a href="ref_h-l.html#italics_method">italics</a> methods
+<!------------------------------------------------------------------------------------------------>
+<hr>
+<a name="string_object"><h2>string object</h2></a>
+<p>A series of characters.
+
+
+<h3>Syntax</h3>
+<p>To use a string object:
+<pre>
+1. <i>stringName</i>.<i>propertyName</i>
+2. <i>stringName</i>.<i>methodName</i>(<i>parameters</i>)
+</pre>
+<i>stringName</i> is the name of a string variable.
+<br><i>propertyName</i> is one of the properties listed below.
+<br><i>methodName</i> is one of the methods listed below.
+
+
+<h3>Property of</h3>
+<li>None.
+
+
+<h3>Description</h3>
+<p>The string object is a built-in JavaScript object.
+
+<p>A string can be represented as a literal enclosed by single or double quotes; for example, "Netscape" or 'Netscape'.
+
+
+<h3>Properties</h3>
+<li><a href="ref_h-l.html#length_property">length</a> reflects the length of the string
+
+
+<h3>Methods</h3>
+<li><a href="ref_a-c.html#anchor_method">anchor</a>
+<li><a href="ref_a-c.html#big_method">big</a>
+<li><a href="ref_a-c.html#blink_method">blink</a>
+<li><a href="ref_a-c.html#bold_method">bold</a>
+<li><a href="ref_a-c.html#charAt_method">charAt</a>
+<li><a href="ref_f-g.html#fixed_method">fixed</a>
+<li><a href="ref_f-g.html#fontcolor_method">fontcolor</a>
+<li><a href="ref_f-g.html#fontsize_method">fontsize</a>
+<li><a href="ref_h-l.html#indexOf_method">indexOf</a>
+<li><a href="ref_h-l.html#italics_method">italics</a>
+<li><a href="ref_h-l.html#lastIndexOf_method">lastIndexOf</a>
+<li><a href="ref_h-l.html#link_method">link</a>
+<li><a href="ref_s-s.html#small_method">small</a>
+<li><a href="ref_s-s.html#strike_method">strike</a>
+<li><a href="ref_s-s.html#sub_method">sub</a>
+<li><a href="ref_s-s.html#substring_method">substring</a>
+<li><a href="ref_s-s.html#sup_method">sup</a>
+<li><a href="ref_t-z.html#toLowerCase_method">toLowerCase</a>
+<li><a href="ref_t-z.html#toUpperCase_method">toUpperCase</a>
+
+
+<h3>Event handlers</h3>
+<li>None. Built-in objects do not have event handlers.
+
+
+<h3>Examples</h3>
+<p>The following statement creates a string variable.
+<xmp>
+var last_name = "Schaefer"
+</xmp>
+The following statements evaluate to 8, "SCHAEFER", and "schaefer":
+<xmp>
+last_name.length
+last_name.toUpperCase()
+last_name.toLowerCase()
+</xmp>
+
+
+<h3>See also</h3>
+<li><a href="ref_t-z.html#text_object">text</a> and <a href="ref_t-z.html#textarea_object">textarea</a> objects
+
+
+<!------------------------------------------------------------------------------------------------->
+<hr>
+<a name="sub_method"><h2>sub method</h2></a>
+<p>
+Causes a string to be displayed as a subscript as if it were in a &ltSUB;&gt; tag.
+
+<h3>Syntax</h3>
+<pre><i>stringName</i>.sub()</pre>
+<p><i>stringName</i> is any string or a property of an existing object.
+
+<h3>Method of</h3>
+<p><a href="ref_s-s.html#string_object">string</a>
+
+<h3>Description</h3>
+<p>Use the sub method with the write or writeln methods to format and display a string in a document.
+
+<h3>Examples</h3>
+The following example uses the sub and sup methods to format a string:
+<pre>
+var superText="superscript"
+var subText="subscript"
+
+document.write("This is what a " + superText.sup() + " looks like.")
+document.write("&ltP;&gtThis; is what a " + subText.sub() + " looks like.")
+</pre>
+<p>The previous example produces the same output as the following HTML:
+<pre>
+This is what a &ltSUP;&gtsuperscript;&lt;/SUP&gt; looks like.
+&ltP;&gtThis; is what a &ltSUB;&gtsubscript;&lt;/SUB&gt; looks like.
+</pre>
+
+
+<h3>See also</h3>
+<p><a href="ref_s-s.html#sup_method">sup</a> method
+<!------------------------------------------------------------------------------------------------>
+<hr>
+<a name="submit_method"><h2>submit method</h2></a>
+<p>
+Submits a form.
+
+<h3>Syntax</h3>
+<pre><i>formName</i>.submit()</pre>
+<p><i>formName</i> is the name of any form or an element in the forms array.
+
+<h3>Method of</h3>
+<p><a href="ref_f-g.html#form_object">form</a>
+
+<h3>Description</h3>
+<p>The submit method submits the specified form. It performs the same action as a submit button.
+
+<p>Use the submit method to send data back to an http server. The submit method returns the data using either "get" or "post", as specified in the <a href="ref_m-q.html#method_property">method</a> property.
+
+<h3>Examples</h3>
+<p>The following example submits a form called <i>musicChoice</i>:
+<pre>
+document.musicChoice.submit()
+</pre>
+<p>If <i>musicChoice</i> is the first form created, you also can submit it as follows:
+<pre>
+document.forms[0].submit()
+</pre>
+<p>See also the example for the <a href="ref_f-g.html#form_object">form</a> object.
+
+<h3>See also</h3>
+<li><a href="ref_s-s.html#submit_object">submit</a> object
+<li><a href="ref_m-q.html#onSubmit_event">onSubmit</a> event handler
+<!------------------------------------------------------------------------------------------------>
+<hr>
+<a name="submit_object"><h2>submit object</h2></a>
+<p>A submit button on an HTML form. A submit button causes a form to be submitted.
+
+
+<h3>Syntax</h3>
+<p>To define a submit button, use standard HTML syntax with the addition of the onClick event handler:
+<pre>
+&LTINPUT;
+   TYPE="submit"
+   NAME="<i>submitName</i>"
+   VALUE="<i>buttonText</i>"
+   [onClick="<i>handlerText</i>"]&GT;
+</pre>
+<i>NAME="submitName"</i> specifies the name of the submit object. You can access this value using the name property.
+<br><i>VALUE="buttonText"</i> specifies the label to display on the button face. You can access this value using the value property.
+
+<p>To use a submit object's properties and methods:
+<pre>
+1. <i>submitName</i>.<i>propertyName</i>
+2. <i>submitName</i>.<i>methodName</i>(<i>parameters</i>)
+3. <i>formName</i>.elements[<i>index</i>].<i>propertyName</i>
+4. <i>formName</i>.elements[<i>index</i>].<i>methodName</i>(<i>parameters</i>)
+</pre>
+<i>submitName</i> is the value of the NAME attribute of a submit object.
+<br><i>formName</i> is either the value of the NAME attribute of a form object or an element in the <i>forms</i> array.
+<br><i>index</i> is an integer representing a submit object on a form.
+<br><i>propertyName</i> is one of the properties listed below.
+<br><i>methodName</i> is one of the methods listed below.
+
+
+<h3>Property of</h3>
+<li><a href="ref_f-g.html#form_object">form</a>
+
+
+<h3>Description</h3>
+<p>A submit object on a form looks as follows:
+<form>
+<p><input type="submit" value="Done">
+</form>
+<p>A submit object is a form element and must be defined within a &LTFORM;&GT; tag.
+
+<p>Clicking a submit button submits a form to the URL specified by the form's action property. This action always loads a new page into the client; it may be the same as the current page, if the action so specifies or is not specified.
+
+<p>The submit button's onClick event handler cannot prevent a form from being submitted; instead, use the form's onSubmit event handler or use the submit method instead of a submit object. See the examples for the <a href="ref_f-g.html#form_object">form</a> object.
+
+
+<h3>Properties</h3>
+<li><a href="ref_m-q.html#name_property">name</a> reflects the NAME attribute
+<li><a href="ref_t-z.html#value_property">value</a> reflects the VALUE attribute
+
+
+<h3>Methods</h3>
+<li><a href="ref_a-c.html#click_method">click</a>
+
+
+<h3>Event handlers</h3>
+<li><a href="ref_m-q.html#onClick_event">onClick</a>
+
+
+<h3>Examples</h3>
+<p>The following example creates a submit object called <i>submit_button</i>. The text "Done" is displayed on the face of the button.
+<xmp>
+<input type="submit" name="submit_button" value="Done">
+</xmp>
+<p>See also the examples for the <a href="ref_f-g.html#form_object">form</a> object.
+
+
+<h3>See also</h3>
+<li><a href="ref_a-c.html#button_object">button</a>, <a href="ref_f-g.html#form_object">form</a>, and <a href="ref_r-r.html#reset_object">reset</a> objects
+<li><a href="ref_s-s.html#submit_method">submit</a> method
+<li><a href="ref_m-q.html#onSubmit_event">onSubmit</a> event handler
+
+<!------------------------------------------------------------------------------------------------->
+<hr>
+<a name="substring_method"><h2>substring method</h2></a>
+<p>
+Returns a subset of a string object.
+
+<h3>Syntax</h3>
+<pre><i>stringName</i>.substring(<i>indexA</i>, <i>indexB</i>)</pre>
+<p><i>stringName</i> is any string or a property of an existing object.
+<br><i>indexA</i> is any integer from 0 to <i>stringName</i>.length - 1, or a property of an existing object.
+<br><i>indexB</i> is any integer from 0 to <i>stringName</i>.length - 1, or a property of an existing object.
+
+<h3>Method of</h3>
+<p><a href="ref_s-s.html#string_object">string</a>
+
+<h3>Description</h3>
+<p>Characters in a string are indexed from left to right. The index of the first character is 0, and the index of the last character is <i>stringName</i>.length - 1.
+
+<p>If <i>indexA</i> is less than <i>indexB</i>, the substring method returns the subset starting with the character at <i>indexA</i> and ending with the character before <i>indexB</i>. If <i>indexA</i> is greater than <i>indexB</i>, the substring method returns the subset starting with the character at <i>indexB</i> and ending with the character before <i>indexA</i>. If <i>indexA</i> is equal to <i>indexB</i>, the substring method returns the empty string.
+
+<h3>Examples</h3>
+The following example uses substring to display characters from the string "Netscape".
+<pre>
+var anyString="Netscape"
+
+//Displays "Net"
+document.write(anyString.substring(0,3))
+document.write(anyString.substring(3,0))
+//Displays "cap"
+document.write(anyString.substring(4,7))
+document.write(anyString.substring(7,4))
+</pre>
+
+<!------------------------------------------------------------------------------------------------>
+<hr>
+<a name="sup_method"><h2>sup method</h2></a>
+<p>
+Causes a string to be displayed as a superscript as if it were in a &ltSUP;&gt; tag.
+
+<h3>Syntax</h3>
+<pre><i>stringName</i>.sup()</pre>
+<p><i>stringName</i> is any string or a property of an existing object.
+
+<h3>Method of</h3>
+<p><a href="ref_s-s.html#string_object">string</a>
+
+<h3>Description</h3>
+<p>Use the sup method with the write or writeln methods to format and display a string in a document.
+
+<h3>Examples</h3>
+The following example uses the sub and sup methods to format a string:
+<pre>
+var superText="superscript"
+var subText="subscript"
+
+document.write("This is what a " + superText.sup() + " looks like.")
+document.write("&ltP;&gtThis; is what a " + subText.sub() + " looks like.")
+</pre>
+<p>The previous example produces the same output as the following HTML:
+<pre>
+This is what a &ltSUP;&gtsuperscript;&lt;/SUP&gt; looks like.
+&ltP;&gtThis; is what a &ltSUB;&gtsubscript;&lt;/SUB&gt; looks like.
+</pre>
+
+<h3>See also</h3>
+<li><a href="ref_s-s.html#sub_method">sub</a> method
+<!------------------------------------------------------------------------------------------------>
+<hr>
+
+<script>
+document.write("<FONT SIZE=-2>Last modified " + document.lastModified)
+</script>
+<p>
+</body>
+<html>
+
+<!--
+     FILE ARCHIVED ON 23:27:17 Jun 17, 1997 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 18:13:36 Nov 08, 2018.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

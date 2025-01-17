@@ -1,0 +1,1022 @@
+<html>
+<body>
+
+<a name="tan_method"><h2>tan method</h2></a>
+<p>
+Returns the tangent of a number.
+
+<h3>Syntax</h3>
+<pre>Math.tan(<i>number</i>)</pre>
+<p><i>number</i> is a numeric expression representing the size of an angle in radians, or a property of an existing object.
+
+<h3>Method of</h3>
+<p><a href="ref_m-q.html#Math_object">Math</a>
+
+<h3>Description</h3>
+<p>The tan method returns a numeric value which represents the tangent of the angle.
+
+<h3>Examples</h3>
+<pre>
+//Displays the value 0.9999999999999999
+document.write("The tangent of pi/4 radians is " +
+   Math.tan(Math.PI/4))
+
+//Displays the value 0
+document.write("&ltP;&gtThe; tangent of 0 radians is " +
+   Math.tan(0))
+</pre>
+
+<h3>See also</h3>
+<li><a href="ref_a-c.html#acos_method">acos</a>, <a href="ref_a-c.html#asin_method">asin</a>, <a href="ref_a-c.html#atan_method">atan</a>, <a href="ref_a-c.html#cos_method">cos</a>, <a href="ref_s-s.html#sin_method">sin</a> methods
+
+<!----------------------------------------------------------------->
+<hr>
+<a name="target_property"><h2>target property</h2></a>
+<p>
+For form, a string specifying the name of the window that responses go to after a form has been submitted. For link, a string specifying the name of the window that displays the content of a clicked hypertext link.
+
+<h3>Syntax</h3>
+<pre>
+1. <i>formName</i>.target
+2. links[<i>index</i>].target
+</pre>
+<p><i>formName</i> is either the name of a form or an element in the <i>forms</i> array.
+<br><i>index</i> is an integer representing a link object.
+
+<h3>Property of</h3>
+<p><a href="ref_f-g.html#form_object">form</a>, <a href="ref_h-l.html#link_object">link</a>
+
+<h3>Description</h3>
+<p>The target property initially reflects the TARGET attribute of the &ltFORM;&gt; and &ltA;&gt; tags; however, setting target overrides these attributes.
+
+<p>The target property cannot be assigned the value of a JavaScript expression or variable.
+
+<p>You can set the target property at any time.
+
+<p>Certain values of the target property may require specific values for other form properties. See <a href="https://web.archive.org/web/19970617232724/http://www.ics.uci.edu/pub/ietf/html/rfc1867.txt" target="_top">RFC 1867</a> for more information.
+
+<h3>Examples</h3>
+<p>The following example specifies that responses to the <i>musicInfo</i> form are displayed in the "msgWindow" window:
+<pre>document.musicInfo.target="msgWindow"</pre>
+
+<h3>See also</h3>
+<p>For form:
+<li><a href="ref_a-c.html#action_property">action</a>, <a href="ref_d-e.html#encoding_property">encoding</a>, <a href="ref_m-q.html#method_property">method</a> properties
+<!------------------------------------------------------------------------------------------------->
+<hr>
+<a name="text_object"><h2>text object</h2></a>
+<p>A text input field on an HTML form. A text field lets the user enter a word, phrase, or series of numbers.
+
+
+<h3>Syntax</h3>
+<p>To define a text object, use standard HTML syntax with the addition of the onBlur, on Change, onFocus, and onSelect event handlers:
+<pre>
+&LTINPUT;
+   TYPE="text"
+   NAME="<i>textName</i>"
+   VALUE="<i>textValue</i>"
+   SIZE=<i>integer</i>
+   [onBlur="<i>handlerText</i>"]
+   [onChange="<i>handlerText</i>"]
+   [onFocus="<i>handlerText</i>"]
+   [onSelect="<i>handlerText</i>"]&GT;
+</pre>
+<i>NAME="textName"</i> specifies the name of the text object. You can access this value using the name property.
+<br><i>VALUE="textValue"</i> specifies the initial value of the text object. You can access this value using the defaultValue property.
+<br><i>SIZE=integer</i> specifies the number of characters the text object can accommodate without scrolling.
+
+<p>To use a text object's properties and methods:
+<pre>
+1. <i>textName</i>.<i>propertyName</i>
+2. <i>textName</i>.<i>methodName</i>(<i>parameters</i>)
+3. <i>formName</i>.elements[<i>index</i>].<i>propertyName</i>
+4. <i>formName</i>.elements[<i>index</i>].<i>methodName</i>(<i>parameters</i>)
+</pre>
+<i>textName</i> is the value of the NAME attribute of a text object.
+<br><i>formName</i> is either the value of the NAME attribute of a form object or an element in the <i>forms</i> array.
+<br><i>index</i> is an integer representing a text object on a form.
+<br><i>propertyName</i> is one of the properties listed below.
+<br><i>methodName</i> is one of the methods listed below.
+
+
+<h3>Property of</h3>
+<li><a href="ref_f-g.html#form_object">form</a>
+
+
+<h3>Description</h3>
+<p>A text object on a form looks as follows:
+<form>
+<p><b>Last name:</b> <input type="text" value="Salamone" size="25">
+</form>
+<p>A text object is a form element and must be defined within a &LTFORM;&GT; tag.
+
+<p>text objects can be updated (redrawn) dynamically by setting the value property (this.value).
+
+
+<h3>Properties</h3>
+<li><a href="ref_d-e.html#defaultValue_property">defaultValue</a> reflects the VALUE attribute
+<li><a href="ref_m-q.html#name_property">name</a> reflects the NAME attribute
+<li><a href="ref_t-z.html#value_property">value</a> reflects the current value of the text object's field
+
+
+<h3>Methods</h3>
+<li><a href="ref_f-g.html#focus_method">focus</a>
+<li><a href="ref_a-c.html#blur_method">blur</a>
+<li><a href="ref_s-s.html#select_method">select</a>
+
+
+<h3>Event handlers</h3>
+<li><a href="ref_m-q.html#onBlur_event">onBlur</a>
+<li><a href="ref_m-q.html#onChange_event">onChange</a>
+<li><a href="ref_m-q.html#onFocus_event">onFocus</a>
+<li><a href="ref_m-q.html#onSelect_event">onSelect</a>
+
+
+<h3>Examples</h3>
+<p><b>Example 1.</b> The following example creates a text object that is 25 characters long. The text field appears immediately to the right of the words "Last name:". The text field is blank when the form loads.
+<xmp>
+<b>Last name:</b> <input type="text" name="last_name" value="" size="25">
+</xmp>
+
+<p><b>Example 2.</b> The following example creates two text objects on a form. Each object has a default value. The <i>city</i> object has an onFocus event handler that selects all the text in the field when the user tabs to that field. The <i>state</i> object has an onChange event handler that forces the value to upper case.
+<xmp>
+<form name="form1">
+<br><b>City: </b><input type="text" name="city" value="Anchorage" size="20" onfocus="this.select()">
+<b>State: </b><input type="text" name="state" value="AK" size="2" onchange="this.value=this.value.toUpperCase()">
+</form>
+</xmp>
+<p>See also the examples for the <a href="ref_m-q.html#onBlur_event">onBlur</a>, <a href="ref_m-q.html#onChange_event">onChange</a>, <a href="ref_m-q.html#onFocus_event">onFocus</a>, and <a href="ref_m-q.html#onSelect_event">onSelect</a> event handlers.
+
+
+<h3>See also</h3>
+<li><a href="ref_f-g.html#form_object">form</a>, <a href="ref_m-q.html#password_object">password</a>, <a href="ref_s-s.html#string_object">string</a>, and <a href="ref_t-z.html#textarea_object">textarea</a> objects
+
+
+<!------------------------------------------------------------------------------------------------->
+<hr>
+<a name="text_property"><h2>text property</h2></a>
+<p>
+A string specifying the text that follows an &ltOPTION;&gt; tag in a select object.
+
+<h3>Syntax</h3>
+<pre><i>selectName</i>.options[<i>index</i>].text</pre>
+<p><i>selectName</i> is either the value of the NAME attribute of a select object or an element in the <i>elements</i> array.
+<br><i>index</i> is an integer representing an option in a select object.
+
+<h3>Property of</h3>
+<p><a href="ref_s-s.html#select_object">options</a> array
+
+<h3>Description</h3>
+<p>The text property initially reflects the text that follows an &ltOPTION;&gt; tag in a select object.
+
+<p>You can set the text property at any time; however, the following effects result:
+<li>The value of the property changes.
+<li>The text displayed by the option in the select object does not change.
+
+<p>Be careful if you change the text property. If you evaluate the property after you change it, the property contains the new value, not the value that is displayed onscreen.
+
+<h3>Examples</h3>
+<p>In the following example, the <i>getChoice()</i> function returns the value of the text property for the selected option. The <b>for</b> loop evaluates every option in the <i>musicType</i> select object. The <b>if</b> statement finds the option that is selected.
+<pre>
+function getChoice() {
+   for (var i = 0; i &lt; document.musicForm.musicType.length; i++) {
+      if (document.musicForm.musicType.options[i].selected == true) {
+         return document.musicForm.musicType.options[i].text
+      }
+   }
+   return null
+}
+</pre>
+The previous example assumes that the select object is similar to the following:
+<pre>
+&ltSELECT; NAME="musicType"&gt;
+   &ltOPTION; SELECTED&gt; R&B;
+   &ltOPTION;&gt; Jazz
+   &ltOPTION;&gt; Blues
+   &ltOPTION;&gt; New Age
+&lt;/SELECT&gt;
+</pre>
+
+<!------------------------------------------------------------------------------------------------->
+<hr>
+<a name="textarea_object"><h2>textarea object</h2></a>
+<p>A multiline input field on an HTML form. A textarea field lets the user enter words, phrases, or numbers.
+
+
+<h3>Syntax</h3>
+<p>To define a text area, use standard HTML syntax with the addition of the onBlur, onChange, onFocus, and onSelect event handlers:
+<pre>
+&LTTEXTAREA;
+   NAME="<i>textareaName</i>"
+   ROWS="<i>integer</i>"
+   COLS="<i>integer</i>"
+   WRAP="off|virtual|physical"
+   [onBlur="<i>handlerText</i>"]
+   [onChange="<i>handlerText</i>"]
+   [onFocus="<i>handlerText</i>"]
+   [onSelect="<i>handlerText</i>"]&GT;
+   <i>textToDisplay</i>
+&LT;/TEXTAREA&GT;
+</pre>
+<i>NAME="textareaName"</i> specifies the name of the textarea object. You can access this value using the name property.
+<br><i>ROWS="integer"</i> and <i>COLS="integer"</i> define the physical size of the displayed input field in numbers of characters.
+<br><i>textToDisplay</i> specifies the initial value of the textarea object. A textarea allows only ASCII text, and new lines are respected. You can access this value using the defaultValue property.
+<p>
+The WRAP attribute controls word wrapping inside the TEXTAREA. The value "off" is default
+and lines are sent exactly as typed. The value "virtual" wraps in the display but are sent exactly as typed.
+The value "physical" wraps in the display and sends new-lines at the wrap points as if new-lines had been
+entered.
+
+<p>To use a textarea object's properties and methods:
+<pre>
+1. <i>textareaName</i>.<i>propertyName</i>
+2. <i>textareaName</i>.<i>methodName</i>(<i>parameters</i>)
+3. <i>formName</i>.elements[<i>index</i>].<i>propertyName</i>
+4. <i>formName</i>.elements[<i>index</i>].<i>methodName</i>(<i>parameters</i>)
+</pre>
+<i>textareaName</i> is the value of the NAME attribute of a textarea object.
+<br><i>formName</i> is either the value of the NAME attribute of a form object or an element in the <i>forms</i> array.
+<br><i>index</i> is an integer representing a textarea object on a form.
+<br><i>propertyName</i> is one of the properties listed below.
+<br><i>methodName</i> is one of the methods listed below.
+
+
+<h3>Property of</h3>
+<li><a href="ref_f-g.html#form_object">form</a>
+
+
+<h3>Description</h3>
+<p>A textarea object on a form looks as follows:
+<form>
+<p><textarea name="item_description" rows="5" cols="45">
+Our storage ottoman provides an attractive way to
+store lots of CDs and videos--and it's versatile
+enough to store other things as well.
+
+It can hold up to 72 CDs under the lid and 20 videos
+in the drawer below.
+</textarea>
+</form>
+<p>A textarea object is a form element and must be defined within a &LTFORM;&GT; tag.
+
+<p>textarea objects can be updated (redrawn) dynamically by setting the value property (this.value).
+
+<p>To begin a new line in a textarea object, you can use a newline character.
+This character varies from platform to platform: Unix is \n, Windows is \r\n, and Macintosh is \n.
+One way to enter a newline character programatically is to test the appVersion property to determine the
+current platform and set the newline character accordingly.
+See the <a href="ref_a-c.html#appVersion_property">appVersion</a> property for an example.
+
+
+<h3>Properties</h3>
+<li><a href="ref_d-e.html#defaultValue_property">defaultValue</a> reflects the VALUE attribute
+<li><a href="ref_m-q.html#name_property">name</a> reflects the NAME attribute
+<li><a href="ref_t-z.html#value_property">value</a> reflects the current value of the textarea object
+
+
+<h3>Methods</h3>
+<li><a href="ref_f-g.html#focus_method">focus</a>
+<li><a href="ref_a-c.html#blur_method">blur</a>
+<li><a href="ref_s-s.html#select_method">select</a>
+
+
+<h3>Event handlers</h3>
+<li><a href="ref_m-q.html#onBlur_event">onBlur</a>
+<li><a href="ref_m-q.html#onChange_event">onChange</a>
+<li><a href="ref_m-q.html#onFocus_event">onFocus</a>
+<li><a href="ref_m-q.html#onSelect_event">onSelect</a>
+
+
+<h3>Examples</h3>
+<p>The following example creates a textarea object that is 6 rows long and 55 columns wide. The textarea field appears immediately below the word "Description:". When the form loads, the textarea object contains several lines of data, including one blank line.
+<xmp>
+<b>Description:</b>
+<br><textarea name="item_description" rows="6" cols="55">
+Our storage ottoman provides an attractive way to
+store lots of CDs and videos--and it's versatile
+enough to store other things as well.
+
+It can hold up to 72 CDs under the lid and 20 videos
+in the drawer below.
+</textarea>
+</xmp>
+
+<p>See also the examples for the <a href="ref_m-q.html#onBlur_event">onBlur</a>, <a href="ref_m-q.html#onChange_event">onChange</a>, <a href="ref_m-q.html#onFocus_event">onFocus</a>, and <a href="ref_m-q.html#onSelect_event">onSelect</a> event handlers.
+
+
+<h3>See also</h3>
+<li><a href="ref_f-g.html#form_object">form</a>, <a href="ref_m-q.html#password_object">password</a>, <a href="ref_s-s.html#string_object">string</a>, and <a href="ref_t-z.html#text_object">text</a> objects
+
+
+<!------------------------------------------------------------------------------------------------->
+<hr>
+<a name="title_property"><h2>title property</h2></a>
+<p>
+A string representing the title of a document.
+
+<h3>Syntax</h3>
+<pre>document.title</pre>
+
+<h3>Property of</h3>
+<p><a href="ref_d-e.html#document_object">document</a>
+
+<h3>Description</h3>
+<p>The title property is a reflection of the value specified within the &ltTITLE;&gt; and &lt;/TITLE&gt; tags. If a document does not have a title, the title property is null.
+
+<p>title is a read-only property.
+
+<h3>Examples</h3>
+<p>In the following example, the value of the title property is assigned to a variable called <i>docTitle</i>:
+<pre>
+var newWindow = window.open("http://www.netscape.com")
+var docTitle = newWindow.document.title
+</pre>
+<!------------------------------------------------------------------------------------------------->
+<hr>
+<a name="toGMTString_method"><h2>toGMTString method</h2></a>
+<p>
+Converts a date to a string, using the Internet GMT conventions.
+
+<h3>Syntax</h3>
+<pre><i>dateObjectName</i>.toGMTString()</pre>
+<p><i>dateObjectName</i> is either the name of a date object or a property of an existing object.
+
+<h3>Method of</h3>
+<p><a href="ref_d-e.html#Date_object">Date</a>
+
+<h3>Description</h3>
+<p>The exact format of the value returned by toGMTString varies according to the platform.
+
+<h3>Examples</h3>
+In the following example, <i>today</i> is a date object:
+<pre>
+today.toGMTString()
+</pre>
+<p>
+In this example, the toGMTString method converts the date to GMT (UTC) using the operating system's time zone offset and returns a string value that is similar to the following form. The exact format depends on the platform.
+<p>
+Mon, 18 Dec 1995 17:28:35 GMT
+
+<h3>See also</h3>
+<li><a href="ref_t-z.html#toLocaleString_method">toLocaleString</a> method
+
+<!----------------------------------------------------------------->
+<hr>
+<a name="toLocaleString_method"><h2>toLocaleString method</h2></a>
+<p>
+Converts a date to a string, using the current locale's conventions.
+
+<h3>Syntax</h3>
+<pre><i>dateObjectName</i>.toLocaleString()</pre>
+<p><i>dateObjectName</i> is either the name of a date object or a property of an existing object.
+
+<h3>Method of</h3>
+<p><a href="ref_d-e.html#Date_object">Date</a>
+
+<h3>Description</h3>
+If you are trying to pass a date using toLocaleString, be aware that different locales assemble the string in different ways. Using methods such as getHours, getMinutes, and getSeconds will give more portable results.
+
+<h3>Examples</h3>
+In the following example, <i>today</i> is a date object:
+<pre>
+today.toLocaleString()
+</pre>
+<p>
+In this example, toLocaleString returns a string value that is similar to the following form. The exact format depends on the platform.
+<p>
+12/18/95 17:28:35
+
+<h3>See also</h3>
+<li><a href="ref_t-z.html#toGMTString_method">toGMTString</a> method
+
+<!------------------------------------------------------------------------------------------------>
+<hr>
+<a name="toLowerCase_method"><h2>toLowerCase method</h2></a>
+<p>
+Returns the calling string value converted to lower case.
+
+<h3>Syntax</h3>
+<pre><i>stringName</i>.toLowerCase()</pre>
+<p><i>stringName</i> is any string or a property of an existing object.
+
+<h3>Method of</h3>
+<p><a href="ref_s-s.html#string_object">string</a>
+
+<h3>Description</h3>
+<p>The toLowerCase method returns the value of <i>stringName</i> converted to lower case. toLowerCase does not affect the value of <i>stringName</i> itself.
+
+<h3>Examples</h3>
+<p>The following examples both yield "alphabet".
+<pre>
+var upperText="ALPHABET"
+document.write(upperText.toLowerCase())
+
+"ALPHABET".toLowerCase()
+</pre>
+
+<h3>See also</h3>
+<li><a href="ref_t-z.html#toUpperCase_method">toUpperCase</a> method
+<!------------------------------------------------------------------------------------------------>
+<hr>
+<a name="top_property"><h2>top property</h2></a>
+<p>
+The top property is a synonym for the top-most Navigator window, which is a "document window" or "Web Browser window."
+
+<h3>Syntax</h3>
+<pre>
+1. top.<i>propertyName</i>
+2. top.<i>methodName</i>
+3. top.<i>frameName</i>
+4. top.frames[<i>index</i>]
+</pre>
+<p><i>propertyName</i> is defaultStatus, status, or length.
+<br><i>methodName</i> is any method associated with the window object.
+<br><i>frameName</i> and frames[<i>index</i>] are ways to refer to frames.
+
+<h3>Property of</h3>
+<p><a href="ref_t-z.html#window_object">window</a>
+
+<h3>Description</h3>
+<p>The top property refers to the top-most window that contains frames or nested framesets. Use the top property to refer to this ancestor window.
+
+<p>The top property is read-only. The value of the top property is
+<pre>     &ltobject; <i>objectReference</i>&gt;</pre>
+where <i>objectReference</i> is an internal reference.
+
+<h3>Examples</h3>
+<p>The statement <tt>top.close()</tt> closes the top-most ancestor window.
+
+<p>The statement <tt>top.length</tt> specifies the number of frames contained within the top-most ancestor window. When the top-most ancestor is defined as follows, <tt>top.length</tt> returns 3:
+<pre>
+&ltFRAMESET; COLS="30%,40%,30%"&gt;
+&ltFRAME; SRC=child1.htm NAME="childFrame1"&gt;
+&ltFRAME; SRC=child2.htm NAME="childFrame2"&gt;
+&ltFRAME; SRC=child3.htm NAME="childFrame3"&gt;
+&lt;/FRAMESET&gt;
+</pre>
+
+<p>The following example sets the background color of a frame called <i>myFrame</i> to red. <i>myFrame</i> is a child of the top-most ancestor window.
+<pre>
+top.myFrame.document.bgColor="red"
+</pre>
+
+<!------------------------------------------------------------------------------------------------->
+<hr>
+<a name="toUpperCase_method"><h2>toUpperCase method</h2></a>
+<p>
+Returns the calling string value converted to upper case.
+
+<h3>Syntax</h3>
+<pre><i>stringName</i>.toUpperCase()</pre>
+<p><i>stringName</i> is any string or a property of an existing object.
+
+<h3>Method of</h3>
+<p><a href="ref_s-s.html#string_object">string</a>
+
+<h3>Description</h3>
+<p>The toUpperCase method returns the value of <i>stringName</i> converted to upper case. toUpperCase does not affect the value of <i>stringName</i> itself.
+
+<h3>Examples</h3>
+<p>The following examples both yield "ALPHABET".
+<pre>
+var lowerText="alphabet"
+document.write(lowerText.toUpperCase())
+
+"alphabet".toUpperCase()
+</pre>
+
+<h3>See also</h3>
+<li><a href="ref_t-z.html#toLowerCase_method">toLowerCase</a> method
+
+<!------------------------------------------------------------------------------------------------>
+<hr>
+<a name="unescape_method"><h2>unescape function</h2></a>
+<p>Returns the ASCII string for the specified value.
+
+<h3>Syntax</h3>
+<pre>unescape("<i>string</i>")</pre>
+<p><i>string</i> is a string or a property of an existing object, containing characters in either of the following forms:
+<li>"%<i>integer</i>", where <i>integer</i> is a number between 0 and 255 (decimal)
+<li>"<i>hex</i>", where <i>hex</i> is a number between 0x0 and 0xFF (hexadecimal)
+
+<h3>Description</h3>
+<p>The unescape function is not a method associated with any object, but is part of the language itself.
+
+<p>The string returned by the unescape function is a series of characters in the ISO Latin-1 character set.
+
+
+<h3>Examples</h3>
+<p>The following example returns "&amp;"
+<pre>
+unescape("%26")
+</pre>
+
+<p>The following example returns "!#"
+<pre>
+unescape("%21%23")
+</pre>
+
+<h3>See also</h3>
+<li><a href="ref_d-e.html#escape_method">escape</a> function
+
+<!----------------------------------------------------------------->
+<hr>
+<a name="userAgent_property"><h2>userAgent property</h2></a>
+<p>
+A string representing the value of the user-agent header sent in the HTTP protocol from client to server.
+
+<h3>Syntax</h3>
+<pre>navigator.userAgent</pre>
+
+<h3>Property of</h3>
+<p><a href="ref_m-q.html#navigator_object">navigator</a>
+
+<h3>Description</h3>
+<p>Servers use the value sent in the user-agent header to identify the client.
+
+<p>userAgent is a read-only property.
+
+
+<h3>Examples</h3>
+<p>The following example displays userAgent information for the Navigator:
+<pre>document.write("The value of navigator.userAgent is " +
+   navigator.userAgent)</pre>
+<p>For Navigator 2.0, this displays the following:
+<pre>The value of navigator.userAgent is Mozilla/2.0 (Win16; I)</pre>
+
+<h3>See also</h3>
+<li><a href="ref_a-c.html#appName_property">appName</a>, <a href="ref_a-c.html#appVersion_property">appVersion</a>, <a href="ref_a-c.html#appCodeName_property">appCodeName</a> properties
+<!------------------------------------------------------------------------------------------------->
+<hr>
+<a name="UTC_method"><h2>UTC method</h2></a>
+<p>
+Returns the number of milliseconds in a date object since January 1, 1970 00:00:00, Universal Coordinated Time (GMT).
+
+<h3>Syntax</h3>
+<pre>Date.UTC(<i>year, month, day [, hrs] [, min] [, sec]</i>)</pre>
+<p><i>year</i> is a year after 1900.
+<br><i>month</i> is a month between 0-11.
+<br><i>date</i> is a day of the month between 1-31.
+<br><i>hrs</i> is hours between 0-23.
+<br><i>min</i> is minutes between 0-59.
+<br><i>sec</i> is seconds between 0-59.
+
+<h3>Method of</h3>
+<p><a href="ref_d-e.html#Date_object">Date</a>
+
+<h3>Description</h3>
+<p>
+UTC takes comma-delimited date parameters and returns the number of milliseconds since January 1, 1970 00:00:00, Universal Coordinated Time (GMT).
+
+<p>
+Because UTC is a static method of Date, you always use it as <tt>Date.UTC()</tt>, rather than as a method of a date object you created.
+
+<h3>Examples</h3>
+<p>
+The following statement creates a date object using GMT instead of local time:
+
+<pre>
+gmtDate = new Date(Date.UTC(96, 11, 1, 0, 0, 0))
+</pre>
+
+<h3>See also</h3>
+<li><a href="ref_m-q.html#parse_method">parse</a> method
+
+<!------------------------------------------------------------------------------------------------>
+<hr>
+<a name="value_property"><h2>value property</h2></a>
+<p>
+A string that is related to the VALUE attribute of its object.
+
+<h3>Syntax</h3>
+<pre>
+1. <i>objectName</i>.value
+2. <i>radioName</i>[<i>index</i>].value
+3. <i>selectName</i>.options.[<i>index</i>].value
+</pre>
+<p><i>objectName</i> is either the value of the NAME attribute of a hidden, password, text, textarea, button, reset, submit or checkbox object or an element in the <i>elements</i> array.
+<br><i>radioName</i> is the value of the NAME attribute of a radio object.
+<br><i>selectName</i> is either the value of the NAME attribute of a select object or an element in the <i>elements</i> array.
+<br><i>index</i> is an integer representing a radio button in a radio object or an option in a select object.
+
+<h3>Property of</h3>
+<li><a href="ref_a-c.html#button_object">button</a>, <a href="ref_a-c.html#checkbox_object">checkbox</a>, <a href="ref_h-l.html#hidden_object">hidden</a>, <a href="ref_m-q.html#password_object">password</a>, <a href="ref_r-r.html#radio_object">radio</a>, <a href="ref_r-r.html#reset_object">reset</a>, <a href="ref_s-s.html#submit_object">submit</a>, <a href="ref_t-z.html#text_object">text</a>, <a href="ref_t-z.html#textarea_object">textarea</a> objects <li><a href="ref_s-s.html#select_object">options</a> array
+
+<h3>Description</h3>
+<p>The value property differs for every object.
+
+<h4>hidden, text, and textarea objects</h4>
+The value property is a string that initially reflects the VALUE attribute. This string is displayed in the text and textarea fields. The value of this property changes when a user or a program modifies the field.
+
+<p>You can set the value property at any time. The display of the text and textarea objects updates immediately when you set the value property.
+
+<h4>password object</h4>
+<p>The value property is a string that initially reflects the VALUE attribute. This string is represented by asterisks in the password object field. The value of this property changes when a user or a program modifies the field, but the value is always displayed as asterisks.
+
+<p>If you programatically set the value property and then evaluate it, JavaScript returns the current value. If a user interactively modifies the value in the password field, you cannot evaluate it accurately for security reasons.
+
+<h4>button, reset, and submit objects</h4>
+<p>When a VALUE attribute is specified in HTML, the value property is a string that reflects it. This string is displayed on the face of the button.
+
+<p>When a VALUE attribute is not specified in HTML, the value property differs for each object:
+<li>For button, it is an empty string
+<li>For reset, it is the string "Reset"
+<li>For submit, it is the string "Submit Query"
+
+<p>These strings are displayed on the faces of the buttons.
+
+<p>value is a read-only property.
+
+<p>Do not confuse the value property with the name property. The name property is not displayed onscreen; it is used to reference the objects programatically.
+
+<h4>options array</h4>
+<p>The value property is a string that initially reflects the VALUE attribute. The value of this property can change when a program modifies it. The value property is not displayed onscreen, but is returned to the server if the option is selected.
+
+<p>You can set the value property at any time.
+
+<p>Do not confuse the value property with the selection state of the select object or the text that is displayed as an option. The selected and selectedIndex properties determine which options are selected, and the defaultSelected property determines the default selection state. The text that is displayed in each option is specified by its text property.
+
+<h4>checkbox and radio objects</h4>
+<p>When a VALUE attribute is specified in HTML, the value property is a string that reflects it. When a VALUE attribute is not specified in HTML, the value property is a string that evaluates to "on". The value property is not displayed onscreen, but is returned to the server if the radio button or checkbox is selected.
+
+<p>You can set the value property at any time.
+
+<p>Do not confuse the value property with the selection state of the object or the text that is displayed next to each checkbox and radio button. The checked property determines the selection state of the object, and the defaultChecked property determines the default selection state. The text that is displayed is specified following the &ltINPUT; TYPE="checkbox"&gt; or the &ltINPUT; TYPE="radio"&gt; tag.
+
+<h3>Examples</h3>
+<p>The following function evaluates the value property of a group of buttons and displays it in the <i>msgWindow</i> window:
+<pre>
+function valueGetter() {
+   var msgWindow=window.open("")
+   msgWindow.document.write("submitButton.value is " +
+      document.valueTest.submitButton.value + "&ltBR;&gt;")
+   msgWindow.document.write("resetButton.value is " +
+      document.valueTest.resetButton.value + "&ltBR;&gt;")
+   msgWindow.document.write("helpButton.value is " +
+      document.valueTest.helpButton.value + "&ltBR;&gt;")
+   msgWindow.document.close()
+}
+</pre>
+
+<p>This example displays the following values:
+<pre>
+Query Submit
+Reset
+Help
+</pre>
+
+<p>The previous example assumes the buttons have been defined as follows
+<pre>
+&ltINPUT; TYPE="submit" NAME="submitButton"&gt;
+&ltINPUT; TYPE="reset" NAME="resetButton"&gt;
+&ltINPUT; TYPE="button" NAME="helpButton" VALUE="Help"&gt;
+</pre>
+
+<p>The following function evaluates the value property of a group of radio buttons and displays it in the <i>msgWindow</i> window:
+<pre>
+function valueGetter() {
+   var msgWindow=window.open("")
+   for (var i = 0; i &lt; document.valueTest.radioObj.length; i++) {
+       msgWindow.document.write
+          ("The value of radioObj[" + i + "] is " +
+          document.valueTest.radioObj[i].value +"&ltBR;&gt;")
+   }
+   msgWindow.document.close()
+}
+</pre>
+
+<p>This example displays the following values:
+<pre>
+on
+on
+on
+on
+</pre>
+
+<p>The previous example assumes the buttons have been defined as follows
+<pre>
+&ltBR;&gt;&ltINPUT; TYPE="radio" NAME="radioObj"&gtR;&B;
+&ltBR;&gt;&ltINPUT; TYPE="radio" NAME="radioObj" CHECKED&gtSoul;
+&ltBR;&gt;&ltINPUT; TYPE="radio" NAME="radioObj"&gtRock; and Roll
+&ltBR;&gt;&ltINPUT; TYPE="radio" NAME="radioObj"&gtBlues;
+</pre>
+
+<h3>See also</h3>
+<p>For hidden, password, text, and textarea:
+<li><a href="ref_d-e.html#defaultValue_property">defaultValue</a> property
+
+<p>For button, reset, and submit:
+<li><a href="ref_m-q.html#name_property">name</a> property
+
+<p>For options array:
+<li><a href="ref_d-e.html#defaultSelected_property">defaultSelected</a>, <a href="ref_s-s.html#selected_property">selected</a>, <a href="ref_s-s.html#selectedIndex_property">selectedIndex</a>, <a href="ref_t-z.html#text_property">text</a> properties
+
+<p>For checkbox and radio:
+<li><a href="ref_a-c.html#checked_property">checked</a>, <a href="ref_d-e.html#defaultChecked_property">defaultChecked</a> properties
+<!------------------------------------------------------------------------------------------------->
+<hr>
+<a name="vlinkColor_property"><h2>vlinkColor property</h2></a>
+<p>
+A string specifying the color of visited links.
+
+<h3>Syntax</h3>
+<pre>document.vlinkColor</pre>
+
+<h3>Property of</h3>
+<p><a href="ref_d-e.html#document_object">document</a>
+
+<h3>Description</h3>
+<p>The vlinkColor property is expressed as a hexadecimal RGB triplet or as one of the string literals listed in <a href="colors.html">Color Values</a>. This property is the JavaScript reflection of the VLINK attribute of the &ltBODY;&gt; tag. The default value of this property is set by the user on the Colors tab of the Preferences dialog box, which is displayed by choosing General Preferences from the Options menu. You cannot set this property after the HTML source has been through layout.
+
+<p>If you express the color as a hexadecimal RGB triplet, you must use the format rrggbb. For example, the hexadecimal RGB values for salmon are red=FA, green=80, and blue=72, so the RGB triplet for salmon is "FA8072".
+
+<h3>Examples</h3>
+<p>The following example sets the color of visited links to aqua using a string literal:
+<pre>
+document.vlinkColor="aqua"
+</pre>
+<p>The following example sets the color of active links to aqua using a hexadecimal triplet:
+<pre>
+document.vlinkColor="00FFFF"
+</pre>
+
+
+<h3>See also</h3>
+<li><a href="ref_a-c.html#alinkColor_property">alinkColor</a>, <a href="ref_a-c.html#bgColor_property">bgColor</a>, <a href="ref_f-g.html#fgColor_property">fgColor</a>, and <a href="ref_h-l.html#linkColor_property">linkColor</a> properties
+<!------------------------------------------------------------------------------------------------->
+<hr>
+<a name="window_object"><h2>window object</h2></a>
+<p>The top-level object for each document, location, and history object group.
+
+
+<h3>Syntax</h3>
+<p>To define a window, use the open method:
+<pre>
+<i>windowVar</i> = window.open("<i>URL</i>", "<i>windowName</i>" [,"<i>windowFeatures</i>"])
+</pre>
+<i>windowVar</i> is the name of a new window. Use this variable when referring to a window's properties, methods, and containership.
+<br><i>windowName</i> is the window name to use in the TARGET attribute of a &LTFORM;&GT; or &LTA;&GT; tag.
+
+<p>For details on defining a window, see the <a href="ref_m-q.html#open_window_method">open</a> method.
+
+<p>To use a window object's properties and methods:
+<pre>
+ 1. window.<i>propertyName</i>
+ 2. window.<i>methodName</i>(<i>parameters</i>)
+ 3. self.<i>propertyName</i>
+ 4. self.<i>methodName</i>(<i>parameters</i>)
+ 5. top.<i>propertyName</i>
+ 6. top.<i>methodName</i>(<i>parameters</i>)
+ 7. parent.<i>propertyName</i>
+ 8. parent.<i>methodName</i>(<i>parameters</i>)
+ 9. <i>windowVar</i>.<i>propertyName</i>
+10. <i>windowVar</i>.<i>methodName</i>(<i>parameters</i>)
+11. <i>propertyName</i>
+12. <i>methodName</i>(<i>parameters</i>)
+</pre>
+<i>windowVar</i> is a variable referring to a window object. See the preceding syntax for defining a window.
+<br><i>propertyName</i> is one of the properties listed below.
+<br><i>methodName</i> is one of the methods listed below.
+
+<p>To define an onLoad or onUnload event handler for a window object, use the &LTBODY;&GT; or &LTFRAMESET;&GT; tags:
+<pre>
+&LTBODY;
+   ...
+   [onLoad="<i>handlerText</i>"]
+   [onUnload="<i>handlerText</i>"]&GT;
+&LT;/BODY&GT;
+
+&LTFRAMESET;
+   ROWS="<i>rowHeightList</i>"
+   COLS="<i>columnWidthList</i>"
+   [onLoad="<i>handlerText</i>"]
+   [onUnload="<i>handlerText</i>"]&GT;
+   [&LTFRAME; SRC="<i>locationOrURL</i>" NAME="<i>frameName</i>"&GT;]
+&LT;/FRAMESET&GT;
+</pre>
+
+<p>For information on the &LTBODY;&GT; and &LTFRAMESET;&GT; tags, see the <a href="ref_d-e.html#document_object">document</a> and <a href="ref_f-g.html#frame_object">frame</a> objects.
+
+
+<h3>Property of</h3>
+<li>None.
+
+
+<h3>Description</h3>
+<p>The window object is the top-level object in the JavaScript client hierarchy. Frame objects are also windows.
+
+<p>The self and window properties are synonyms for the current window, and you can optionally use them to refer to the current window. For example, you can close the current window by calling either <tt>window.close()</tt> or <tt>self.close()</tt>. You can use these properties to make your code more readable, or to disambiguate the property reference <tt>self.status</tt> from a form called <tt>status</tt>. See the properties and methods listed below for more examples.
+
+<p>The top and parent properties are also synonyms that can be used in place of the window name. top refers to the top-most Navigator window, and parent refers to a window containing a frameset. See the <a href="ref_t-z.html#top_property">top</a> and <a href="ref_m-q.html#parent_property">parent</a> properties.
+
+<p>Because the existence of the current window is assumed, you do not have to reference the name of the window when you call its methods and assign its properties. For example, <tt>status="Jump to a new location"</tt> is a valid property assignment, and <tt>close()</tt> is a valid method call. However, when you open or close a window within an event handler, you must specify window.open() or window.close() instead of simply using open() or close(). Due to the scoping of static objects in JavaScript, a call to close() without specifying an object name is equivalent to document.close().
+
+<p>You can reference a window's frame objects in your code by using the frames array. The frames array contains an entry for each frame in a window with a &LTFRAMESET;&GT; tag.
+
+<p>Windows lack event handlers until some HTML is loaded into them containing a &LTBODY;&GT; or &LTFRAMESET;&GT; tag.
+
+
+<h3>Properties</h3>
+<li><a href="ref_d-e.html#defaultStatus_property">defaultStatus</a> reflects the default message displayed in the window's status bar
+<li><a href="ref_f-g.html#frame_object">frames</a> is an array reflecting all the frames in a window
+<li><a href="ref_h-l.html#length_property">length</a> reflects the number of frames in a parent window
+<li><a href="ref_m-q.html#name_property">name</a> reflects the <i>windowName</i> argument
+<li><a href="ref_m-q.html#parent_property">parent</a> is a synonym for the <i>windowName</i> argument and refers to a window containing a frameset
+<li><a href="ref_s-s.html#self_property">self</a> is a synonym for the <i>windowName</i> argument and refers to the current window
+<li><a href="ref_s-s.html#status_property">status</a> specifies a priority or transient message in the window's status bar
+<li><a href="ref_t-z.html#top_property">top</a> is a synonym for the <i>windowName</i> argument and refers to the top-most Navigator window
+<li><a href="ref_t-z.html#window_property">window</a> is a synonym for the <i>windowName</i> argument and refers to the current window
+
+<p>The following objects are also properties of the window object:
+<li><a href="ref_d-e.html#document_object">document</a>
+<li><a href="ref_f-g.html#frame_object">frame</a>
+<li><a href="ref_h-l.html#location_object">location</a>
+
+
+<h3>Methods</h3>
+<li><a href="ref_a-c.html#alert_method">alert</a>
+<li><a href="ref_a-c.html#close_window_method">close</a>
+<li><a href="ref_a-c.html#confirm_method">confirm</a>
+<li><a href="ref_m-q.html#open_window_method">open</a>
+<li><a href="ref_m-q.html#prompt_method">prompt</a>
+<li><a href="ref_s-s.html#setTimeout_method">setTimeout</a>
+<li><a href="ref_a-c.html#clearTimeout_method">clearTimeout</a>
+
+
+<h3>Event handlers</h3>
+<li><a href="ref_m-q.html#onLoad_event">onLoad</a>
+<li><a href="ref_m-q.html#onUnload_event">onUnload</a>
+
+
+<h3>Examples</h3>
+<p>In the following example, the document in the top window opens a second window, <i>window2,</i> and defines pushbuttons that open a message window, write to the message window, close the message window, and close <i>window2.</i> The onLoad and onUnload event handlers of the document loaded into <i>window2</i> display alerts when the window opens and closes.
+
+<p>WIN1.HTML, which defines the frames for the first window, contains the following code:
+<xmp>
+<html>
+<head>
+<title>Window object example: Window 1</title>
+</head>
+<body bgcolor="antiquewhite">
+<script>
+window2=open("win2.html","secondWindow","scrollbars=yes,width=250, height=400")
+document.writeln("<B>The first window has no name: " + window.name + "</B>")
+document.writeln("<BR><B>The second window is named: " + window2.name + "</B>")
+</script>
+<form name="form1">
+<p><input type="button" value="Open a message window" onclick="window3=window.open('','messageWindow','scrollbars=yes,width=175, height=300')">
+<p><input type="button" value="Write to the message window" onclick="window3.document.writeln('Hey there');window3.document.close()">
+<p><input type="button" value="Close the message window" onclick="window3.close()">
+<p><input type="button" value="Close window2" onclick="window2.close()">
+</form>
+</body>
+</html>
+</xmp>
+
+<p>WIN2.HTML, which defines the content for <i>window2</i>, contains the following code:
+<xmp>
+<html>
+<head>
+<title>Window object example: Window 2</title>
+</head>
+<body bgcolor="oldlace" onload="alert('Message from ' + window.name + ': Hello, World.')" onunload="alert('Message from ' + window.name + ': I\'m closing')">
+<b>Some numbers</b>
+<li>one
+<li>two
+<li>three
+<li>four
+<li>five
+<li>six
+<li>seven
+<li>eight
+<li>nine
+</body>
+</html>
+</xmp>
+
+<p>See also the example for the <a href="ref_f-g.html#frame_object">frame</a> object.
+
+
+<h3>See also</h3>
+<li><a href="ref_d-e.html#document_object">document</a> and <a href="ref_f-g.html#frame_object">frame</a> objects
+
+<!------------------------------------------------------------------------------------------------->
+<hr>
+<a name="window_property"><h2>window property</h2></a>
+<p>
+The window property is a synonym for the current window or frame.
+
+<h3>Syntax</h3>
+<pre>
+1. window.<i>propertyName</i>
+2. window.<i>methodName</i>
+</pre>
+<p><i>propertyName</i> is the defaultStatus, status, length, or name property when the calling window refers to a window object.
+<br><i>propertyName</i> is the length or name property when the calling window refers to a frame object.
+<br><i>methodName</i> is any method associated with the window object.
+
+<h3>Property of</h3>
+<p><a href="ref_f-g.html#frame_object">frame</a>, <a href="ref_t-z.html#window_object">window</a>
+
+<h3>Description</h3>
+<p>The window property refers to the current window or frame.
+
+<p> Although you can use the window property as a synonym for the current frame, your code is more readable if you use the self property. For example, <tt>window.name</tt> and <tt>self.name</tt> both specify the name of the current frame, but <tt>self.name</tt> is easier to understand.
+
+<p>Use the window property to disambiguate a property of the window object from a form or form element of the same name. You can also use the window property to make your code more readable.
+
+<p>The window property is read-only. The value of the window property is
+<pre>     &ltobject; <i>nameAttribute</i>&gt;</pre>
+where <i>nameAttribute</i> is the NAME attribute if window refers to a frame, or an internal reference if window refers to a window.
+
+<h3>Examples</h3>
+<p>In the following example, <tt>window.status</tt> is used to set the status property of the current window. This usage disambiguates the status property of the current window from a form called "status" within the current window.
+<xmp><a href="" onclick="this.href=pickRandomURL()" onmouseover="window.status='Pick a random URL' ; return true">
+Go!</a></xmp>
+
+
+<h3>See also</h3>
+<li><a href="ref_s-s.html#self_property">self</a> property
+<!------------------------------------------------------------------------------------------------->
+<hr>
+<a name="write_method"><h2>write method</h2></a>
+<p>
+Writes one or more HTML expressions to a document in the specified window.
+
+<h3>Syntax</h3>
+<pre>document.write(<i>expression1</i> [,<i>expression2</i>], ...[,<i>expressionN</i>])</pre>
+<i>expression1</i> through <i>expressionN</i> are any JavaScript expressions or the properties of existing objects.
+
+<h3>Method of</h3>
+<p><a href="ref_d-e.html#document_object">document</a>
+
+<h3>Description</h3>
+<p>The write method displays any number of expressions in a document window. You can specify any JavaScript expression with the write method, including numerics, strings, or logicals.
+
+<p>The write method is the same as the writeln method, except the write method does not append a newline character to the end of the output.
+
+<p>Use the write method within any &ltSCRIPT;&gt; tag or within an event handler. Event handlers execute after the original document closes, so the write method will implicitly open a new document of <i>mimeType</i> <tt>text/html</tt> if you do not explicitly issue a document.open() method in the event handler.
+
+<h3>Examples</h3>
+In the following example, the write method takes several arguments, including strings, a numeric, and a variable:
+<pre>
+var mystery = "world"
+// Displays Hello world testing 123
+msgWindow.document.write("Hello ", mystery, " testing ", 123)
+</pre>
+
+In the following example, the write method takes two arguments. The first argument is an assignment expression, and the second argument is a string literal.
+<pre>
+//Displays Hello world...
+msgWindow.document.write(mystr = "Hello "+ "world...")
+</pre>
+
+In the following example, the write method takes a single argument that is a conditional expression. If the value of the variable <i>age</i> is less than 18, the method displays "Minor". If the value of <i>age</i> is greater than or equal to 18, the method displays "Adult".
+<pre>
+msgWindow.document.write(status = (age &gt;= 18) ? "Adult" : "Minor")
+</pre>
+
+<h3>See also</h3>
+<li><a href="ref_a-c.html#close_document_method">close</a>, <a href="ref_a-c.html#clear_method">clear</a>, <a href="ref_m-q.html#open_document_method">open</a>, <a href="ref_t-z.html#writeln_method">writeln</a> methods
+<!------------------------------------------------------------------------------------------------>
+<hr>
+<a name="writeln_method"><h2>writeln method</h2></a>
+<p>
+Writes one or more HTML expressions to a document in the specified window and follows them with a newline character.
+
+<h3>Syntax</h3>
+<pre>document.writeln(<i>expression1</i> [,<i>expression2</i>], ...[,<i>expressionN</i>])</pre>
+<i>expression1</i> through <i>expressionN</i> are any JavaScript expressions or the properties of existing objects.
+
+<h3>Method of</h3>
+<p><a href="ref_d-e.html#document_object">document</a>
+
+<h3>Description</h3>
+<p>The writeln method displays any number of expressions in a document window. You can specify any JavaScript expression, including numerics, strings, or logicals.
+
+<p>The writeln method is the same as the write method, except the writeln method appends a newline character to the end of the output. HTML ignores the newline character, except within certain tags such as &ltPRE;&gt.;
+
+<p>Use the writeln method within any &ltSCRIPT;&gt; tag or within an event handler. Event handlers execute after the original document closes, so the writeln method will implicitly open a new document of <i>mimeType</i> <tt>text/html</tt> if you do not explicitly issue a document.open() method in the event handler.
+
+<h3>Examples</h3>
+<p>All the examples used for the <a href="ref_t-z.html#write_method">write</a> method are also valid with the writeln method.
+
+<h3>See also</h3>
+<li><a href="ref_a-c.html#close_document_method">close</a>, <a href="ref_a-c.html#clear_method">clear</a>, <a href="ref_m-q.html#open_document_method">open</a>, <a href="ref_t-z.html#write_method">write</a> methods
+<!------------------------------------------------------------------------------------------------->
+<hr>
+
+<script>
+document.write("<FONT SIZE=-2>Last modified " + document.lastModified)
+</script>
+<p>
+</body>
+<html>
+
+<!--
+     FILE ARCHIVED ON 23:27:24 Jun 17, 1997 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 18:13:27 Nov 08, 2018.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

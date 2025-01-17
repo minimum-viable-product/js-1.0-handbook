@@ -1,0 +1,289 @@
+<html>
+<body>
+<h1>Navigator Objects</h1>
+
+<ul>
+<li><a href="#usingobj">Using Navigator Objects</a>
+<li><a href="#clientobj">Navigator Object Hierarchy</a>
+<li><a href="#layout">JavaScript and HTML Layout</a>
+<li><a href="#keyobj">Key Navigator Objects</a>
+</ul>
+
+<!----------------------------------------------------------------------------->
+<a name="usingobj"> <h2>Using Navigator Objects</h2></a>
+<p>
+When you load a page in Navigator, it creates a number of objects corresponding
+to the page, its contents, and other pertinent information.
+<p>
+Every page always has the following objects:
+<ul>
+<li>window: the top-level object; contains properties that apply to the entire window.
+There is also a window object for each for "child window" in a frames document.
+<li>location: contains properties on the current URL
+<li>history: contains properties representing URLs
+the user has previously visited
+<li>document: contains properties for content in the current document,
+such as title, background color, and forms
+</ul>
+
+<p>
+The properties of the document object are largely content-dependent.
+That is, they are created based on the content that you put in the document.
+For example, the document object has a property for each form and each anchor
+in the document.
+<p>
+For example, suppose you create a page named simple.html that contains the following
+HTML:
+<xmp>
+<title>A Simple Document</title>
+<body><form name="myform" action="FormProc()" method="get">Enter a value: <input type="text" name="text1" value="blahblah" size="20">
+Check if you want:
+<input type="checkbox" name="Check1" checked onclick="update(this.form)"> Option #1
+<p>
+<input type="button" name="Button1" value="Press Me" onclick="update(this.form)">
+</form></body>
+</xmp>
+<p>
+As always, there would be window, location, history, and document objects.
+These would have properties such as:
+<ul>
+<li>location.href = "http://www.terrapin.com/samples/vsimple.html"
+<li>document.title = "A Simple Document"
+<li>document.fgColor = #000000
+<li>document.bgColor = #ffffff
+<li>history.length = 7
+</ul>
+<p>
+These are just some example values.  In practice, these values would be based
+on the document's actual location, its title, foreground and background colors,
+and so on.
+<p>
+Navigator would also create the following objects based on the contents of the page:
+<ul>
+<li>document.myform
+<li>document.myform.Check1
+<li>document.myform.Button1
+</ul>
+<p>
+These would have properties such as:
+<ul>
+<li>document.myform.action = http://terrapin/mocha/formproc()
+<li>document.myform.method = get
+<li>document.myform.length = 5
+<li>document.myform.Button1.value = Press Me
+<li>document.myform.Button1.name = Button1
+<li>document.myform.text1.value = blahblah
+<li>document.myform.text1.name = text1
+<li>document.myform.Check1.defaultChecked = true
+<li>document.myform.Check1.value = on
+<li>document.myform.Check1.name = Check1
+</ul>
+<p>
+Notice that each of the property references above starts with "document,"
+followed by the name of the form, "myform," and then the property name (for form properties)
+or the name of the form element.
+This sequence follows the Navigator's object hierarchy, discussed in the next section.
+
+<!----------------------------------------------------------------------------->
+<hr>
+<a name="clientobj"> <h2>Navigator Object Hierarchy</h2></a>
+<p>
+The objects in Navigator exist in a hierarchy that reflects the
+hierarchical structure of the HTML page itself.
+Although you cannot derive object classes from these objects,
+as you can in languages such as Java, it is useful to understand the Navigator's
+JavaScript object hierarchy.
+In the strict object-oriented sense, this type of hierarchy is known
+as an <i>instance hierarchy</i>, since it concerns specific instances of
+objects rather than object classes.
+<p>
+In this hierarchy, an object's "descendants" are properties of the object.
+For example, a form named "form1" is an object, but is also a property of document,
+and is referred to as "document.form1".
+
+The Navigator object hierarchy is illustrated below:
+
+<xmp>
+navigator
+
+window
+  |
+  +--parent, frames, self, top
+  |
+  +--location
+  |
+  +--history
+  |
+  +--document
+       |
+       +--forms
+       |    |
+       |  elements (text fields, textarea, checkbox, password
+       |            radio, select, button, submit, reset)
+       +--links
+       |
+       +--anchors
+</xmp>
+
+<p>
+To refer to specific properties of these objects, you must specify the object
+name and all its ancestors.
+<b>Exception:</b> You are not required to include the window object.
+
+<!---------------------------------------------------------------------------->
+<hr>
+<a name="layout"><h2>JavaScript and HTML Layout</h2></a>
+<p>
+To use JavaScript properly in the Navigator, it is important to have a basic understanding of how
+the Navigator performs <i>layout</i>.  Layout refers to transforming the plain text directives
+of HTML into graphical display on your computer.  Generally speaking, layout happens sequentially
+in the Navigator.  That is, the Navigator starts from the top of the HTML file and works its way
+down, figuring out how to display output to the screen as it goes.  So, it starts with the HEAD of
+an HTML document, then starts at the top of the BODY and works its way down.
+<p>
+Because of this "top-down" behavior, JavaScript only reflects HTML that it has encountered.
+For example, suppose you define a form with a couple of text input elments:
+<xmp>
+<form name="statform">
+<input type="text" name="username" size="20">
+<input type="text" name="userage" size="3">
+</xmp>
+<p>
+Then these form elements are reflected as JavaScript objects <i>document.statform.username</i>
+and <i>document.statform.userage</i>, that you can use anywhere <b>after</b> the form is defined.
+However, you could not use these objects <b>before</b> the form is defined.
+So, for example, you could display the value of these objects in a script after the form definition:
+<xmp>
+<script>
+document.write(document.statform.username.value)
+document.write(document.statform.userage.value)
+</script>
+</xmp>
+<p>
+However, if you tried to do this before the form definition (i.e. above it in the HTML page),
+you would get an error, since the objects don't exist yet in the Navigator.
+<p>
+Likewise, once layout has occured, setting a property value does not affect its value or
+its appearance.  For example, suppose you have a document title defined as follows"
+<xmp>
+<title>My JavaScript Page</title>
+</xmp>
+<p>
+This is reflected in JavaScript as the value of <i>document.title</i>.  Once the Navigator
+has displayed this in layout (in this case, in the title bar of the Navigator window), you cannot
+change the value in JavaScript.
+So, if later in the page, you have the following script:
+<pre>
+document.title = "The New Improved JavaScript Page"
+</pre>
+<p>
+it will not change the value of <i>document.title</i> nor affect the appearance of the page,
+nor will is generate an error.
+
+
+<!---------------------------------------------------------------------------->
+<hr>
+<a name="keyobj"> <h2>Key Navigator Objects</h2></a>
+<p>
+Some of the most useful Navigator objects include document, form, and window.
+
+<!---------------------------------------------------------------------------->
+<h3>Using the document Object</h3>
+<p>
+One of the most useful Navigator objects is the document object, because its
+write and writeln methods can generate HTML.
+These methods are the way that you display JavaScript expressions to the user.
+The only difference between write and writeln is that writeln adds a carriage return
+at the end of the line.  However, since HTML ignores carriage returns, this will
+only affect preformatted text, such as that inside a PRE tag.
+<p>
+The document object also has onLoad and onUnload event-handlers to perform
+functions when a user first loads a page and when a user exits a page.
+<p>
+There is only one document object for a page, and it is the ancestor for all the
+form, link, and anchor objects in the page.
+
+
+<!---------------------------------------------------------------------------->
+<h3>Using the form Object</h3>
+<p>
+Navigator creates a form object for each form in a document.
+You can name a form with the NAME attribute, as in this example:
+<xmp>
+<form name="myform">
+<input type="text" name="quantity" onchange="...">
+...
+</form>
+</xmp>
+<p>
+There would be a JavaScript object named <i>myform</i> based on this form.
+The form would have a property corresponding to the text object,
+that you would refer to as
+
+<xmp>
+document.myform.quantity
+</xmp>
+
+You would refer to the value property of this object as
+
+<xmp>
+document.myform.quantity.value
+</xmp>
+
+<p>
+The forms in a document are stored in an array called <i>forms</i>.
+The first (topmost in the page) form is <i>forms[0]</i>,
+the second <i>forms[1]</i>, and so on.
+So the above references could also be:
+<xmp>
+document.forms[0].quantity
+document.forms[0].quantity.value
+</xmp>
+<p>
+Likewise, the elements in a form, such as text fields, radio buttons, and so on,
+are stored in an <i>elements</i> array.
+
+<!-----------------------------------------
+<H3>Using the location and Objects</H3>
+<P>
+The location object...
+The history object...
+----------------------------------->
+
+<!---------------------------------------------------------------------------->
+<h3>Using the window Object</h3>
+<p>
+The window object is the "parent" object for all other objects in Navigator.
+You can always omit the object name in references to window properties and methods.
+
+<p>
+Window has several very useful methods that create new windows and
+pop-up dialog boxes:
+<ul>
+<li>open and close: Opens and closes a browser window
+<li>alert: Pops up an alert dialog box
+<li>confirm: Pops up a confirmation dialog box
+</ul>
+
+<p>
+The window object has properties for all the frames in a frameset.
+The frames are stored in the frames array.
+The frames array contains an entry for each child frame in a window. For example, if a
+window contains three child frames, these frames are reflected as window.frames[0],
+window.frames[1], and window.frames[2].
+
+<p>
+The status property enables you to set the message in the status bar
+at the bottom of the client window.
+
+
+</body>
+</html>
+
+<!--
+     FILE ARCHIVED ON 23:25:04 Jun 17, 1997 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 18:05:51 Nov 08, 2018.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

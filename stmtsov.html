@@ -1,0 +1,307 @@
+<html>
+<body>
+<h1>Overview of JavaScript Statements</h1>
+<p>JavaScript supports a compact set of statements that you can use to incorporate a great deal of interactivity in web pages. The statements are:
+<ul>
+<li><a href="#conditional">Conditional statements</a>
+<ul>
+<li><b>if...else</b>
+</ul>
+<li><a href="#loops">Loop statements</a>
+<ul>
+<li><b>for</b>
+<li><b>while</b>
+<li><b>break</b>
+<li><b>continue</b>
+</ul>
+<li><a href="#objects">Object manipulation statements</a>
+<ul>
+<li><b>for...in</b>
+<li><b>new</b>
+<li><b>this</b>
+<li><b>with</b>
+</ul>
+<li><a href="#comments">Comments</a>
+<ul>
+<li><b>//</b>
+<li><b>/*...*/</b>
+</ul>
+</ul>
+
+<p>The following sections provide a brief overview of each statement. See the <a href="stmts.html">statements reference</a> for detailed information about statement syntax.
+
+<!------------------------------------------------------------------------------------------------->
+<hr>
+<a name="conditional"><h2>Conditional Statements</h2></a>
+<p>Conditional statements let you perform certain actions based on a logical condition. You specify a condition to test and the commands to execute if the condition is true. JavaScript has one conditional statement: the <b>if</b> statement.
+
+<h3>if statement</h3>
+<p>An <b>if</b> statement is an either/or switch. If a specified condition is true, JavaScript performs certain statements. If the condition is false, JavaScript might perform other statements. An <b>if</b> statement looks as follows:
+
+<pre>
+<b>if</b> (<i>condition</i>) {
+   <i>statements1</i> }
+[<b>else</b> {
+   <i>statements2</i>}]
+</pre>
+
+<p>The condition can be any JavaScript expression that evaluates to true or false. The conditional statements can be any JavaScript statements, including further nested <b>if</b> statements. Multiple statements must be enclosed in braces.
+
+<p><b>Example.</b> In the following example, the function <i>checkData()</i> returns true if the number of characters in a text object is three; otherwise, it displays an alert and returns false.
+<xmp>
+function checkData (){
+if (document.form1.threeChar.value.length == 3) {
+   return true}
+   else {
+      alert("Enter exactly three characters. " + document.form1.threeChar.value + " is not valid.")
+      return false}
+}
+</xmp>
+
+<!------------------------------------------------------------------------------------------------->
+<hr>
+<a name="loops"><h2>Loop Statements</h2></a>
+<p>A loop is a set of commands that executes repeatedly until a specified condition is met. JavaScript supports two loop structures: <b>for</b> and <b>while</b>. In addition, the <b>break</b> and <b>continue</b> statements are used specifically with loops.
+
+<p>Another statement, <b>for...in</b>, executes statements repeatedly but is used for object manipulation. See <a href="#objects">Object Manipulation Statements</a>.
+
+<h3>for statement</h3>
+<p>A <b>for</b> loop repeats a loop until a specified condition evaluates to false. The JavaScript <b>for</b> loop is similar to the Java <b>for</b> loop and the traditional <b>for</b> loop in C. A <b>for</b> statement looks as follows:
+
+<pre>
+for ([<i>initial-expression</i>;] [<i>condition</i>;] [<i>increment-expression</i>]) {
+   <i>statements</i>
+}
+</pre>
+
+<p>When a <b>for</b> loop is encountered, the <i>initial-expression</i> is executed. The <i>statements</i> are executed as long as <i>condition</i> evaluates to true. The <i>increment-expression</i> is performed on each pass through the loop. The sequence of execution is as follows:
+<ol>
+<li>The initializing expression <i>initial-expression</i>, if any, is executed. This expression usually initializes one or more loop counters, but the syntax allows an expression of any degree of complexity.
+<li>The <i>condition</i> expression is evaluated. If the value of <i>condition</i> is true, the loop statements execute. If the value of <i>condition</i> is false, the <b>for</b> loop terminates.
+<li>The update expression <i>increment-expression</i> executes.
+<li>The <i>statements</i> execute and control returns to step 2.
+</ol>
+
+<p><b>Example.</b> The following function contains a <b>for</b> statement that counts the number of selected options in a scrolling list (a select object that allows multiple selections). The <b>for</b> statement declares the variable <i>i</i> and initializes it to zero. It checks that <i>i</i> is less than the number of options in the select object, performs the succeeding <b>if</b> statement, and increments <i>i</i> by one after each pass through the loop.
+<xmp>
+<script>
+function howMany(selectObject) {
+   var numberSelected=0
+   for (i=0; i < selectObject.options.length; i++) {
+      if (selectObject.options[i].selected==true)
+         numberSelected++
+   }
+   return numberSelected
+}
+</script>
+<form name="selectForm">
+<p><b>Choose some music types, then click the button below:</b>
+<br><select name="musicTypes" multiple>
+   <option selected> R&B;
+   <option> Jazz
+   <option> Blues
+   <option> New Age
+   <option> Classical
+   <option> Opera
+</select>
+<p><input type="button" value="How many are selected?" onclick="alert ('Number of options selected: ' + howMany(document.selectForm.musicTypes))">
+</form>
+</xmp>
+
+<h3>while statement</h3>
+<p>A <b>while</b> statement repeats a loop as long as a specified condition evaluates to true. A <b>while</b> statement looks as follows:
+
+<pre>
+<b>while</b> (<i>condition</i>) {
+   <i>statements</i>
+}
+</pre>
+
+<p>If the condition becomes false, the statements within the loop stop executing and control passes to the statement following the loop.
+
+<p>The condition test occurs only when the statements in the loop have been executed and the loop is about to be repeated. That is, the condition test is not continuous, but is performed once at the beginning of the loop and again just following the last statement in <i>statements</i>, each time control passes through the loop.
+
+<p><b>Example 1.</b> The following <b>while</b> loop iterates as long as <i>n</i> is less than three.
+
+<xmp>
+n = 0
+x = 0
+while( n &lt; 3 ) {
+   n ++
+   x += n
+}
+</xmp>
+
+<p>Each iteration, the loop increments <i>n</i> and adds it to <i>x</i>. Therefore, <i>x</i> and <i>n</i> take on the following values:
+<ul>
+<li>After the first pass: n = 1 and x = 1
+<li>After the second pass: n = 2 and x = 3
+<li>After the third pass: n = 3 and x = 6
+</ul>
+
+<p>After completing the third pass, the condition <tt>n &LT; 3</tt> is no longer true, so the loop terminates.
+
+<p><b>Example 2: infinite loop.</b> Make sure the condition in a loop eventually becomes false; otherwise, the loop will never terminate. The statements in the following <b>while</b> loop execute forever because the condition never becomes false:
+
+<xmp>
+while (true) {
+   alert("Hello, world") }
+</xmp>
+
+<h3>break statement</h3>
+<p>The <b>break</b> statement terminates the current <b>while</b> or <b>for</b> loop and transfers program control to the statement following the terminated loop. A <b>break</b> statement looks as follows:
+
+<pre>
+<b>break</b>
+</pre>
+
+<p><b>Example.</b> The following function has a <b>break</b> statement that terminates the <b>while</b> loop when <i>i</i> is 3, and then returns the value 3 * <i>x</i>.
+<xmp>
+function testBreak(x) {
+   var i = 0
+   while (i &lt; 6) {
+      if (i == 3)
+         break
+      i++
+   }
+   return i*x
+}
+</xmp>
+
+<h3>continue statement</h3>
+<p>A <b>continue</b> statement terminates execution of the block of statements in a <b>while</b> or <b>for</b> loop, and continues execution of the loop with the next iteration. A <b>continue</b> statement looks as follows:
+<pre>
+<b>continue</pre>
+</b>
+
+<p>In contrast to the <b>break</b> statement, <b>continue</b> does not terminate the execution of the loop entirely. Instead,
+<ul>
+<li>In a <b>while</b> loop, it jumps back to the <i>condition</i>.
+<li>In a <b>for</b> loop, it jumps to the <i>increment-expression</i>.
+</ul>
+
+<p><b>Example.</b> The following example shows a <b>while</b> loop that has a <b>continue</b> statement that executes when the value of <i>i</i> is 3. Thus, <i>n</i> takes on the values 1, 3, 7, and 12.
+<xmp>
+i = 0
+n = 0
+while (i &lt; 5) {
+   i++
+   if (i == 3)
+      continue
+   n += i
+}
+</xmp>
+
+<!------------------------------------------------------------------------------------------------->
+<hr>
+<a name="objects"><h2>Object Manipulation Statements</h2></a>
+<p>JavaScript has several ways of manipulating objects: <b>for...in</b> statement, <b>new</b> operator, <b>this</b> keyword, and <b>with</b> statement.
+
+<h3>for...in statement</h3>
+<p>The <b>for...in</b> statement iterates a specified variable over all the properties of an object. For each distinct property, JavaScript executes the specified statements. A <b>for...in</b> statement looks as follows:
+
+<pre>
+<b>for</b> (<i>variable</i> <b>in</b> <i>object</i>) {
+   <i>statements</i> }
+</pre>
+
+<p><b>Example.</b> The following function takes as its argument an object and the object's name. It then iterates over all the object's properties and returns a string that lists the property names and their values.
+<xmp>
+function dump_props(obj, obj_name) {
+   var result = ""
+   for (var i in obj) {
+      result += obj_name + "." + i + " = " + obj[i] + "<br>"
+   }
+   result += "<hr>"
+   return result
+}
+</xmp>
+
+<p>For an object <i>car</i> with properties <i>make</i> and <i>model</i>, <i>result</i> would be:
+<xmp>
+car.make=Ford
+car.model=Mustang
+</xmp>
+
+<h3>new operator</h3>
+<p>The <b>new</b> operator lets you create an instance of a user-defined object type. Use <b>new</b> as follows:
+
+<pre>
+<i>objectName</i> = <b>new</b> <i>objectType</i> ( <i>param1</i> [,<i>param2</i>] ...[,<i>paramN</i>] )
+</pre>
+
+<p>For information, see <a href="stmts.html#new_statement">new</a> in the statements reference.
+
+<h3>this keyword</h3>
+<p>Use the <b>this</b> keyword to refer to the current object. In general, <b>this</b> refers to the calling object in a method. Use <b>this</b> as follows:
+
+<pre>
+<b>this</b>[.<i>propertyName</i>]
+</pre>
+
+<p><b>Example.</b> Suppose a function called <i>validate</i> validates an object's value property, given the object and the high and low values:
+<xmp>
+function validate(obj, lowval, hival) {
+   if ((obj.value &lt; lowval) || (obj.value &gt; hival))
+      alert("Invalid Value!")
+}
+</xmp>
+<p>You could call <i>validate</i> in each form element's onChange event handler, using <b>this</b> to pass it the form element, as in the following example:
+<xmp>
+<b>Enter a number between 18 and 99:</b>
+<input type="text" name="age" size="3" onchange="validate(this, 18, 99)">
+</xmp>
+
+<h3>with statement</h3>
+<p>The <b>with</b> statement establishes the default object for a set of statements. Within the set of statements, any property references that do not specify an object are assumed to be for the default object. A <b>with</b> statement looks as follows:
+
+<pre>
+<b>with</b> <i>(object)</i>{
+    <i>statements</i>
+}
+</pre>
+
+<p><b>Example.</b> The following <b>with</b> statement specifies that the Math object is the default object. The statements following the <b>with</b> statement refer to the PI property and the cos and sin methods, without specifying an object. JavaScript assumes the Math object for these references.
+<xmp>
+var a, x, y
+var r=10
+with (Math) {
+   a = PI * r * r
+   x = r * cos(PI)
+   y = r * sin(PI/2)
+}
+</xmp>
+
+<!------------------------------------------------------------------------------------------------->
+<hr>
+<a name="comments"><h2>Comments</h2></a>
+<p>Comments are notations by the author to explain what a script does. Comments are ignored by the interpreter. JavaScript supports Java-style comments:
+<ul>
+<li>Comments on a single line are preceded by a double-slash (//).
+<li>Comments that span multiple lines are preceded by a /* and followed by a */.
+</ul>
+
+<p><b>Example.</b>. The following example shows two comments.
+<xmp>
+// This is a single-line comment.
+/* This is a multiple-line comment. It can be of any length, and
+you can put whatever you want here. */
+</xmp>
+
+<!------------------------------------------------------------------------------------------------->
+<hr>
+
+<script>
+document.write("<FONT SIZE=-2>Last modified " + document.lastModified)
+</script>
+<p>
+</body>
+</html>
+
+<!--
+     FILE ARCHIVED ON 23:25:44 Jun 17, 1997 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 18:10:04 Nov 08, 2018.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

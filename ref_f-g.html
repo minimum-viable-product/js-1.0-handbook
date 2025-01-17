@@ -1,0 +1,924 @@
+<html>
+<body>
+
+<a name="fgColor_property"><h2>fgColor property</h2></a>
+<p>
+A string specifying the color of the document text.
+
+<h3>Syntax</h3>
+<pre>document.fgColor</pre>
+
+<h3>Property of</h3>
+<p><a href="ref_d-e.html#document_object">document</a>
+
+<h3>Description</h3>
+<p>The fgColor property is expressed as a hexadecimal RGB triplet or as one of the string literals listed in <a href="colors.html">Color Values</a>. This property is the JavaScript reflection of the TEXT attribute of the &ltBODY;&gt; tag. The default value of this property is set by the user on the Colors tab of the Preferences dialog box, which is displayed by choosing General Preferences from the Options menu. You cannot set this property after the HTML source has been through layout.
+
+<p>If you express the color as a hexadecimal RGB triplet, you must use the format rrggbb. For example, the hexadecimal RGB values for salmon are red=FA, green=80, and blue=72, so the RGB triplet for salmon is "FA8072".
+
+<p>You can override the value set in the fgColor property in either of the following ways:
+<li>Setting the COLOR attribute of the &ltFONT;&gt; tag.
+<li>Using the fontcolor method.
+
+<h3>Examples</h3>
+<p>The following example sets the color of the foreground text to aqua using a string literal:
+<pre>
+document.fgColor="aqua"
+</pre>
+<p>The following example sets the color of the foreground text to aqua using a hexadecimal triplet:
+<pre>
+document.fgColor="00FFFF"
+</pre>
+
+<h3>See also</h3>
+<li><a href="ref_a-c.html#alinkColor_property">alinkColor</a>, <a href="ref_a-c.html#bgColor_property">bgColor</a>, <a href="ref_h-l.html#linkColor_property">linkColor</a>, and <a href="ref_t-z.html#vlinkColor_property">vlinkColor</a> properties
+<li><a href="ref_f-g.html#fontcolor_method">fontcolor</a>
+<!------------------------------------------------------------------------------------------------->
+<hr>
+<a name="fixed_method"><h2>fixed method</h2></a>
+<p>
+Causes a string to be displayed in fixed-pitch font as if it were in a &ltTT;&gt; tag.
+
+<h3>Syntax</h3>
+<pre><i>stringName</i>.fixed()</pre>
+<p><i>stringName</i> is any string or a property of an existing object.
+
+<h3>Method of</h3>
+<p><a href="ref_s-s.html#string_object">string</a>
+
+<h3>Description</h3>
+<p>Use the fixed method with the write or writeln methods to format and display a string in a document.
+
+<h3>Examples</h3>
+The following example uses the fixed method to change the formatting of a string:
+<pre>
+var worldString="Hello, world"
+
+document.write(worldString.fixed())
+</pre>
+
+<p>The previous example produces the same output as the following HTML:
+<pre>
+<tt>&ltTT;&gtHello;, world&lt;/TT&gt;</tt>
+</pre>
+
+<!------------------------------------------------------------------------------------------------>
+<hr>
+<a name="floor_method"><h2>floor method</h2></a>
+<p>
+Returns the greatest integer less than or equal to a number.
+
+<h3>Syntax</h3>
+<pre>Math.floor(<i>number</i>)</pre>
+<p><i>number</i> is any numeric expression or a property of an existing object.
+
+<h3>Method of</h3>
+<p><a href="ref_m-q.html#Math_object">Math</a>
+
+<h3>Examples</h3>
+<pre>
+//Displays the value 45
+document.write("&ltP;&gtThe; floor of 45.95 is " + Math.floor(45.95))
+
+//Displays the value -46
+document.write("&ltP;&gtThe; floor of -45.95 is " + Math.floor(-45.95))
+</pre>
+
+<h3>See also</h3>
+<li><a href="ref_a-c.html#ceil_method">ceil</a> method
+<!------------------------------------------------------------------------------------------------>
+<hr>
+<a name="focus_method"><h2>focus method</h2></a>
+<p>
+Gives focus to the specified object.
+
+<h3>Syntax</h3>
+<pre>
+1. <i>passwordName</i>.focus()
+2. <i>selectName</i>.focus()
+3. <i>textName</i>.focus()
+4. <i>textareaName</i>.focus()
+</pre>
+<p><i>passwordName</i> is either the value of the NAME attribute of a password object or an element in the <i>elements</i> array.
+<br><i>selectName</i> is either the value of the NAME attribute of a select object or an element in the <i>elements</i> array.
+<br><i>textName</i> is either the value of the NAME attribute of a text object or an element in the <i>elements</i> array.
+<br><i>textareaName</i> is either the value of the NAME attribute of a textarea object or an element in the <i>elements</i> array.
+
+<h3>Method of</h3>
+<p><a href="ref_m-q.html#password_object">password</a>, <a href="ref_s-s.html#select_object">select</a>, <a href="ref_t-z.html#text_object">text</a>, <a href="ref_t-z.html#textarea_object">textarea</a>
+
+<h3>Description</h3>
+<p>Use the focus method to navigate to a specific form element and give it focus. You can then either programatically enter a value in the element or let the user enter a value.
+
+<h3>Examples</h3>
+<p>In the following example, the <i>checkPassword</i> function confirms that a user has entered a valid password. If the password is not valid, the focus method returns focus to the password object and the select method highlights it so the user can re-enter the password.
+<pre>
+function checkPassword(userPass) {
+   if (badPassword) {
+      alert("Please enter your password again.")
+      userPass.focus()
+      userPass.select()
+   }
+}</pre>
+This example assumes that the password is defined as:
+<pre>&ltINPUT; TYPE="password" NAME="userPass"&gt;</pre>
+
+<h3>See also</h3>
+<li><a href="ref_a-c.html#blur_method">blur</a>, <a href="ref_s-s.html#select_method">select</a> methods
+<!------------------------------------------------------------------------------------------------>
+<hr>
+<a name="fontcolor_method"><h2>fontcolor method</h2></a>
+<p>
+Causes a string to be displayed in the specified color as if it were in a &ltFONT; COLOR=<i>color</i>&gt; tag.
+
+<h3>Syntax</h3>
+<pre><i>stringName</i>.fontcolor(<i>color</i>)</pre>
+<p><i>stringName</i> is any string or a property of an existing object.
+<br><i>color</i> is a string or a property of an existing object, expressing the color as a hexadecimal RGB triplet or as one of the string literals listed in <a href="colors.html">Color Values</a>.
+
+<h3>Method of</h3>
+<p><a href="ref_s-s.html#string_object">string</a>
+
+<h3>Description</h3>
+<p>Use the fontcolor method with the write or writeln methods to format and display a string in a document.
+<p>If you express <i>color</i> as a hexadecimal RGB triplet, you must use the format rrggbb. For example, the hexadecimal RGB values for salmon are red=FA, green=80, and blue=72, so the RGB triplet for salmon is "FA8072".
+
+<p>The fontcolor method overrides a value set in the fgColor property.
+
+<h3>Examples</h3>
+The following example uses the fontcolor method to change the color of a string
+<pre>
+var worldString="Hello, world"
+
+document.write(worldString.fontcolor("maroon") +
+   " is maroon in this line")
+document.write("&ltP;&gt;" + worldString.fontcolor("salmon") +
+   " is salmon in this line")
+document.write("&ltP;&gt;" + worldString.fontcolor("red") +
+   " is red in this line")
+
+document.write("&ltP;&gt;" + worldString.fontcolor("8000") +
+   " is maroon in hexadecimal in this line")
+document.write("&ltP;&gt;" + worldString.fontcolor("FA8072") +
+   " is salmon in hexadecimal in this line")
+document.write("&ltP;&gt;" + worldString.fontcolor("FF00") +
+   " is red in hexadecimal in this line")
+</pre>
+
+<p>The previous example produces the same output as the following HTML:
+<pre>
+<tt>&ltFONT; COLOR="maroon"&gtHello;, world&lt;/FONT&gt; is maroon in this line</tt>
+<tt>&ltP;&gt;&ltFONT; COLOR="salmon"&gtHello;, world&lt;/FONT&gt; is salmon in this line</tt>
+<tt>&ltP;&gt;&ltFONT; COLOR="red"&gtHello;, world&lt;/FONT&gt; is red in this line</tt>
+
+<tt>&ltFONT; COLOR="8000"&gtHello;, world&lt;/FONT&gt; is maroon in hexadecimal in this line</tt>
+<tt>&ltP;&gt;&ltFONT; COLOR="FA8072"&gtHello;, world&lt;/FONT&gt; is salmon in hexadecimal in this line</tt>
+<tt>&ltP;&gt;&ltFONT; COLOR="FF00"&gtHello;, world&lt;/FONT&gt; is red in hexadecimal in this line</tt>
+</pre>
+
+<!------------------------------------------------------------------------------------------------>
+<hr>
+<a name="fontsize_method"><h2>fontsize method</h2></a>
+<p>
+Causes a string to be displayed in the specified font size as if it were in a &ltFONTSIZE;=<i>size</i>&gt; tag.
+
+<h3>Syntax</h3>
+<pre><i>stringName</i>.fontsize(<i>size</i>)</pre>
+<p><i>stringName</i> is any string or a property of an existing object.
+<br><i>size</i> is an integer between one and seven, or a string representing a signed integer between 1 and 7, or a property of an existing object.
+
+<h3>Method of</h3>
+<p><a href="ref_s-s.html#string_object">string</a>
+
+<h3>Description</h3>
+<p>Use the fontsize method with the write or writeln methods to format and display a string in a document. When you specify <i>size</i> as an integer, you set the size of <i>stringName</i> to one of the seven defined sizes. When you specify <i>size</i> as a string such as "-2", you adjust the font size of <i>stringName</i> relative to the size set in the &ltBASEFONT;&gt; tag.
+
+<h3>Examples</h3>
+The following example uses string methods to change the size of a string:
+<pre>
+var worldString="Hello, world"
+
+document.write(worldString.small())
+document.write("&ltP;&gt;" + worldString.big())
+document.write("&ltP;&gt;" + worldString.fontsize(7))
+</pre>
+
+<p>The previous example produces the same output as the following HTML:
+<pre>
+<tt>&ltSMALL;&gtHello;, world&lt;/SMALL&gt;</tt>
+<tt>&ltP;&gt;&ltBIG;&gtHello;, world&lt;/BIG&gt;</tt>
+<tt>&ltP;&gt;&ltFONTSIZE;=7&gtHello;, world&lt;/FONTSIZE&gt;</tt>
+</pre>
+
+<h3>See also</h3>
+<li><a href="ref_a-c.html#big_method">big</a>, <a href="ref_s-s.html#small_method">small</a> methods
+<!------------------------------------------------------------------------------------------------>
+<hr>
+<a name="form_object"><h2>form object (<i>forms</i> array)</h2> </a>
+<p>Lets users input text and make choices from form objects such as checkboxes, radio buttons, and selection lists. You can also use a form to post data to a server.
+
+
+<h3>Syntax</h3>
+<p>To define a form, use standard HTML syntax with the addition of the onSubmit event handler:
+<pre>
+&LTFORM;
+   NAME="<i>formName</i>"
+   TARGET="<i>windowName</i>"
+   ACTION="<i>serverURL</i>"
+   METHOD=GET | POST
+   ENCTYPE="<i>encodingType</i>"
+   [onSubmit="<i>handlerText</i>"]&GT;
+&LT;/FORM&GT;
+</pre>
+
+<p><i>NAME="formName"</i> specifies the name of the form object.
+
+<p><i>TARGET="windowName"</i> specifies the window that form responses go to. When you submit a form with a TARGET attribute, server responses are displayed in the specified window instead of the window that contains the form. <i>windowName</i> can be an existing window; it can be a frame name specified in a &LTFRAMESET;&GT; tag; or it can be one of the literal frame names _top, _parent, _self, or _blank; it cannot be a JavaScript expression (for example, it cannot be parent<i>.frameName</i> or <i>windowName.frameName</i>). Some values for this attribute may require specific values for other attributes. See <a href="https://web.archive.org/web/19970617232651/http://www.ics.uci.edu/pub/ietf/html/rfc1867.txt" target="_top">RFC 1867</a> for details. You can access this value using the target property.
+
+<p><i>ACTION="serverURL"</i> specifies the URL of the server to which form field input information is sent. This attribute can specify a CGI or LiveWire application on the server; it can also be a mailto: URL if the form is to be mailed. See the <a href="ref_h-l.html#location_object">location</a> object for a description of the URL components. Some values for this attribute may require specific values for other attributes. See <a href="https://web.archive.org/web/19970617232651/http://www.ics.uci.edu/pub/ietf/html/rfc1867.txt" target="_top">RFC 1867</a> for details. You can access this value using the action property.
+
+<p><i>METHOD=GET | POST</i> specifies how information is sent to the server specified by <i>ACTION</i>. GET (the default) appends the input information to the URL which on most receiving systems becomes the value of the environment variable <i>QUERY_STRING</i>. POST sends the input information in a data body which is available on <i>stdin</i> with the data length set in the environment variable <i>CONTENT_LENGTH</i>. Some values for this attribute may require specific values for other attributes. See <a href="https://web.archive.org/web/19970617232651/http://www.ics.uci.edu/pub/ietf/html/rfc1867.txt" target="_top">RFC 1867</a> for details. You can access this value using the method property.
+
+<p><i>ENCTYPE="encodingType"</i> specifies the MIME encoding of the data sent: "application/x-www-form-urlencoded" (the default) or "multipart/form-data". Some values for this attribute may require specific values for other attributes. See <a href="https://web.archive.org/web/19970617232651/http://www.ics.uci.edu/pub/ietf/html/rfc1867.txt" target="_top">RFC 1867</a> for details. You can access this value using the encoding property.
+
+<p>To use a form object's properties and methods:
+<pre>
+1. <i>formName</i>.<i>propertyName</i>
+2. <i>formName</i>.<i>methodName</i>(<i>parameters</i>)
+3. forms[<i>index</i>].<i>propertyName</i>
+4. forms[<i>index</i>].<i>methodName</i>(<i>parameters</i>)
+</pre>
+<i>formName</i> is the value of the NAME attribute of a form object.
+<br><i>propertyName</i> is one of the properties listed below.
+<br><i>methodName</i> is one of the methods listed below.
+<br><i>index</i> is an integer representing a form object.
+
+
+<h3>Property of</h3>
+<li><a href="ref_d-e.html#document_object">document</a>
+
+
+<h3>Description</h3>
+<p>Each form in a document is a distinct object.
+
+<p>You can reference a form's elements in your code by using the element's name (from the NAME attribute) or the <a href="ref_d-e.html#elements_object"><i>elements</i></a> array. The <i>elements</i> array contains an entry for each element (such as a checkbox, radio, or text object) in a form.
+
+
+<h4>The <i>forms</i> array</h4>
+<p>You can reference the forms in your code by using the <i>forms</i> array (you can also use the form name). This array contains an entry for each form object (&ltFORM;&gt; tag) in a document in source order. For example, if a document contains three forms, these forms are reflected as <tt>document.forms[0]</tt>, <tt>document.forms[1]</tt>, and <tt>document.forms[2]</tt>.
+
+<p>To use the <i>forms</i> array:
+<pre>
+1. document.forms[<i>index</i>]
+2. document.forms.length
+</pre>
+<p><i>index</i> is an integer representing a form in a document.
+
+<p>To obtain the number of forms in a document, use the length property: <tt>document.forms.length</tt>.
+
+<p>You can also refer to a form's elements by using the <i>forms</i> array. For example, you would refer to a text object named <i>quantity</i> in the second form as <tt>document.forms[1].quantity</tt>. You would refer to the value property of this text object as <tt>document.forms[1].quantity.value</tt>.
+
+<p>Elements in the <i>forms</i> array are read-only. For example, the statement <tt>document.forms[0]="music"</tt> has no effect.
+
+<p>The value of each element in the <i>forms</i> array is <tt>&ltobject; <i>nameAttribute</i>&gt;</tt>, where <i>nameAttribute</i> is the NAME attribute of the form.
+
+
+<h3>Properties</h3>
+<p>The form object has the following properties:
+<li><a href="ref_a-c.html#action_property">action</a> reflects the ACTION attribute
+<li><a href="ref_d-e.html#elements_object">elements</a> is an array reflecting all the elements in a form
+<li><a href="ref_d-e.html#encoding_property">encoding</a> reflects the ENCTYPE attribute
+<li><a href="ref_h-l.html#length_property">length</a> reflects the number of elements on a form
+<li><a href="ref_m-q.html#method_property">method</a> reflects the METHOD attribute
+<li><a href="ref_t-z.html#target_property">target</a> reflects the TARGET attribute
+
+<p>The following objects are also properties of the form object:
+<li><a href="ref_a-c.html#button_object">button</a>
+<li><a href="ref_a-c.html#checkbox_object">checkbox</a>
+<li><a href="ref_h-l.html#hidden_object">hidden</a>
+<li><a href="ref_m-q.html#password_object">password</a>
+<li><a href="ref_r-r.html#radio_object">radio</a>
+<li><a href="ref_r-r.html#reset_object">reset</a>
+<li><a href="ref_s-s.html#select_object">select</a>
+<li><a href="ref_s-s.html#submit_object">submit</a>
+<li><a href="ref_t-z.html#text_object">text</a>
+<li><a href="ref_t-z.html#textarea_object">textarea</a>
+
+<p>The <i>forms</i> array has the following properties:
+<li><a href="ref_h-l.html#length_property">length</a> reflects the number of forms in a document
+
+
+<h3>Methods</h3>
+<li><a href="ref_s-s.html#submit_method">submit</a>
+
+
+<h3>Event handlers</h3>
+<li><a href="ref_m-q.html#onSubmit_event">onSubmit</a>
+
+
+<h3>Examples</h3>
+<p><b>Example 1: named form.</b> The following example creates a form called <i>form1</i> that contains text fields for first name and last name. The form also contains two buttons that change the names to all upper case or all lower case. The function <i>setCase</i> shows how to refer to the form by its name.
+<xmp>
+<html>
+<head>
+<title>Form object example</title>
+</head>
+<script>
+function setCase (caseSpec){
+if (caseSpec == "upper") {
+   document.form1.firstName.value=document.form1.firstName.value.toUpperCase()
+   document.form1.lastName.value=document.form1.lastName.value.toUpperCase()}
+   else {
+   document.form1.firstName.value=document.form1.firstName.value.toLowerCase()
+   document.form1.lastName.value=document.form1.lastName.value.toLowerCase()}
+}
+</script>
+<body>
+<form name="form1">
+<b>First name:</b>
+<input type="text" name="firstName" size="20">
+<br><b>Last name:</b>
+<input type="text" name="lastName" size="20">
+<p><input type="button" value="Names to uppercase" name="upperButton" onclick="setCase('upper')">
+<input type="button" value="Names to lowercase" name="lowerButton" onclick="setCase('lower')">
+</form>
+</body>
+</html>
+</xmp>
+
+<b>Example 2: <i>forms</i> array.</b> The onLoad event handler in the following example displays the name of the first form in an alert dialog box.
+<xmp>
+<body onload="alert('You are looking at the ' + document.forms[0] + ' form!')">
+</xmp>
+
+<p>If the form name is <i>musicType</i>, the alert displays the following message:
+<xmp>
+You are looking at the <object musictype> form!
+</xmp>
+
+<p><b>Example 3: onSubmit event handler.</b> The following example shows an onSubmit event handler that determines whether to submit a form. The form contains one text object where the user enters three characters. The onSubmit event handler calls a function, <i>checkData</i>, that returns true if the number of characters is three; otherwise, it returns false. Notice that the form's onSubmit event handler, not the submit button's onClick event handler, calls the <i>checkData</i> function. Also, the onSubmit event handler contains a <b>return</b> statement that returns the value obtained with the function call.
+<xmp>
+<html>
+<head>
+<title>Form object/onSubmit event handler example</title>
+<title>Form object example</title>
+</head>
+<script>
+var dataOK=false
+function checkData (){
+if (document.form1.threeChar.value.length == 3) {
+   return true}
+   else {
+      alert("Enter exactly three characters. " + document.form1.threeChar.value + " is not valid.")
+      return false}
+}
+</script>
+<body>
+<form name="form1" onsubmit="return checkData()">
+<b>Enter 3 characters:</b>
+<input type="text" name="threeChar" size="3">
+<p><input type="submit" value="Done" name="submit1" onclick="document.form1.threeChar.value=document.form1.threeChar.value.toUpperCase()">
+</form>
+</body>
+</html>
+</xmp>
+
+<p><b>Example 4: submit method.</b> The following example is similar to the previous one, except it submits the form using the submit method instead of a submit object. The form's onSubmit event handler does not prevent the form from being submitted. The form uses a button's onClick event handler to call the <i>checkData</i> function. If the value is valid, the <i>checkData</i> function submits the form by calling the form's submit method.
+<xmp>
+<html>
+<head>
+<title>Form object/submit method example</title>
+</head>
+<script>
+var dataOK=false
+function checkData (){
+if (document.form1.threeChar.value.length == 3) {
+   document.form1.submit()}
+   else {
+      alert("Enter exactly three characters. " + document.form1.threeChar.value + " is not valid.")
+      return false}
+}
+</script>
+<body>
+<form name="form1" onsubmit="alert('Form is being submitted.')">
+<b>Enter 3 characters:</b>
+<input type="text" name="threeChar" size="3">
+<p><input type="button" value="Done" name="button1" onclick="checkData()">
+</form>
+</body>
+</html>
+</xmp>
+
+
+<h3>See also</h3>
+<li><a href="ref_a-c.html#button_object">button</a>, <a href="ref_a-c.html#checkbox_object">checkbox</a>, <a href="ref_h-l.html#hidden_object">hidden</a>, <a href="ref_m-q.html#password_object">password</a>, <a href="ref_r-r.html#radio_object">radio</a>, <a href="ref_r-r.html#reset_object">reset</a>, <a href="ref_s-s.html#select_object">select</a>, <a href="ref_s-s.html#submit_object">submit</a>, <a href="ref_t-z.html#text_object">text</a>, <a href="ref_t-z.html#textarea_object">textarea </a> objects
+
+
+<!------------------------------------------------------------------------------------------------->
+<hr>
+<a name="forms_property"><h2>forms property</h2></a>
+<p>An array of objects corresponding to the forms (&ltFORM;&gt; tags) in a document in source order. See <a href="ref_f-g.html#form_object">form</a> object.
+
+<!------------------------------------------------------------------------------------------------->
+<hr>
+<a name="forward_method"><h2>forward method</h2></a>
+<p>
+Loads the next URL in the history list.
+
+<h3>Syntax</h3>
+<pre>history.forward()</pre>
+
+<h3>Method of</h3>
+<p><a href="ref_h-l.html#history_object">history</a>
+
+<h3>Description</h3>
+<p>This method performs the same action as a user choosing the Forward button in the Navigator. The forward method is the same as <tt>history.go(1)</tt>.
+
+<h3>Examples</h3>
+The following custom buttons perform the same operations as the Navigator Back and Forward buttons:
+<pre>
+&ltP;&gt;&ltINPUT; TYPE="button" VALUE="&lt; Back"
+   onClick="history.back()"&gt;
+&ltP;&gt;&ltINPUT; TYPE="button" VALUE="&gt; Forward"
+   onClick="history.forward()"&gt;
+</pre>
+
+<h3>See also</h3>
+<li><a href="ref_a-c.html#back_method">back</a>, <a href="ref_f-g.html#go_method">go</a> methods
+<!------------------------------------------------------------------------------------------------>
+<hr>
+<a name="frame_object"><h2>frame object (<i>frames</i> array)</h2></a>
+<p>A window that can display multiple, independently scrollable frames on a single screen, each with its own distinct URL. Frames can point to different URLs and be targeted by other URLs, all within the same screen. A series of frames makes up a page.
+
+<h3>Syntax</h3>
+<p>To define a frame object, use standard HTML syntax. The onLoad and onUnload event handlers are specified in the &LTFRAMESET;&GT; tag but are actually event handlers for the window object:
+<pre>
+&LTFRAMESET;
+   ROWS="<i>rowHeightList</i>"
+   COLS="<i>columnWidthList</i>"
+   [onLoad="<i>handlerText</i>"]
+   [onUnload="<i>handlerText</i>"]&GT;
+   [&LTFRAME; SRC="<i>locationOrURL</i>" NAME="<i>frameName</i>"&GT;]
+&LT;/FRAMESET&GT;
+</pre>
+<i>ROWS="rowHeightList"</i> is a comma-separated list of values specifying the row-height of the frame. An optional suffix defines the units. Default units are pixels.
+<br><i>COLS="columnWidthList"</i> is a comma-separated list of values specifying the column-width of the frame. An optional suffix defines the units. Default units are pixels.
+<br><i>&LTFRAME;&GT;</i> defines a frame.
+<br><i>SRC="locationOrURL"</i> specifies the URL of the document to be displayed in the frame. The URL cannot include an anchor name; for example <tt>&LTFRAME; SRC="doc2.html#colors" NAME="frame2"&GT;</tt> is invalid. See the <a href="ref_h-l.html#location_object">location</a> object for a description of the URL components.
+<br><i>NAME="frameName"</i> specifies a name to be used as a target of hyperlink jumps.
+
+<p>To use a frame object's properties:
+<pre>
+1. [<i>windowReference</i>.]<i>frameName</i>.<i>propertyName</i>
+2. [<i>windowReference</i>.]frames[<i>index</i>].<i>propertyName</i>
+3. window.<i>propertyName</i>
+4. self.<i>propertyName</i>
+5. parent.<i>propertyName</i>
+</pre>
+<i>windowReference</i> is a variable <i>windowVar</i> from a window definition (see <a href="ref_t-z.html#window_object">window</a> object), or one of the synonyms top or parent.
+<br><i>frameName</i> is the value of the NAME attribute in the &LTFRAME;&GT; tag of a frame object.
+<br><i>index</i> is an integer representing a frame object.
+<br><i>propertyName</i> is one of the properties listed below.
+
+
+<h3>Property of</h3>
+<li>The frame object is a property of <a href="ref_t-z.html#window_object">window</a>
+<li>The frames array is a property of both <a href="ref_f-g.html#frame_object">frame</a> and <a href="ref_t-z.html#window_object">window</a>
+
+
+<h3>Description</h3>
+<p>The &LTFRAMESET;&GT; tag is used in an HTML document whose sole purpose is to define the layout of frames that make up a page. Each frame is a window object.
+
+<p>If a &LTFRAME;&GT; tag contains SRC and NAME attributes, you can refer to that frame from a sibling frame by using <tt>parent.<i>frameName</i></tt> or <tt>parent.frames[<i>index</i>]</tt>. For example, if the fourth frame in a set has NAME="homeFrame", sibling frames can refer to that frame using <tt>parent.homeFrame</tt> or <tt>parent.frames[3]</tt>.
+
+<p>The self and window properties are synonyms for the current frame, and you can optionally use them to refer to the current frame. You can use these properties to make your code more readable. See the properties listed below for examples.
+
+<p>The top and parent properties are also synonyms that can be used in place of the frame name. top refers to the top-most window that contains frames or nested framesets, and parent refers to the window containing the current frameset. See the <a href="ref_t-z.html#top_property">top</a> and <a href="ref_m-q.html#parent_property">parent</a> properties.
+
+<h4>The <i>frames</i> array</h4>
+<p>You can reference the frame objects in your code by using the <i>frames</i> array. This array contains an entry for each child frame (&ltFRAME;&gt; tag) in a window containing a &LTFRAMESET;&GT; tag in source order. For example, if a window contains three child frames, these frames are reflected as <tt>parent.frames[0]</tt>, <tt>parent.frames[1]</tt>, and <tt>parent.frames[2]</tt>.
+
+<p>To use the <i>frames</i> array:
+<pre>
+1. [<i>frameReference</i>.]frames[<i>index</i>]
+2. [<i>frameReference</i>.]frames.length
+3. [<i>windowReference</i>.]frames[<i>index</i>]
+4. [<i>windowReference</i>.]frames.length
+</pre>
+<p><i>frameReference</i> is a valid way of referring to a frame, as described in the <a href="ref_f-g.html#frame_object">frame</a> object.
+<br><i>windowReference</i> is a variable <i>windowVar</i> from a window definition (see <a href="ref_t-z.html#window_object">window</a> object), or one of the synonyms top or parent.
+<br><i>index</i> is an integer representing a frame in a parent window.
+
+<p>To obtain the number of child frames in a window or frame, use the length property:
+<pre>
+[<i>windowReference</i>.].frames.length
+[<i>frameReference</i>.].frames.length
+</pre>
+
+<p>Elements in the <i>frames</i> array are read-only. For example, the statement <tt><i>windowReference</i>.frames[0]="frame1"</tt> has no effect.
+
+<p>The value of each element in the <i>frames</i> array is <tt>&ltobject; <i>nameAttribute</i>&gt;</tt>, where <i>nameAttribute</i> is the NAME attribute of the frame.
+
+
+<h3>Properties</h3>
+<p>The frame object has the following properties:
+<li><a href="ref_f-g.html#frame_object">frames</a> is an array reflecting all the frames in a window
+<li><a href="ref_m-q.html#name_property">name</a> reflects the NAME attribute of the &LTFRAME;&GT; tag
+<li><a href="ref_h-l.html#length_property">length</a> reflects the number of child frames within a frame
+<li><a href="ref_m-q.html#parent_property">parent</a> is a synonym for the window or frame containing the current frameset
+<li><a href="ref_s-s.html#self_property">self</a> is a synonym for the current frame
+<li><a href="ref_t-z.html#window_property">window</a> is a synonym for the current frame
+
+<p>The <i>frames</i> array has the following properties:
+<li><a href="ref_h-l.html#length_property">length</a> reflects the number of child frames within a frame
+
+
+<h3>Methods</h3>
+<li><a href="ref_a-c.html#clearTimeout_method">clearTimeout</a>
+<li><a href="ref_s-s.html#setTimeout_method">setTimeout</a>
+
+
+<h3>Event handlers</h3>
+<li>None. The onLoad and onUnload event handlers are specified in the &LTFRAMESET;&GT; tag but are actually event handlers for the window object.
+
+
+<h3>Examples</h3>
+<p>The following example creates two windows, each with four frames. In the first window, the first frame contains pushbuttons that change the background colors of the frames in both windows.
+
+<p>FRAMSET1.HTML, which defines the frames for the first window, contains the following code:
+<xmp>
+<html>
+<head>
+<title>Frames and Framesets: Window 1</title>
+</head>
+<frameset rows="50%,50%" cols="40%,60%" onload="alert('Hello, World.')">
+<frame src="/web/19970617232651fw_/http://home.netscape.com:80/eng/mozilla/2.0/handbook/javascript/framcon1.html" name="frame1">
+<frame src="/web/19970617232651fw_/http://home.netscape.com:80/eng/mozilla/2.0/handbook/javascript/framcon2.html" name="frame2">
+<frame src="/web/19970617232651fw_/http://home.netscape.com:80/eng/mozilla/2.0/handbook/javascript/framcon2.html" name="frame3">
+<frame src="/web/19970617232651fw_/http://home.netscape.com:80/eng/mozilla/2.0/handbook/javascript/framcon2.html" name="frame4">
+</frameset>
+</html>
+</xmp>
+
+<p>FRAMSET2.HTML, which defines the frames for the second window, contains the following code:
+<xmp>
+<html>
+<head>
+<title>Frames and Framesets: Window 2</title>
+</head>
+<frameset rows="50%,50%" cols="40%,60%">
+<frame src="/web/19970617232651fw_/http://home.netscape.com:80/eng/mozilla/2.0/handbook/javascript/framcon2.html" name="frame1">
+<frame src="/web/19970617232651fw_/http://home.netscape.com:80/eng/mozilla/2.0/handbook/javascript/framcon2.html" name="frame2">
+<frame src="/web/19970617232651fw_/http://home.netscape.com:80/eng/mozilla/2.0/handbook/javascript/framcon2.html" name="frame3">
+<frame src="/web/19970617232651fw_/http://home.netscape.com:80/eng/mozilla/2.0/handbook/javascript/framcon2.html" name="frame4">
+</frameset>
+</html>
+</xmp>
+
+<p>FRAMCON1.HTML, which defines the content for the first frame in the first window, contains the following code:
+<xmp>
+<html>
+<body>
+<a name="frame1"><h1>Frame1</h1></a>
+<p><a href="framcon3.htm" target="frame2">Click here</a> to load a different file into frame 2.
+<script>
+window2=open("framset2.htm","secondFrameset")
+</script>
+<form>
+<p><input type="button" value="Change frame2 to teal" onclick="parent.frame2.document.bgColor='teal'">
+<p><input type="button" value="Change frame3 to slateblue" onclick="parent.frames[2].document.bgColor='slateblue'">
+<p><input type="button" value="Change frame4 to darkturquoise" onclick="top.frames[3].document.bgColor='darkturquoise'">
+
+<p><input type="button" value="window2.frame2 to violet" onclick="window2.frame2.document.bgColor='violet'">
+<p><input type="button" value="window2.frame3 to fuchsia" onclick="window2.frames[2].document.bgColor='fuchsia'">
+<p><input type="button" value="window2.frame4 to deeppink" onclick="window2.frames[3].document.bgColor='deeppink'">
+</form>
+</body>
+</html>
+</xmp>
+
+<p>FRAMCON2.HTML, which defines the content for the remaining frames, contains the following code:
+<xmp>
+<html>
+<body>
+<p>This is a frame.
+</body>
+</html>
+</xmp>
+
+<p>FRAMCON3.HTML, which is referenced in a link object in FRAMCON1.HTML, contains the following code:
+<xmp>
+<html>
+<body>
+<p>This is a frame. What do you think?
+</body>
+</html>
+</xmp>
+
+
+<h3>See also</h3>
+<li><a href="ref_d-e.html#document_object">document</a> and <a href="ref_t-z.html#window_object">window</a> objects
+
+
+<!------------------------------------------------------------------------------------------------->
+<hr>
+<a name="frames_property"><h2>frames property</h2></a>
+<p>An array of objects corresponding to child frames (&ltFRAME;&gt; tag) in source order. See <a href="ref_f-g.html#frame_object">frame</a> object.
+
+<!------------------------------------------------------------------------------------------------->
+<hr>
+<a name="getDate_method"><h2>getDate method</h2></a>
+<p>
+Returns the day of the month for the specified date.
+
+<h3>Syntax</h3>
+<pre><i>dateObjectName</i>.getDate()</pre>
+<p><i>dateObjectName</i> is either the name of a date object or a property of an existing object.
+
+<h3>Method of</h3>
+<p><a href="ref_d-e.html#Date_object">Date</a>
+
+<h3>Description</h3>
+<p>The value returned by getDate is an integer between 1 and 31.
+
+<h3>Examples</h3>
+<p>
+The second statement below assigns the value 25 to the variable <i>day</i>, based on the value of the date object <i>Xmas95</i>.
+<pre>
+Xmas95 = new Date("December 25, 1995 23:15:00")
+day = Xmas95.getDate()
+</pre>
+
+<h3>See also</h3>
+<li><a href="ref_s-s.html#setDate_method">setDate</a> method
+<!------------------------------------------------------------------------------------------------>
+<hr>
+<a name="getDay_method"><h2>getDay method</h2></a>
+<p>
+Returns the day of the week for the specified date.
+
+<h3>Syntax</h3>
+<pre><i>dateObjectName</i>.getDay()</pre>
+<p><i>dateObjectName</i> is either the name of a date object or a property of an existing object.
+
+<h3>Method of</h3>
+<p><a href="ref_d-e.html#Date_object">Date</a>
+
+<h3>Description</h3>
+<p>
+The value returned by getDay is an integer corresponding to the day of the week: zero for Sunday, one for Monday, two for Tuesday, and so on.
+
+<h3>Examples</h3>
+<p>
+The second statement below assigns the value 1 to <i>weekday</i>, based on the value of the date object <i>Xmas95</i>. This is because December 25, 1995 is a Monday.
+<pre>
+Xmas95 = new Date("December 25, 1995 23:15:00")
+weekday = Xmas95.getDay()
+</pre>
+
+<!------------------------------------------------------------------------------------------------>
+<hr>
+<a name="getHours_method"><h2>getHours method</h2></a>
+<p>
+Returns the hour for the specified date.
+
+<h3>Syntax</h3>
+<pre><i>dateObjectName</i>.getHours()</pre>
+<p><i>dateObjectName</i> is either the name of a date object or a property of an existing object.
+
+<h3>Method of</h3>
+<p><a href="ref_d-e.html#Date_object">Date</a>
+
+<h3>Description</h3>
+<p>
+The value returned by getHours is an integer between 0 and 23.
+
+<h3>Examples</h3>
+<p>
+The second statement below assigns the value 23 to the variable <i>hours</i>, based on the value of the date object <i>Xmas95</i>.
+<pre>
+Xmas95 = new Date("December 25, 1995 23:15:00")
+hours = Xmas95.getHours()
+</pre>
+
+
+<h3>See also</h3>
+<li><a href="ref_s-s.html#setHours_method">setHours</a> method
+<!------------------------------------------------------------------------------------------------>
+<hr>
+<a name="getMinutes_method"><h2>getMinutes method</h2></a>
+<p>
+Returns the minutes in the specified date.
+
+<h3>Syntax</h3>
+<pre><i>dateObjectName</i>.getMinutes()</pre>
+<p><i>dateObjectName</i> is either the name of a date object or a property of an existing object.
+
+
+<h3>Method of</h3>
+<p><a href="ref_d-e.html#Date_object">Date</a>
+
+<h3>Description</h3>
+<p>
+The value returned by getMinutes is an integer between 0 and 59.
+
+<h3>Examples</h3>
+<p>
+The second statement below assigns the value 15 to the variable <i>minutes</i>, based on the value of the date object <i>Xmas95</i>.
+<pre>
+Xmas95 = new Date("December 25, 1995 23:15:00")
+minutes = Xmas95.getMinutes()
+</pre>
+
+<h3>See also</h3>
+<li><a href="ref_s-s.html#setMinutes_method">setMinutes</a> method
+<!------------------------------------------------------------------------------------------------>
+<hr>
+<a name="getMonth_method"><h2>getMonth method</h2></a>
+<p>
+Returns the month in the specified date.
+
+<h3>Syntax</h3>
+<pre><i>dateObjectName</i>.getMonth()</pre>
+<p><i>dateObjectName</i> is either the name of a date object or a property of an existing object.
+
+
+<h3>Method of</h3>
+<p><a href="ref_d-e.html#Date_object">Date</a>
+
+<h3>Description</h3>
+<p>
+The value returned by getMonth is an integer between zero and eleven. Zero corresponds to January, one to February, and so on.
+
+<h3>Examples</h3>
+<p>
+The second statement below assigns the value 11 to the variable <i>month</i>, based on the value of the date object <i>Xmas95</i>.
+<pre>
+Xmas95 = new Date("December 25, 1995 23:15:00")
+month = Xmas95.getDate()
+</pre>
+
+
+<h3>See also</h3>
+<li><a href="ref_s-s.html#setMonth_method">setMonth</a> method
+<!------------------------------------------------------------------------------------------------>
+<hr>
+<a name="getSeconds_method"><h2>getSeconds method</h2></a>
+<p>
+Returns the seconds in the current time.
+
+<h3>Syntax</h3>
+<pre><i>dateObjectName</i>.getSeconds()</pre>
+<p><i>dateObjectName</i> is either the name of a date object or a property of an existing object.
+
+<h3>Method of</h3>
+<p><a href="ref_d-e.html#Date_object">Date</a>
+
+<h3>Description</h3>
+<p>
+The value returned by getSeconds is an integer between 0 and 59.
+
+<h3>Examples</h3>
+<p>
+The second statement below assigns the value 30 to the variable <i>secs</i>, based on the value of the date object <i>Xmas95</i>.
+<pre>
+Xmas95 = new Date("December 25, 1995 23:15:30")
+secs = Xmas95.getSeconds()
+</pre>
+
+<h3>See also</h3>
+<li><a href="ref_s-s.html#setSeconds_method">setSeconds</a> method
+<!------------------------------------------------------------------------------------------------>
+<hr>
+<a name="getTime_method"><h2>getTime method</h2></a>
+<p>
+Returns the numeric value corresponding to the time for the specified date.
+
+<h3>Syntax</h3>
+<pre><i>dateObjectName</i>.getTime()</pre>
+<p><i>dateObjectName</i> is either the name of a date object or a property of an existing object.
+
+
+<h3>Method of</h3>
+<p><a href="ref_d-e.html#Date_object">Date</a>
+
+<h3>Description</h3>
+<p>
+The value returned by the getTime method is the number of milliseconds since 1 January 1970 00:00:00. You can use this method to help assign a date and time to another date object.
+
+<h3>Examples</h3>
+<p>
+The following example assigns the date value of <i>theBigDay</i> to <i>sameAsBigDay</i>.
+
+<pre>
+theBigDay = new Date("July 1, 1999")
+sameAsBigDay = new Date()
+sameAsBigDay.setTime(theBigDay.getTime())
+</pre>
+
+<h3>See also</h3>
+<li><a href="ref_s-s.html#setTime_method">setTime</a> method
+<!----------------------------------------------------------------->
+<hr>
+<a name="getTimezoneOffset_method"><h2>getTimezoneOffset method</h2></a>
+<p>
+Returns the time zone offset in minutes for the current locale.
+
+<h3>Syntax</h3>
+<pre><i>dateObjectName</i>.getTimezoneOffset()</pre>
+<p><i>dateObjectName</i> is either the name of a date object or a property of an existing object.
+
+<h3>Method of</h3>
+<p><a href="ref_d-e.html#Date_object">Date</a>
+
+<h3>Description</h3>
+<p>
+The time zone offset is the difference between local time and GMT. Daylight savings time prevents this value from being a constant.
+
+<h3>Examples</h3>
+
+<pre>
+x = new Date()
+currentTimeZoneOffsetInHours = x.getTimezoneOffset()/60
+</pre>
+
+<!------------------------------------------------------------------------------------------------>
+<hr>
+<a name="getYear_method"><h2>getYear method</h2></a>
+<p>
+Returns the year in the specified date.
+
+<h3>Syntax</h3>
+<pre><i>dateObjectName</i>.getYear()</pre>
+<p><i>dateObjectName</i> is either the name of a date object or a property of an existing object.
+
+<h3>Method of</h3>
+<p><a href="ref_d-e.html#Date_object">Date</a>
+
+<h3>Description</h3>
+<p>
+The value returned by getYear is the year less 1900. For example, if the year is 1976, the value returned is 76.
+
+<h3>Examples</h3>
+<p>
+The second statement below assigns the value 95 to the variable <i>year</i>, based on the value of the date object <i>Xmas95</i>.
+<pre>
+Xmas95 = new Date("December 25, 1995 23:15:00")
+year = Xmas95.getYear()
+</pre>
+
+
+<h3>See also</h3>
+<li><a href="ref_s-s.html#setYear_method">setYear</a> method
+<!------------------------------------------------------------------------------------------------>
+<hr>
+<a name="go_method"><h2>go method</h2></a>
+<p>
+Loads a URL from the history list.
+
+<h3>Syntax</h3>
+<pre>history.go(<i>delta</i> | "<i>location</i>")</pre>
+<i>delta</i> is an integer or a property of an existing object, representing a relative position in the history list.
+<br><i>location</i> is a string or a property of an existing object, representing all or part of a URL in the history list.
+
+<h3>Method of</h3>
+<p><a href="ref_h-l.html#history_object">history</a>
+
+<h3>Description</h3>
+<p>The go method navigates to the location in the history list determined by the argument that you specify. You can interactively display the history list by choosing History from the Window menu. Up to 10 items in the history list are also displayed on the Go menu.
+
+<p>The <i>delta</i> argument is a positive or negative integer. If <i>delta</i> is greater than zero, the go method loads the URL that is that number of entries forward in the history list; otherwise, it loads the URL that is that number of entries backward in the history list. If delta is 0, Navigator reloads the current page.
+
+<p>The <i>location</i> argument is a string. Use <i>location</i> to load the nearest history entry whose URL contains <i>location</i> as a substring. The <i>location</i> to URL matching is case-insensitive. Each section of a URL contains different information. See the <a href="ref_h-l.html#location_object">location</a> object for a description of the URL components.
+
+<h3>Examples</h3>
+<p>The following button navigates to the nearest history entry that contains the string "home.netscape.com":
+<pre>
+&ltP;&gt;&ltINPUT; TYPE="button" VALUE="Go"
+   onClick="history.go('home.netscape.com')"&gt;
+</pre>
+<p>The following button navigates to the URL that is three entries backward in the history list:
+<pre>
+&ltP;&gt;&ltINPUT; TYPE="button" VALUE="Go"
+   onClick="history.go(-3)"&gt;
+</pre>
+
+<h3>See also</h3>
+<li><a href="ref_a-c.html#back_method">back</a>, <a href="ref_f-g.html#forward_method">forward</a> methods
+<!------------------------------------------------------------------------------------------------>
+<hr>
+
+<script>
+document.write("<FONT SIZE=-2>Last modified " + document.lastModified)
+</script>
+<p>
+</body>
+<html>
+
+<!--
+     FILE ARCHIVED ON 23:26:51 Jun 17, 1997 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 18:14:22 Nov 08, 2018.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

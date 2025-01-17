@@ -1,0 +1,585 @@
+<html>
+<head>
+<title>Navigator Scripting</title>
+</head>
+
+<body>
+<h1>Navigator Scripting</h1>
+
+<ul>
+<li><a href="#C1">Using JavaScript in HTML</a>
+<li><a href="#C2">Scripting Event Handlers</a>
+<li><a href="#C3">Tips and Techniques</a>
+</ul>
+<a name="C1"><h2>Using JavaScript in HTML </h2></a>
+
+<p>
+JavaScript can be embedded in an HTML document in two ways:
+<ul>
+<li>As statements and functions using the SCRIPT tag.
+<li>As event handlers using HTML tags.
+</ul>
+
+<h3>The SCRIPT tag</h3>
+A script embedded in HTML with the SCRIPT tag uses the format:
+<xmp>
+<script>
+   JavaScript statements...
+</script>
+</xmp>
+
+<p>
+The optional LANGUAGE attribute specifies the scripting language as
+follows:
+ <xmp>
+<script language="JavaScript">
+   JavaScript statements...
+</script>
+</xmp>
+
+<p>
+The HMTL tag, &lt;SCRIPT&gt;, and its closing counterpart, &lt;/SCRIPT&gt;
+can enclose any number of JavaScript statements in a document.
+<p>
+JavaScript is case sensitive.
+<hr>
+
+<p>
+<b>Example 1: a simple script.</b>
+<p>
+<xmp>
+<html>
+<head>
+<script language="JavaScript">
+document.write("Hello net.")
+</script>
+</head>
+<body>
+That's all, folks.
+</body>
+</html>
+</xmp>
+<p>
+<b>Example 1 page display.</b>
+<p>
+Hello net. That's all folks.
+<hr>
+
+<h3>Code Hiding</h3>
+Scripts can be placed inside comment fields to ensure that your
+JavaScript code is not displayed by old browsers that do not
+recognize JavaScript. The entire script is encased by HTML comment
+tags:
+<xmp>
+<!-- Begin to hide script contents from old browsers.
+// End the hiding here. -->
+</xmp>
+
+<h3>Defining and Calling Functions</h3>
+<p>
+Scripts placed within SCRIPT tags are evaluated after the page loads.
+Functions are stored, but not executed. Functions are executed by
+events in the page.
+<p>
+It's important to understand the difference between defining a
+function and calling the function.  Defining the function simply
+names the function and specifies what to do when the function is
+called.  Calling the function actually performs the specified actions
+with the indicated parameters.
+<hr>
+
+<p>
+<b>Example 2: a script with a function and comments.</b>
+<xmp>
+<head>
+<script language="JavaScript">
+<!--  to hide script contents from old browsers
+  function square(i) {
+    document.write("The call passed ", i ," to the function.","&lt;BR&gt;")
+    return i * i
+  }
+  document.write("The function returned ",square(5),".")
+// end hiding contents from old browsers  -->
+</script>
+</head>
+<body>
+<br>
+All done.
+</body>
+</xmp>
+
+<p>
+<b> Example 2 page display.</b>
+<p>
+We passed 5 to the function.
+<br>
+The function returned 25.
+<br>
+All done.
+<hr>
+
+<h3>The HEAD tag</h3>
+Generally, you should define the functions for a page in the HEAD
+portion of a document.  Since the HEAD is loaded first, this practice
+guarantees that functions are loaded before the user has a chance to
+do anything that might call a function.
+<hr>
+
+<p>
+<b>Example 3: a script with two functions.</b>
+<xmp>
+<head>
+<script>
+<!--- hide script from old browsers
+function bar() {
+   document.write("<HR ALIGN='left' WIDTH=25%>")
+}
+function output(head, level, string) {
+   document.write("<H" + level + ">" + head + "</H" + level + "><P>" + string)
+}
+// end hiding from old browsers -->
+</script>
+</head>
+
+<body>
+<script>
+<!--- hide script from old browsers
+document.write(bar(),output("Make Me Big",3,"Make me ordinary."))
+// end hiding from old browsers -->
+</script>
+<p>
+Thanks.
+</body>
+</xmp>
+
+<p>
+<b> Example 3 results.</b>
+<script>
+<!--- hide script from old browsers
+function bar() {
+   document.write("<HR ALIGN='left' WIDTH=25%>")
+}
+function output(head, level, string) {
+   document.write("<H" + level + ">" + head + "</H" + level + "><P>" + string)
+}
+document.write(bar(),output("Make Me Big",3,"Make me ordinary."))
+// end hiding from old browsers -->
+</script>
+<p>
+Thanks.
+<hr>
+
+<h3>Quotes</h3>
+Use single quotes (') to delimit string literals so that scripts can
+distinguish the literal from attribute values enclosed in double
+quotes. In the previous example, function bar contains the literal
+'left' within a double-quoted attribute value. Here's another
+example:
+<xmp>
+<input type="button" value="Press Me" onclick="myfunc('astring')">
+</xmp>
+
+<hr>
+<!---------------------------------------------------------------------------->
+<a name="C2"><h2>Scripting Event Handlers </h2></a>
+<p>
+
+JavaScript applications in the Navigator are largely event-driven.
+<i>Events</i> are actions that occur, usually as a result of something the user does.
+For example, a button click is an event, as is giving focus to a form
+element.  There is a specific set of events that Navigator recognizes.
+You can define <i>Event handlers</i>, scripts that are automatically executed
+when an event occurs.
+
+<p>
+Event handlers are embedded in documents as attributes of HTML tags to which you
+assign JavaScript code to execute.
+The general syntax is
+<xmp>
+<tag eventhandler="JavaScript Code">
+</xmp>
+where TAG is some HTML tag and <i>eventHandler</i> is the name of the event handler.
+
+<p>
+For example, suppose you have created a JavaScript function called
+<i>compute</i>. You can cause Navigator to perform this function when the user clicks on a
+button by assigning the function call to the button's <i>onClick</i> event handler:
+
+<xmp>
+<input type="button" value="Calculate" onclick="compute(this.form)">
+</xmp>
+<p>
+You can put any JavaScript statements inside the quotes following <i>onClick</i>.
+These statements get executed when the user clicks on the button.
+If you want to include more than one statement, separate statements with a semicolon (;).
+<p>
+In general, it is a good idea to define functions for your event handlers because:
+<ul>
+<li>it makes your code modular-you can use the same function as an event handler for
+many different items.
+<li>it makes your code easier to read.
+</ul>
+
+<p>
+Notice in this example the use of <b>this.form</b> to refer to the current form.
+The keyword
+<b>this</b> refers to the current object-in the above example,
+the button object.   The construct <b>this.form</b> then refers to the form
+containing the button. In the above example, the onClick event handler is a
+call to the <i>compute()</i> function, with <b>this.form</b>, the current form,
+as the parameter to the function.
+
+<p>
+Events apply to HTML tags as follows:
+<ul>
+<li>Focus, Blur, Change events: text fields, textareas, and selections
+<li>Click events: buttons, radio buttons, checkboxes, submit
+buttons, reset buttons, links
+<li>Select events: text fields, textareas
+<li>MouseOver event: links
+</ul>
+<p>
+If an event applies to an HTML tag, then you can define an event handler for it.
+In general, an event handler has the name of the event, preceded by "on."
+For example, the event handler for the Focus event is onFocus.
+<p>
+Many objects also have methods that emulate events.  For example, button has a click
+method that emulates the button being clicked.
+<b>Note:</b> The event-emulation methods do not trigger event-handlers.  So, for example,
+the click method does not trigger an onClick event-handler.
+However, you can always call an event-handler directly (for example, you can call
+onClick explicitly in a script).
+
+<p>
+<table border>
+<tr>
+<th>Event</th>
+<th>Occurs when...</th>
+<th>Event Handler</th>
+
+<tr>
+<td>blur</td>
+<td>User removes input focus from form element</td>
+<td>onBlur</td>
+</tr>
+
+<tr>
+<td>click</td>
+<td>User clicks on form element or link</td>
+<td>onClick</td>
+</tr>
+
+<tr>
+<td>change</td>
+<td>User changes value of text, textarea, or select element</td>
+<td>onChange</td>
+</tr>
+
+<tr>
+<td>focus</td>
+<td>User gives form element input focus</td>
+<td>onFocus</td>
+</tr>
+
+<tr>
+<td>load</td>
+<td>User loads the page in the Navigator</td>
+<td>onLoad</td>
+</tr>
+
+<tr>
+<td>mouseover</td>
+<td>User moves mouse pointer over a link or anchor</td>
+<td>onMouseOver</td>
+</tr>
+
+<tr>
+<td>select</td>
+<td>User selects form element's input field</td>
+<td>onSelect</td>
+</tr>
+
+<tr>
+<td>submit</td>
+<td>User submits a form</td>
+<td>onSubmit</td>
+</tr>
+
+<tr>
+<td>unload</td>
+<td>User exits the page</td>
+<td>onUnload</td>
+</tr>
+
+</table>
+<hr>
+
+<p>
+<b>Example 4: a script with a form and an event handler attribute.</b>
+
+<!--------- Start Example Code ---------->
+<xmp>
+<head>
+<script language="JavaScript">
+function compute(form) {
+   if (confirm("Are you sure?"))
+      form.result.value = eval(form.expr.value)
+   else
+      alert("Please come back again.")
+}
+</script>
+</head>
+
+<body>
+<form>
+Enter an expression:
+<input type="text" name="expr" size="15">
+<input type="button" value="Calculate" onclick="compute(this.form)">
+<br>
+Result:
+<input type="text" name="result" size="15">
+<br>
+</form>
+</body>
+</xmp>
+<!--------- End of Example Code ---------->
+
+<p>
+<b>Example 4 page display.</b>
+<p>
+<script language="JavaScript">
+<!--- hide script from old browsers
+function compute(form) {
+   if (confirm("Are you sure?"))
+      form.result.value = eval(form.expr.value)
+   else
+      alert("Please come back again.")
+}
+// end hiding from old browsers -->
+</script>
+
+<form>
+Enter an expression:
+<input type="text" name="expr" size="15">
+<input type="button" value="Calculate" onclick="compute(this.form)">
+<br>
+Result:
+<input type="text" name="result" size="15">
+<br>
+</form>
+<hr>
+
+<p>
+<b>Example 5: a script with a form and event handler attribute within a BODY tag.</b>
+
+<!--------- Start Example Code ---------->
+<xmp>
+<head>
+<script language="JavaScript">
+<!--- hide script from old browsers
+function checkNum(str, min, max) {
+    if (str == "") {
+        alert("Enter a number in the field, please.")
+        return false
+    }
+    for (var i = 0; i < str.length; i++) {
+        var ch = str.substring(i, i + 1)
+        if (ch < "0" || ch > "9") {
+            alert("Try a number, please.")
+            return false
+        }
+    }
+
+    var val = parseInt(str, 10)
+    if ((val < min) || (val > max)) {
+        alert("Try a number from 1 to 10.")
+        return false
+    }
+    return true
+}
+
+function thanks() {
+    alert("Thanks for your input.")
+}
+// end hiding from old browsers -->
+</script>
+</head>
+
+<body>
+<form name="ex5">
+Please enter a small number:
+<input name="num" onchange="if (!checkNum(this.value, 1, 10))
+             {this.focus();this.select();} else {thanks()}">
+</form>
+</body>
+</xmp>
+<!--------- End of Example Code ---------->
+
+<p>
+<b>Example 5 page display.</b>
+<p>
+Enter a number in the field and then click your mouse anywhere OUTSIDE of the field.
+Depending on what you enter, you will be prompted to enter another number, or thanked.
+
+<script language="JavaScript">
+function checkNum(str, min, max) {
+    if (str == "") {
+        alert("Enter a number in the field, please.")
+        return false
+    }
+    for (var i = 0; i < str.length; i++) {
+        var ch = str.substring(i, i + 1)
+        if (ch < "0" || ch > "9") {
+            alert("Try a number, please.")
+            return false
+        }
+    }
+
+    var val = parseInt(str, 10)
+    if ((val < min) || (val > max)) {
+        alert("Try a number from 1 to 10.")
+        return false
+    }
+    return true
+}
+
+function thanks() {
+    alert("Thanks for your input.")
+}
+</script>
+
+<form name="ex5">
+Please enter a small number:
+<input type="text" name="num" onchange="if (!checkNum(this.value, 1, 10))
+             {this.focus(); this.select();} else thanks();">
+</form>
+
+<hr>
+<!---------------------------------------------------------------->
+<a name="C3"><h2>Tips and Techniques </h2></a>
+<p>
+This section describes various useful scripting techniques.
+<p>
+<h3>Updating Pages</h3>
+<p>
+JavaScript in Navigator generates its results from the top of the page down.
+Once something has been formatted, you can't change it without reloading the page.
+Currently, you cannot update a particular part of a page without updating the entire page.
+However, you can update a "sub-window" in a frame separately.
+<p>
+<h3>Printing</h3>
+<p>
+You cannot currently print output created with JavaScript.
+For example, if you had the following in a page:
+<xmp>
+<p>This is some text.
+<script>document.write("<P>And some generated text")</script>
+</xmp>
+And you printed it, you would get only "This is some text",
+even though you would see both lines on-screen.
+<p>
+<h3>Using Quotes</h3>
+<p>
+Be sure to alternate double quotes with single quotes.
+Since event handlers in HTML must be enclosed in quotes, you must use single
+quotes to delimit arguments.  For example
+
+<xmp>
+<form name="myform">
+<input type="button" name="Button1" value="Open Sesame!" onclick="window.open('stmtsov.html', 'newWin', 'toolbar=no,directories=no')">
+</form>
+</xmp>
+<p>
+Alternatively, you can escape quotes by preceding them by a backslash (\).
+
+<h3>Defining Functions</h3>
+<p>
+It is always a good idea to define all of your functions in the HEAD of your HTML page.
+This way, all functions will be defined before any content is displayed.
+Otherwise, the user might perform some action while the page is still loading that triggers
+an event handler and calls an undefined function, leading to an error.
+
+<h3>Creating Arrays</h3>
+<p>
+An array is an ordered set of values that you reference through an array name and an index.
+For example, you could have an array called emp, that contains employees' names
+indexed by their employee number.  So emp[1] would be employee number one, emp[2]
+employee number two, and so on.
+
+<p>
+JavaScript does not have an explicit array data type, but because of the intimate relationship
+between arrays and object properties (see <a href="model.html">JavaScript Object Model</a>),
+it is easy to create arrays in JavaScript.
+You can define an array object type, as follows:
+<pre>
+function MakeArray(n) {
+   this.length = n;
+   for (var i = 1; i &lt;= n; i++) {
+     this[i] = 0 }
+     return this
+     }
+}
+</pre>
+<p>
+This defines an array such that the first property, length, (with index of zero),
+represents the number of elements in the array.
+The remaining properties have an integer index of one or greater, and are initialized to zero.
+<p>
+You can then create an array by a call to <b>new</b> with the array name,
+specifying the number of elements it has. For example:
+<pre>
+emp = new MakeArray(20);
+</pre>
+<p>
+This creates an array called emp with 20 elements, and initializes the elements to zero.
+
+<h4>Populating an Array</h4>
+<p>
+You can populate an array by simply assigning values to its elements.  For example:
+<pre>
+emp[1] = "Casey Jones"
+emp[2] = "Phil Lesh"
+emp[3] = "August West"
+</pre>
+and so on.
+
+<p>
+You can also create arrays of objects.  For example, suppose you define an object type
+named Employees, as follows:
+
+<pre>
+function Employee(empno, name, dept) {
+   this.empno = empno;
+   this.name = name;
+   this.dept = dept;
+}
+</pre>
+<p>
+Then the following statements define an array of these objects:
+
+<pre>
+emp = new MakeArray(3)
+emp[1] = new Employee(1, "Casey Jones", "Engineering")
+emp[2] = new Employee(2, "Phil Lesh", "Music")
+emp[3] = new Employee(3, "August West", "Admin")
+</pre>
+<p>
+Then you can easily display the objects in this array using the show_props function
+(defined in the section on the <a href="model.html">JavaScript Object Model</a>) as follows:
+<pre>
+for (var n =1; n &lt;= 3; n++) {
+   document.write(show_props(emp[n], "emp") + "<br>");
+}
+</pre>
+<p>
+
+</body>
+</html>
+
+<!--
+     FILE ARCHIVED ON 23:24:58 Jun 17, 1997 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 18:03:23 Nov 08, 2018.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

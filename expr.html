@@ -1,0 +1,433 @@
+<!doctype html public "-//IETF//DTD HTML//EN">
+<html>
+<head>
+
+<title>JavaScript Values, Expressions, and Operators</title>
+</head>
+
+<body>
+
+<h1>JavaScript Expressions and Operators</h1>
+
+<ul>
+<li><a href="#expr"> Expressions</a>
+<li><a href="#operators"> Operators</a>
+<ul>
+<li><a href="#arithop">Arithmetic Operators</a>
+<li><a href="#bitwiseop">Bitwise Operators</a>
+<li><a href="#logicalop">Logical Operators</a>
+<li><a href="#compop">Comparison Operators</a>
+<li><a href="#stringop">String Operators</a>
+<li><a href="#precedence">Operator Precedence</a>
+</ul>
+</ul>
+
+<a name="expr"> <h2>Expressions</h2></a>
+
+<p>
+An expression is any valid set of literals, variables, operators,
+and expressions that evaluates to a single value.
+The value may be a number, a string, or a logical value.
+
+Conceptually, there are two types of expressions:
+those that assign a value to a variable, and those that simply
+have a value. For example, the expression
+<p>
+<code>x = 7</code>
+<p>
+is an expression that assigns x the value 7. This expression itself
+evaluates to 7. Such expressions use <i>assignment operators.</i>
+On the other hand, the expression
+<p>
+<code>3 + 4</code>
+<p>
+simply evaluates to 7; it does not perform an assignment. The
+operators used in such expressions are referred to simply as <i>operators</i>.
+<p>
+JavaScript has the following kinds of expressions:
+<ul>
+<li>Arithmetic: evaluates to a number, for example
+<li>String: evaluates to a character string, for example "Fred" or "234"
+<li>Logical: evaluates to true or false
+</ul>
+<p>
+The special keyword <b>null</b> denotes a null value.
+In contrast, variables that have not been assigned a value are <i>undefined</i>, and cannot
+be used without a run-time error.
+
+<h3>Conditional Expressions</h3>
+<p>
+A conditional expression can have one of two values based on a condition.
+The syntax is
+<pre>
+(<i>condition</i>) ? <i>val1</i> : <i>val2</i>
+</pre>
+<p>
+If <i>condition</i> is true, the expression has the value of <i>val1</i>,
+Otherwise it has the value of <i>val2</i>.
+You can use a conditional expression anywhere you would use a standard
+expression.
+<p>
+For example,
+<pre>
+status = (age &gt;= 18) ? "adult" : "minor"
+</pre>
+This statement assigns the value "adult" to the variable status
+if age is eighteen or greater.  Otherwise, it assigns the value
+"minor" to status.
+
+<h2>Assignment Operators (=, +=, -=, *=, /=)</h2>
+
+<p>
+An assignment operator assigns a value to its left operand based
+on the value of its right operand. The basic assignment operator
+is equal (=), which assigns the value of its right operand to
+its left operand. That is, x = y assigns the value of y to x.
+<p>
+The other operators are shorthand for standard arithmetic operations
+as follows:
+<ul>
+<li>x += y means x = x + y
+<li>x -= y means x = x - y
+<li>x *= y means x = x * y
+<li>x /= y means x = x / y
+<li>x %= y means x = x % y
+</ul>
+
+<p>
+There are additional assignment operators for bitwise operations:
+<ul>
+<li>x &lt;&lt;= y means x = x &lt;&lt; y
+<li>x &gt;&gt;= y means x = x &gt;&gt; y
+<li>x &gt;&gt;&gt;= means x = x &gt;&gt;&gt; y
+<li>x &amp;= means x = x &amp; y
+<li>x ^= means x = x ^ y
+<li>x |= means x = x | y
+</ul>
+
+<a name="operators"> <h2>Operators</h2></a>
+
+<p>
+JavaScript has arithmetic, string, and logical operators. There
+are both <i>binary</i> and <i>unary</i> operators. A binary operator
+requires two operands, one before the operator and one after the
+operator:
+<p>
+<code><i>operand1 operator operand2</i></code>
+<p>
+For example,
+<tt>3 + 4 or x * y</tt>
+<p>
+A unary operator requires a single operand, either before or after
+the operator:
+<p>
+<code>operator operand </code>
+<p>
+or
+<p>
+<code>operand operator</code>
+<p>
+For example <tt>x++</tt> or <tt>++x</tt>.
+
+<a name="arithop"> <h3>Arithmetic Operators</h3></a>
+
+<p>
+Arithmetic operators take numerical values (either literals or
+variables) as their operands and return a single numerical value.
+
+<h4>Standard Arithmetic Operators</h4>
+
+<p>
+The standard arthmetic operators are addition (+), subtraction (-), multiplication (*),
+and division (/). These operators work in the standard way.
+
+<h4>Modulus (%)</h4>
+
+<p>
+The modulus operator is used as follows:
+<br><code>var1 % var2</code>
+<p>
+The modulus operator returns the first operand modulo the second
+operand, that is, <i>var1</i> modulo <i>var2</i>, in the statement
+above, where <i>var1</i> and <i>var2</i> are variables. The modulo
+function is the remainder of integrally dividing <i>var1</i> by <i>var2</i>.
+For example, 12 % 5 returns 2.
+
+<h4>Increment (++)</h4>
+
+<p>
+The increment operator is used as follows:
+<br>
+<code>var++ </code>or <code>++var</code>
+<p>
+This operator increments (adds one to) its operand and returns a value.
+If used postfix, with operator after operand (for example x++), then it
+returns the value before incrementing. If used prefix with operator before
+operand (for example, ++x), then it returns the value after incrementing.
+<p>
+For example, if x is 3, then the statement
+<p>
+<code>y = x++</code>
+<p>
+increments x to 4 and sets y to 3.
+<p>
+If x is 3, then the statement
+<p>
+<code>y = ++x</code>
+<p>
+increments x to 4 and sets y to 4.
+
+<h4>Decrement (--)</h4>
+
+<p>
+The decrement operator is used as follows:
+<p>
+<code>var-- </code>or <code>--var</code>
+<p>
+This operator decrements (subtracts one from) its operand
+and returns a value. If used postfix (for example x--) then it
+returns the value before decrementing. If used prefix (for example,
+--x), then it returns the value after decrementing.
+<p>
+For example, if x is 3, then the statement
+<p>
+<code>y = x--</code>
+<p>
+decrements x to 2 and sets y to 3.
+<p>
+If x is 3, then the statement
+<p>
+<code>y = --x</code>
+<p>
+decrements x to 2 and sets y to 2.
+
+<h4>Unary negation (-)</h4>
+
+<p>
+The unary negation operator must precede its operand. It negates
+its operand. For example,
+<p>
+x = -x
+<p>
+negates the value of x; that is if x were 3, it would become -3.
+
+<a name="bitwiseop"> <h3>Bitwise Operators</h3></a>
+<p>
+Bitwise operators treat their operands as a set of bits (zeros and ones),
+rather than as decimal, hexadecimal, or octal numbers.
+For example, the decimal number 9 has a binary representation of 1001.
+Bitwise operators perform their operations on such binary representations,
+but they return standard JavaScript numerical values.
+
+<h4>Bitwise Logical Operators</h4>
+
+<p>
+The bitwise logical operators work conceptually as follows:
+<ul>
+<li>The operands are converted to 32-bit integers, and expressed
+a series of bits (zeros and ones).
+<li>Each bit in the first operand is paired with the corresponding bit in the second
+operand: first bit to first bit, second bit to second bit, and so on.
+<li>The operator is applied to each pair of bits, and the result is constructed
+bitwise.
+</ul>
+<p>
+The bitwise operators are:
+<ul>
+<li>Bitwise AND &amp; returns a one if both operands are ones.
+<li>Bitwise OR | returns a one if either operand is one.
+<li>Bitwise XOR ^ returns a one if one but not both operands are one.
+</ul>
+<p>
+For example, the binary representation of 9 is 1001, and the binary representation
+of 15 is 1111.  So, when the bitwise operators are applied to these values,
+the results are as follows:
+<ul>
+<li>15 &amp; 9 yields 9 (1111 &amp; 1001 = 1001)
+<li>15 | 9 yields 15 (1111 | 1001 = 1111)
+<li>15 ^ 9 yields 6 (1111 ^ 1001 = 0110)
+</ul>
+
+<h4>Bitwise Shift Operators</h4>
+<p>
+The bitwise shift operators are:
+<ul>
+<li>Left Shift (&lt;&lt;)
+<li>Sign-propagating Right Shift (&gt;&gt;)
+<li>Zero-fill Right shift (&gt;&gt;&gt;)
+</ul>
+
+<p>
+The shift operators take two operands: the first is a quantity to be shifted, and the
+second specifies the number of bit positions by which the first operand is
+to be shifted.  The direction of the shift operation is controlled by the operator used.
+<p>
+Shift operators convert their operands to 32-bit integers, and return a result of
+the same type as the left operator.
+
+<h5>Left Shift (&lt;&lt;)</h5>
+<p>
+This operator shifts the first operand the specified number of bits to the left.
+Excess bits shifted off to the left are discarded.  Zero bits are shifted in from
+the right.
+<p>
+For example, 9&lt;&lt;2 yields 36, because 1001 shifted two bits to the left becomes 100100,
+which is 36.
+
+<h5>Sign-propagating Right Shift (&gt;&gt;) </h5>
+<p>
+This operator shifts the first operand the specified number of bits to the right.
+Excess bits shifted off to the right are discarded.
+Copies of the leftmost bit are shifted in from the left.
+<p>
+For example, 9&gt;&gt;2 yields 2, because 1001 shifted two bits to the right becomes 10,
+which is 2.  Likewise, -9&gt;&gt;2 yields -3, because the sign is preserved.
+
+<h5> Zero-fill right shift (&gt;&gt;&gt;)</h5>
+<p>
+This operator shifts the first operand the specified number of bits to the left.
+Excess bits shifted off to the right are discarded.
+Zero bits are shifted in from the left.
+
+<p>
+For example, 19&gt;&gt;&gt;2 yields 4, because 10011 shifted two bits to the right becomes 100,
+which is 4.  For postive numbers, zero-fill right shift and sign-propagating right
+shift yield the same result.
+
+
+<a name="logicalop"> <h3>Logical Operators</h3></a>
+
+<p>
+Logical operators take logical (Boolean) values as operands.
+They return a logical value. Logical values are <b>true</b> and <b>false</b>.
+
+<h4>And (&amp;&amp;)</h4>
+
+<p>
+<b>Usage</b>: <code>expr1 &amp;&amp; expr2</code>
+<p>
+The logical &quot;and&quot; operator returns true if both logical
+expressions <i>expr1</i> and <i>expr2</i> are true. Otherwise,
+it returns false.
+
+<h4>Or (||)</h4>
+
+<p>
+<b>Usage</b>: <code>expr1 || expr2</code>
+<p>
+The logical &quot;or&quot; operator returns true if either logical
+expression <i>expr1</i> or <i>expr2</i> is true. If both <i>expr1</i>
+and <i>expr2</i> are false, then it returns false.
+
+<h4>Not (!)</h4>
+
+<p>
+<b>Usage</b>: <code>!expr</code>
+<p>
+The logical &quot;not&quot; operator is a unary operator that
+negates its operand expression
+<i>expr</i>. That is, if <i>expr</i> is true, it returns false,
+and if <i>expr</i> is false, then it returns true.
+
+<h4>Short-Circuit Evaluation</h4>
+<p>
+As logical expressions are evaluated left to right, they are tested for
+possible "short circuit" evaluation using the following rule:
+<ul>
+<li><b>false</b> &amp;&amp; <i>anything</i> is short-circuit evaluated to <b>false</b>.
+<li><b>true</b> || <i>anything</i> is short-circuit evaluated to <b>true</b>.
+</ul>
+<p>
+The rules of logic guarantee that these evaluations will always be correct.
+Note that the <i>anything</i> part of the above expressions is not evaluated, so any
+side effects of doing so do not take effect.
+
+
+<a name="compop"> <h3>Comparison Operators (= =, &gt;, &gt;=, &lt;, &lt;=, !=)</h3></a>
+
+<p>
+A comparison operator compares its operands and returns a logical
+value based on whether the comparison is true or not. The operands
+may be numerical or string values. When used on string values,
+the comparisons are based on the standard lexicographical ordering.
+<p>
+The operators are:
+<ul>
+<li>Equal (= =): returns true if the operands are equal.
+<li>Not equal (!=): returns true if the operands are not equal.
+<li>Greater than (&gt;): returns true if left operand is greater
+than right operand. Example: x &gt; y returns true if x is greater
+than y.
+<li>Greater than or equal to (&gt;=): returns true if left
+operand is greater than or equal to right operand. Example: x
+&gt;= y returns true if x is greater than or equal to y.
+<li>Less than (&lt;): returns true if left operand is less than
+right operand. Example: x &lt; y returns true if x is less
+than y.
+<li>Less than or equal to (&lt;=):
+returns true if left operand is less than or equal to right operand.
+Example: x &lt;= y returns true if x is less than or equal to y.
+
+</ul>
+
+<a name="stringop"> <h3>String Operators</h3></a>
+
+<p>
+In addition to the comparison operators, which may be used on
+string values, the concatenation operator (+) concatenates two
+string values together, returning another string that is the union
+of the two operand strings. For example,
+<p>
+<code>&quot;my &quot; + &quot;string&quot;</code>
+<p>
+returns the string
+<p>
+<code>&quot;my string&quot;</code>
+
+<p>
+The shorthand assignment operator += can also be used to concatenate strings.
+For example, if the variable <tt>mystring</tt> is a string that has the value
+"alpha", then the expression
+<pre>mystring += "bet"</pre>
+evaluates to "alphabet" and assigns this value to <tt>mystring</tt>.
+
+<a name="precedence"> <h3>Operator Precedence</h3></a>
+
+<p>
+The <i>precedence</i> of operators determines the order they are
+applied when evaluating an expression. You can override operator
+precedence by using parentheses.
+<p>
+The precedence of operators, from lowest to highest is as follows:
+<dl compact>
+<dt>comma ,
+<dt>assignment = += -= *= /= %= &lt;&lt;= &gt;&gt;= &gt;&gt;&gt;=
+&amp;= ^= |=
+<dt>conditional ?:
+<dt>logical-or ||
+<dt>logical-and &amp;&amp;
+<dt>bitwise-or |
+<dt>bitwise-xor ^
+<dt>bitwise-and &amp;
+<dt>equality == !=
+<dt>relational &lt; &lt;= &gt; &gt;=
+<dt>bitwise shift &lt;&lt; &gt;&gt; &gt;&gt;&gt;
+<dt>addition/subtraction + -
+<dt>multiply/divide * / %
+<dt>negation/increment ! ~ - ++ --
+<dt>call, member () [] .
+</dl>
+
+<p>
+
+</body>
+
+</html>
+
+<!--
+     FILE ARCHIVED ON 23:25:23 Jun 17, 1997 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 18:08:09 Nov 08, 2018.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

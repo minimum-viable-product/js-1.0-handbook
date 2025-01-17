@@ -1,0 +1,464 @@
+<html>
+<body>
+<p>
+<a name="statements"><h1>Statements</h1></a>
+
+<p>JavaScript statements consist of keywords used with the appropriate syntax. A single statement may span multiple lines. Multiple statements may occur on a single line if each statement is separated by a semi-colon.
+
+<p><b>Syntax conventions</b>: All keywords in syntax statements are in bold. Words in italics represent user-defined names or statements. Any portions enclosed in square brackets, [ ], are optional. <tt>{<i>statements</i>}</tt> indicates a block of statements, which can consist of a single statement or multiple statements delimited by a curly braces {}.
+
+<p>The following statements are available in JavaScript:
+<table width="70%">
+<tr valign="TOP">
+<td>
+<li><a href="#break_statement">break</a>
+<li><a href="#comment_statement">comment</a>
+<li><a href="#continue_statement">continue</a>
+<li><a href="#for_statement">for</a>
+<li><a href="#for_in_statement">for...in</a>
+<li><a href="#function_statement">function</a>
+<li><a href="#if_else_statement">if...else</a>
+</td>
+<td>
+<li><a href="#new_statement">new</a>
+<li><a href="#return_statement">return</a>
+<li><a href="#this_statement">this</a>
+<li><a href="#var_statement">var</a>
+<li><a href="#while_statement">while</a>
+<li><a href="#with_statement">with</a>
+</td>
+</tr>
+</table>
+
+<p>NOTE: <b>new</b> and <b>this</b> are not really statements, but are included in this section for convenience.
+
+
+<!------------------------------------------------------------------------------------------------->
+<hr>
+<a name="break_statement"><h2>break</h2></a>
+<p>A statement that terminates the current <b>while</b> or <b>for</b> loop and transfers program control to the statement following the terminated loop.
+
+
+<h3>Syntax</h3>
+<pre>
+<b>break</b>
+</pre>
+
+
+<h3>Examples</h3>
+<p>The following function has a <b>break</b> statement that terminates the <b>while</b> loop when <i>i</i> is 3, and then returns the value 3 * <i>x</i>.
+<xmp>
+function testBreak(x) {
+   var i = 0
+   while (i &lt; 6) {
+      if (i == 3)
+         break
+      i++
+   }
+   return i*x
+}
+</xmp>
+
+
+<!------------------------------------------------------------------------------------------------->
+<hr>
+<a name="comment_statement"><h2>comment</h2></a>
+<p>Notations by the author to explain what a script does. Comments are ignored by the interpreter. JavaScript supports Java-style comments:
+<ul>
+<li>Comments on a single line are preceded by a double-slash (//).
+<li>Comments that span multiple lines are preceded by a /* and followed by a */.
+</ul>
+
+
+<h3>Syntax</h3>
+<pre>
+1. // <i>comment text</i>
+2. /* <i>multiple line comment text </i>*/
+</pre>
+
+
+<h3>Examples</h3>
+<xmp>
+// This is a single-line comment.
+/* This is a multiple-line comment. It can be of any length, and
+you can put whatever you want here. */
+</xmp>
+
+
+<!------------------------------------------------------------------------------------------------->
+<hr>
+<a name="continue_statement"><h2>continue</h2></a>
+<p>A statement that terminates execution of the block of statements in a <b>while</b> or <b>for</b> loop, and continues execution of the loop with the next iteration. In contrast to the <b>break</b> statement, <b>continue</b> does not terminate the execution of the loop entirely: instead,
+<ul>
+<li>In a <b>while</b> loop, it jumps back to the <i>condition</i>.
+<li>In a <b>for</b> loop, it jumps to the <i>update</i> expression.
+</ul>
+
+
+<h3>Syntax</h3>
+<pre>
+<b>continue</pre>
+</b>
+
+
+<h3>Examples</h3>
+<p>The following example shows a <b>while</b> loop that has a <b>continue</b> statement that executes when the value of <i>i</i> is 3. Thus, <i>n</i> takes on the values 1, 3, 7, and 12.
+<xmp>
+i = 0
+n = 0
+while (i &lt; 5) {
+   i++
+   if (i == 3)
+      continue
+   n += i
+}
+</xmp>
+
+
+<!------------------------------------------------------------------------------------------------->
+<hr>
+<a name="for_statement"><h2>for</h2></a>
+<p>A statement that creates a loop that consists of three optional expressions, enclosed in parentheses and separated by semicolons, followed by a block of statements executed in the loop.
+
+
+<h3>Syntax</h3>
+<pre>
+for ([<i>initial-expression</i>;] [<i>condition</i>;] [<i>increment-expression</i>]) {
+   <i>statements</i>
+}
+</pre>
+
+<i>initial-expression</i> is a statement or variable declaration. It is typically used to initialize a counter variable. This expression may optionally declare new variables with the <b>var</b> keyword.
+<p><i>condition</i> is evaluated on each pass through the loop. If this condition evaluates to true, the statements in <i>statements</i> are performed. This conditional test is optional. If omitted, the condition always evaluates to true.
+<p><i>increment-expression</i> is generally used to update or increment the counter variable.
+<p><i>statements</i> is a block of statements that are executed as long as <i>condition</i> evaluates to true. This can be a single statement or multiple statements. Although not required, it is good practice to indent these statements from the beginning of the <b>for</b> statement.
+
+
+<h3>Examples</h3>
+<p>The following <b>for</b> statement starts by declaring the variable <i>i</i> and initializing it to zero. It checks that <i>i</i> is less than nine, performs the two succeeding statements, and increments <i>i</i> by one after each pass through the loop.
+<xmp>
+for (var i = 0; i &lt; 9; i++) {
+   n += i
+   myfunc(n)
+}
+</xmp>
+
+
+<!------------------------------------------------------------------------------------------------->
+<hr>
+<a name="for_in_statement"><h2>for...in</h2></a>
+<p>A statement that iterates a specified variable over all the properties of an object. For each distinct property, JavaScript executes the specified statements.
+
+
+<h3>Syntax</h3>
+<pre>
+<b>for</b> (<i>variable</i> <b>in</b> <i>object</i>) {
+   <i>statements</i> }
+</pre>
+
+<i>variable</i> is the variable to iterate over every property.
+<p><i>object</i> is the object for which the properties are iterated.
+<p><i>statements</i> specifies the statements to execute for each property.
+
+<h3>Examples</h3>
+<p>The following function takes as its argument an object and the object's name. It then iterates over all the object's properties and returns a string that lists the property names and their values.
+<xmp>
+function dump_props(obj, obj_name) {
+   var result = ""
+   for (var i in obj) {
+      result += obj_name + "." + i + " = " + obj[i] + "<br>"
+   }
+   result += "<hr>"
+   return result
+}
+</xmp>
+
+
+<!------------------------------------------------------------------------------------------------->
+<hr>
+<a name="function_statement"><h2>function</h2></a>
+<p>A statement that declares a JavaScript function <i>name</i> with the specified parameters <i>param</i>. Acceptable parameters include strings, numbers, and objects.
+
+<p>To return a value, the function must have a <b>return</b> statement that specifies the value to return. You cannot nest a function statement in another statement or in itself.
+
+<p>All parameters are passed to functions, <i>by value</i>. In other words, the value is passed to the function, but if the function changes the value of the parameter, this change is not reflected globally or in the calling function.
+
+<h3>Syntax</h3>
+<pre>
+<b>function</b> <i>name</i>([<i>param</i>] [, <i>param</i>] [..., <i>param</i>]) {
+   <i>statements </i>}
+</pre>
+
+
+<h3>Examples</h3>
+<xmp>
+//This function returns the total dollar amount of sales, when
+//given the number of units sold of products a, b, and c.
+function calc_sales(units_a, units_b, units_c) {
+   return units_a*79 + units_b*129 + units_c*699
+}
+</xmp>
+
+
+<!------------------------------------------------------------------------------------------------->
+<hr>
+<a name="if_else_statement"><h2>if...else</h2></a>
+<p>A statement that executes a set of statements if a specified condition is true. If the condition is false, another set of statements can be executed.
+
+<h3>Syntax</h3>
+<pre>
+<b>if</b> (<i>condition</i>) {
+   <i>statements1</i> }
+[<b>else</b> {
+   <i>statements2</i>}]
+</pre>
+
+<p><i>condition</i> can be any JavaScript expression that evaluates to true or false. Parentheses are required around the condition. If <i>condition</i> evaluates to true, the statements in <i>statements1</i> are executed.
+<p><i>statements1</i> and <i>statements2</i> can be any JavaScript statements, including further nested <b>if</b> statements. Multiple statements must be enclosed in braces.
+
+<h3>Examples</h3>
+<xmp>
+if ( cipher_char == from_char ) {
+   result = result + to_char
+   x++ }
+else
+   result = result + clear_char
+</xmp>
+
+
+<!------------------------------------------------------------------------------------------------->
+<hr>
+<a name="new_statement"><h2>new</h2></a>
+<p>An operator that lets you create an instance of a user-defined object type.
+
+<p>Creating an object type requires two steps:
+<ol>
+<li>Define the object type by writing a function.
+<li>Create an instance of the object with <b>new</b>.
+</ol>
+<p>To define an object type, create a function for the object type that specifies its name, properties, and methods. An object can have a property that is itself another object. See the examples below.
+
+<p>You can always add a property to a previously defined object. For example, the statement <tt>car1.color = "black"</tt> adds a property <i>color</i> to <i>car1</i>, and assigns it a value of "black". However, this does not affect any other objects. To add the new property to all objects of the same type, you must add the property to the definition of the <i>car</i> object type.
+
+
+<h3>Syntax</h3>
+<pre>
+<i>objectName</i> = <b>new</b> <i>objectType</i> ( <i>param1</i> [,<i>param2</i>] ...[,<i>paramN</i>] )
+</pre>
+
+<i>objectName</i> is the name of the new object instance.
+<br><i>objectType</i> is the object type. It must be a function that defines an object type.
+<br><i>param1...paramN</i> are the property values for the object. These properties are parameters defined for the <i>objectType</i> function.
+
+
+<h3>Examples</h3>
+<p><b>Example 1: object type and object instance.</b>Suppose you want to create an object type for cars. You want this type of object to be called <i>car</i>, and you want it to have properties for make, model, year, and color. To do this, you would write the following function:
+<xmp>
+function car(make, model, year) {
+   this.make = make
+   this.model = model
+   this.year = year
+}
+</xmp>
+
+<p>Now you can create an object called <i>mycar</i> as follows:
+<xmp>
+mycar = new car("Eagle", "Talon TSi", 1993)
+</xmp>
+
+<p>This statement creates <i>mycar</i> and assigns it the specified values for its properties. Then the value of <i>mycar.make</i> is the string "Eagle", <i>mycar.year</i> is the integer 1993, and so on.
+
+<p>You can create any number of <i>car</i> objects by calls to <b>new</b>. For example,
+<xmp>
+kenscar = new car("Nissan", "300ZX", 1992)
+</xmp>
+
+<p><b>Example 2: object property that is itself another object.</b> Suppose you define an object called <i>person</i> as follows:
+<xmp>
+function person(name, age, sex) {
+   this.name = name
+   this.age = age
+   this.sex = sex
+}
+</xmp>
+<p>
+And then instantiate two new <i>person</i> objects as follows:
+<xmp>
+rand = new person("Rand McNally", 33, "M")
+ken = new person("Ken Jones", 39, "M")
+</xmp>
+<p>
+Then you can rewrite the definition of <i>car</i> to include an owner property that takes a <i>person</i> object, as follows:
+<xmp>
+function car(make, model, year, owner) {
+   this.make = make;
+   this.model = model;
+   this.year = year;
+   this.owner = owner;
+}
+</xmp>
+
+<p>To instantiate the new objects, you then use the following:
+<xmp>
+car1 = new car("Eagle", "Talon TSi", 1993, rand);
+car2 = new car("Nissan", "300ZX", 1992, ken)
+</xmp>
+
+<p>Instead of passing a literal string or integer value when creating the new objects, the above statements pass the objects <i>rand</i> and <i>ken</i> as the parameters for the owners. To find out the name of the owner of <i>car2</i>, you can access the following property:
+<xmp>
+car2.owner.name
+</xmp>
+
+
+<!------------------------------------------------------------------------------------------------->
+<hr>
+<a name="return_statement"><h2>return</h2></a>
+<p>A statement that specifies the value to be returned by a function.
+
+
+<h3>Syntax</h3>
+<pre>
+<b>return</b> <i>expression</i>
+</pre>
+
+
+<h3>Examples</h3>
+<p>The following function returns the square of its argument, <i>x</i>, where <i>x</i> is a number.
+<xmp>
+function square( x ) {
+   return x * x
+}
+</xmp>
+
+
+<!------------------------------------------------------------------------------------------------->
+<hr>
+<a name="this_statement"><h2>this</h2></a>
+<p>A keyword that you can use to refer to the current object. In general, in a method <b>this</b> refers to the calling object.
+
+
+<h3>Syntax</h3>
+<pre>
+<b>this</b>[.<i>propertyName</i>]
+</pre>
+
+
+<h3>Examples</h3>
+<p>Suppose a function called <i>validate</i> validates an object's value property, given the object and the high and low values:
+<xmp>
+function validate(obj, lowval, hival) {
+   if ((obj.value &lt; lowval) || (obj.value &gt; hival))
+      alert("Invalid Value!")
+}
+</xmp>
+<p>You could call <i>validate</i> in each form element's onChange event handler, using <b>this</b> to pass it the form element, as in the following example:
+<xmp>
+<b>Enter a number between 18 and 99:</b>
+<input type="text" name="age" size="3" onchange="validate(this, 18, 99)">
+</xmp>
+
+
+<!------------------------------------------------------------------------------------------------->
+<hr>
+<a name="var_statement"><h2>var</h2></a>
+<p>A statement that declares a variable, optionally initializing it to a value. The scope of a variable is the current function or, for variables declared outside a function, the current application.
+
+<p>Using <b>var</b> outside a function is optional; you can declare a variable by simply assigning it a value. However, it is good style to use <b>var</b>, and it is necessary in functions if a global variable of the same name exists.
+
+
+<h3>Syntax</h3>
+<pre>
+<b>var</b> <i>varname</i> [= <i>value</i>] [..., <i>varname</i> [= <i>value</i>] ]
+</pre>
+
+<i>varname</i> is the variable name. It can be any legal identifier.
+<br><i>value</i> is the intial value of the variable and can be any legal expression.
+
+<h3>Examples</h3>
+<xmp>
+var num_hits = 0, cust_no = 0
+</xmp>
+
+
+<!------------------------------------------------------------------------------------------------->
+<hr>
+<a name="while_statement"><h2>while</h2></a>
+<p>A statement that creates a loop that evaluates an expression, and if it is true, executes a block of statements. The loop then repeats, as long as the specified condition is true.
+
+
+<h3>Syntax</h3>
+<pre>
+<b>while</b> (<i>condition</i>) {
+   <i>statements</i>
+}
+</pre>
+
+<i>condition</i>  is evaluated before each pass through the loop. If this condition evaluates to true, the statements in the succeeding block are performed. When <i>condition</i> evaluates to false, execution continues with the statement following <i>statements</i>.
+<p><i>statements</i> is a block of statements that are executed as long as the <i>condition</i> evaluates to true. Although not required, it is good practice to indent these statements from the beginning of the <b>while</b> statement.
+
+<h3>Examples</h3>
+<p>The following <b>while</b> loop iterates as long as <i>n</i> is less than three.
+
+<xmp>
+n = 0
+x = 0
+while( n &lt; 3 ) {
+   n ++
+   x += n
+}
+</xmp>
+
+<p>Each iteration, the loop increments <i>n</i> and adds it to <i>x</i>. Therefore, <i>x</i> and <i>n</i> take on the following values:
+<ul>
+<li>After the first pass: n = 1 and x = 1
+<li>After the second pass: n = 2 and x = 3
+<li>After the third pass: n = 3 and x = 6
+</ul>
+
+<p>After completing the third pass, the condition <tt>n &LT; 3</tt> is no longer true, so the loop terminates.
+
+
+<!------------------------------------------------------------------------------------------------->
+<hr>
+<a name="with_statement"><h2>with</h2></a>
+<p>A statement that establishes a the default object for a set of statements. Within the set of statements, any property references that do not specify an object are assumed to be for the default object.
+
+
+<h3>Syntax</h3>
+<pre>
+<b>with</b> <i>(object)</i>{
+    <i>statements</i>
+}
+</pre>
+
+<i>object</i> specifies the default object to use for the <i>statements</i>.  The parentheses are required around <i>object</i>.
+<br><i>statements</i> is any block of statements.
+
+<h3>Examples</h3>
+<p>The following <b>with</b> statement specifies that the Math object is the default object. The statements following the <b>with</b> statement refer to the PI property and the cos and sin methods, without specifying an object. JavaScript assumes the Math object for these references.
+<xmp>
+var a, x, y
+var r=10
+with (Math) {
+   a = PI * r * r
+   x = r * cos(PI)
+   y = r * sin(PI/2)
+}
+</xmp>
+
+<!------------------------------------------------------------------------------------------------->
+
+<hr>
+<script>
+document.write("<FONT SIZE=-2>Last modified " + document.lastModified)
+</script>
+</body>
+</html>
+
+<!--
+     FILE ARCHIVED ON 23:26:18 Jun 17, 1997 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 18:12:50 Nov 08, 2018.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
