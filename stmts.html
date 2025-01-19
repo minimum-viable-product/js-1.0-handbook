@@ -137,7 +137,7 @@ for ([<i>initial-expression</i>;] [<i>condition</i>;] [<i>increment-expression</
 <h3>Examples</h3>
 <p>The following <b>for</b> statement starts by declaring the variable <i>i</i> and initializing it to zero. It checks that <i>i</i> is less than nine, performs the two succeeding statements, and increments <i>i</i> by one after each pass through the loop.
 <xmp>
-for (var i = 0; i &lt; 9; i++) {
+for (var i = 0; i < 9; i++) {
    n += i
    myfunc(n)
 }
@@ -347,7 +347,7 @@ function square( x ) {
 <p>Suppose a function called <i>validate</i> validates an object's value property, given the object and the high and low values:
 <xmp>
 function validate(obj, lowval, hival) {
-   if ((obj.value &lt; lowval) || (obj.value &gt; hival))
+   if ((obj.value < lowval) || (obj.value > hival))
       alert("Invalid Value!")
 }
 </xmp>
